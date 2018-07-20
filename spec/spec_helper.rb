@@ -1,4 +1,13 @@
-require "paperclip/matchers"
+require 'paperclip/matchers'
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start do
+  add_filter %r{^/spec/}
+  add_filter %r{^/bin/}
+  add_filter %r{^/config/}
+end
 
 RSpec.configure do |config|
   # config expectations

@@ -29,6 +29,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'shoulda-matchers', '~> 3.1'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'simplecov'
+  gem 'simplecov-console'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'

@@ -1,7 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'support/faker'
-require 'support/factory_bot'
+
+# require stuff 
+Dir['./support/*.rb'].each { |f| require f }
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
