@@ -21,8 +21,13 @@ development:
   <<: *default
   database: library_directory_development
 
+# test:
+#   <<: *default
+#   database: library_directory_test
+
 test:
   <<: *default
+  username: travis
   database: library_directory_test
 
 production:
