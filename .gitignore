@@ -31,3 +31,6 @@
 
 # DS_store is no good
 .DS_Store
+
+# ignore my personal cleanup script
+reset-docker.sh 
