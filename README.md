@@ -18,28 +18,25 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 - Cron [Sidekiq-Cron](https://github.com/ondrejbartas/sidekiq-cron) || [Whenever](https://github.com/javan/whenever)
 
 
+## PRY FOR DEBUGGING 
+[Pry for Rails Gist](https://gist.github.com/ddavisgraphics/d1a7a1c52aeadbc2b8305ac0298ae9ab) 
+Pay attention to the attaching part you should also be able to attach by name. 
 
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+
+
+---- 
+
+
+
+# ADD TO README 
 
 Things you may want to cover:
-
-* Ruby version
-
 * System dependencies
-
 * Configuration
-
 * Database creation
-
 * Database initialization
-
 * How to run the test suite
-
 * Services (job queues, cache servers, search engines, etc.)
-
 * Deployment instructions
-
-* ...
+* ... 
