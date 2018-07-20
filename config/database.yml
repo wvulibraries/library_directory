@@ -26,8 +26,9 @@ development:
 #   database: library_directory_test
 
 test:
-  <<: *default
+  adapter: mysql2
   username: travis
+  encoding: utf8
   database: library_directory_test
 
 production:
