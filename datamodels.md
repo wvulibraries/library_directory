@@ -1,25 +1,22 @@
 ---
 Buildings:
   properties:
-    - name 
-    - map link
-    - image
+  - name 
+  - map link
+  - image
   enums:
-    - status [active, disabled]
+  - status [active, disabled]
   has_many: 
-    - address(s)
-    - phone(s)
-    - floor(s)
-    - department(s)
----
-
----
+  - address(s)
+  - phone(s)
+  - floor(s)
+  - department(s)
 Departments:
   properties:
-    - name 
+  - name 
   enums:
-    - status [active, disabled]
+  - status [active, disabled]
   has_many: 
-    - employee(s)
-    - phone(s)
+  - employee(s)
+  - phone(s)
 ---
