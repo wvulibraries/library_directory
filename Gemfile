@@ -18,17 +18,21 @@ gem 'jbuilder', '~> 2.5'
 # loads rails apps faster 
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# active model time savers
+gem "validate_url"
+
 # interface items
-gem 'paperclip', '~> 6.0.0'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'mini_magick'
 
 # cas client
-gem 'rubycas-client', :git => 'git://github.com/rubycas/rubycas-client.git'
+gem 'rubycas-client', :git => 'https://github.com/rubycas/rubycas-client.git'
 
 # development and testing
 group :development, :test do
-  gem 'rspec-rails', '~> 3.7'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem "factory_bot_rails", "~> 4.0"
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem "factory_bot_rails"
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
