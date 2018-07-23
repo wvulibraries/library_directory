@@ -7,6 +7,11 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 - Rails 5.2 
 - Ruby  2.5.1 
 
+## Testing and Quality Control 
+The test suite includes rspec, simplecov, travisCI, and code climate.  These tools are to make sure there is no odd code and the code is tested at 100%.  Quality assurance should also consist of RuboCop to ensure style of syntax is followed.  
+
+- `RAILS_ENV=test bundle exec rspec` for testing in docker container. 
+
 ## Data Modeling 
 ![data models](https://github.com/wvulibraries/library_directory/blob/master/research/data_models.jpg?raw=true)
 
