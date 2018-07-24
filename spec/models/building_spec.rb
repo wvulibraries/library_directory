@@ -15,6 +15,7 @@ RSpec.describe Building, type: :model do
 
   context 'associations' do
     it { should have_many(:addresses) }
+    it { should have_many(:phones) }
   end
 
   context 'invalid options' do

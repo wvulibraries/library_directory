@@ -16,6 +16,7 @@ class Building < ApplicationRecord
 
   # associations
   has_many :addresses, as: :addressable, dependent: :destroy
+  has_many :phones, as: :phoneable, dependent: :destroy
 
   # active status
   enum status: %i[active disabled]

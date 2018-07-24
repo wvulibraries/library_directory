@@ -2,7 +2,7 @@ class Phone < ApplicationRecord
   # validation
   validates :number,
             presence: true,
-            length: { within: 10..20 },
+            length: { within: 10..30 },
             uniqueness: { case_sensitive: false }
 
   # enums types
