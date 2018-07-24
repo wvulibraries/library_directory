@@ -21,16 +21,6 @@ class Building < ApplicationRecord
   # active status
   enum status: %i[active disabled]
 
-  # images
-  mount_uploader :image, ImageUploader
-
-  # provides a boolean
-  # depends on carrierwave to mount an image uploader.
-  #
-  # @author David J. Davis
-  # @since 0.0.1
-  # @return [optional, [true, false]]
-  def image?
-    !image.file.nil?
-  end
+  # concerns 
+  include Imageable
 end

@@ -5,7 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   # directories to use for cache and storage
   def cache_dir
-    "#{Rails.root}/public/uploads/#{Rails.env}/tmp"
+    "#{Rails.root}/public/uploads/#{Rails.env}/tmp/"
   end
 
   def store_dir
