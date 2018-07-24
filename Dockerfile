@@ -21,8 +21,8 @@ RUN \
 	&& gem install rails \
 	&& mkdir -p /home/rb
 
-ENV RAILS_ENV development
-ENV RACK_ENV development
+# ENV RAILS_ENV development
+# ENV RACK_ENV development
 
 WORKDIR /home/directory
 ADD ./ /home/directory

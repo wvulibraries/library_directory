@@ -1,15 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Building, type: :model do
-  let(:building) { FactoryBot.create :building }
+  let(:building) { FactoryBot.create :building_image }
+  let(:building_alt) { FactoryBot.create :building_no_image }
 
-  context 'validations' do 
+  context 'validations' do
     it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name) }
+    it { should validate_uniqueness_of(:name).case_insensitive }
     it { should validate_length_of(:name).is_at_least(7) }
     it { should validate_length_of(:name).is_at_most(50) }
     it { should validate_presence_of(:map_link) }
     it { should define_enum_for(:status).with(%i[active disabled]) }
+  end
+
+  context 'associations' do
+    it { should have_many(:addresses) }
   end
 
   context 'invalid options' do
@@ -32,6 +37,19 @@ RSpec.describe Building, type: :model do
     end
   end
 
+  context 'image uploader' do
+    it 'expects the building object to have a valid image from the factory' do
+      expect(building.image?).to eq true
+    end
+
+    it 'expects the building object does not have an image' do
+      expect(building_alt.image?).to eq false
+    end
+
+    it 'expects the building object is valid with no image' do
+      expect(building_alt).to be_valid
+    end
+  end 
   # it 'expects building to have a valid map url' do
   #   expect(building).to be_valid
   # end
