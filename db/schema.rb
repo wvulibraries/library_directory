@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.datetime "updated_at", null: false
     t.string "addressable_type"
     t.bigint "addressable_id"
-    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses"
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.datetime "updated_at", null: false
     t.string "phoneable_type"
     t.bigint "phoneable_id"
-    t.index ["phoneable_type", "phoneable_id"], name: "index_phones_on_phoneable_type_and_phoneable_id"
+    t.index ["phoneable_type", "phoneable_id"], name: "index_phones"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
