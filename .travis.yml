@@ -1,6 +1,8 @@
 language: ruby
 rvm: 2.5.1
 env:
+  - RAILS_ENV=test
+  - DB=mysql
   global:
     - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
 branches:
@@ -10,8 +12,8 @@ notifications:
   - false
 script:
   - bundle install
-  - RAILS_ENV=test bundle exec rake db:reset
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:reset
+  - bundle exec rake db:migrate --trace
   - bundle exec rspec
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
