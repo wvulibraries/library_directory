@@ -9,8 +9,9 @@ branches:
 notifications:
   - false
 script:
-  - "bundle exec rake db:create"
-  - "bundle exec rake db:migrate"
+  - "bin/rails db:environment:set RAILS_ENV=test"
+  - "bin/rails db:create"
+  - "bin/rails db:migrate"
   - "bundle exec rspec"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
