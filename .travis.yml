@@ -11,7 +11,7 @@ notifications:
 script:
   - "bundle exec rake db:create"
   - "bundle exec rake db:migrate RAILS_ENV=test"
-  - "bundle exec rspec spec"
+  - "bundle exec rspec"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter

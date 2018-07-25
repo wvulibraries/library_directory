@@ -30,6 +30,7 @@ test:
   adapter: mysql2
   username: travis
   database: library_directory_test
+  encoding: utf8mb4
 
 production:
   <<: *default
