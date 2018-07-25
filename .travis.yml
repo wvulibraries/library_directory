@@ -9,13 +9,14 @@ branches:
 notifications:
   - false
 script:
-  - "bundle exec RAILS_ENV=test rake db:environment:set"
-  - "bundle exec RAILS_ENV=test rake db:create "
-  - "bundle exec RAILS_ENV=test rake db:migrate RAILS_ENV=test"
-  - "bundle exec rspec"
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:reset
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rspec
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - mysql -e 'create database library_directory_test'
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
