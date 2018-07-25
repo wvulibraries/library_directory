@@ -13,6 +13,6 @@ RSpec.describe Floor, type: :model do
   end
 
   context 'images' do
-  
-  end 
+    it_behaves_like "imageable"
+  end
 end
