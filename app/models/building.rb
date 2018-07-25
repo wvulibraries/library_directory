@@ -21,6 +21,6 @@ class Building < ApplicationRecord
   # active status
   enum status: %i[active disabled]
 
-  # concerns 
+  # concerns
   include Imageable
 end

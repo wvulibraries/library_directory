@@ -8,6 +8,6 @@ class Floor < ApplicationRecord
             length: { within: 3..50 },
             uniqueness: { case_sensitive: false }
 
-  # concerns 
+  # concerns
   include Imageable
 end
