@@ -141,8 +141,12 @@
         null,
         1,
         null
+      ],
+      "/home/directory/app/models/user.rb": [
+        1,
+        null
       ]
     },
-    "timestamp": 1532533850
+    "timestamp": 1532546800
   }
 }

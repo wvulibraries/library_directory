@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_07_25_171829) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "line1"
     t.string "line2"
     t.string "city"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses"
   end
 
-  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "map_link"
     t.integer "status", default: 0
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.index ["name"], name: "index_buildings_on_name", unique: true
   end
 
-  create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.datetime "created_at", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.index ["name"], name: "index_floors_on_name", unique: true
   end
 
-  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "number_types"
     t.string "number"
     t.datetime "created_at", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.index ["phoneable_type", "phoneable_id"], name: "index_phones"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "prefix"
     t.string "first_name"
     t.string "middle_name"
