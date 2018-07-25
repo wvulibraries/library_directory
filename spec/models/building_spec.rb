@@ -39,17 +39,7 @@ RSpec.describe Building, type: :model do
   end
 
   context 'image uploader' do
-    it 'expects the building object to have a valid image from the factory' do
-      expect(building.image?).to eq true
-    end
-
-    it 'expects the building object does not have an image' do
-      expect(building_alt.image?).to eq false
-    end
-
-    it 'expects the building object is valid with no image' do
-      expect(building_alt).to be_valid
-    end
+    it_behaves_like "imageable"
   end 
   # it 'expects building to have a valid map url' do
   #   expect(building).to be_valid

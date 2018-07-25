@@ -1,0 +1,15 @@
+## Keeping track of what I use in the CLI for curiosity sake
+
+# generators 
+bin/rails g model Phone type:integer number:string phoneable:references
+bin/rails g model Floors name:string image:string building:belongs_to
+bin/rails g migration SomeName
+
+# db 
+bin/rails db:rollback STEP=1
+
+# rspec
+bundle exec rspec 
+rspec 
+rspec /spec/models
+rspec /spec/uploaders
