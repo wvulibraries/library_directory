@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_171829) do
+ActiveRecord::Schema.define(version: 2018_07_26_175348) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_title"
+    t.text "description"
+    t.string "image"
+    t.string "office_number"
+    t.string "type"
+    t.string "university_classification"
   end
 
 end

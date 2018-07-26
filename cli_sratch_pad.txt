@@ -5,6 +5,12 @@ bin/rails g model Phone type:integer number:string phoneable:references
 bin/rails g model Floors name:string image:string building:belongs_to
 bin/rails g migration SomeName
 
+bin/rails g model Employee job_title:string description:text image:string office_number:string --parent User
+
+bin/rails g migration AddEmployeeInfoToUsers job_title:string description:text image:string office_number:string
+
+bin/rails g model Department name:string description:text departmentable:references
+
 # db 
 bin/rails db:rollback STEP=1
 
