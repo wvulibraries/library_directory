@@ -16,7 +16,7 @@ module Imageable
   # @author David J. Davis
   # @since 0.0.1
   # @return [optional, [true, false]]
-  def image?
-    !image.file.nil?
+  def no_image?
+    image.file.nil?
   end
 end

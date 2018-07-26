@@ -8,6 +8,7 @@ class Employee < User
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
   has_many :departments, as: :departmentable
+  has_many :subjects, as: :subjectable
 
   # concerns
   include Imageable

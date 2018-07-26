@@ -10,6 +10,7 @@ bin/rails g model Employee job_title:string description:text image:string office
 bin/rails g migration AddEmployeeInfoToUsers job_title:string description:text image:string office_number:string
 
 bin/rails g model Department name:string description:text departmentable:references
+bin/rails g model Subject name:string subjectable:references
 
 # db 
 bin/rails db:rollback STEP=1

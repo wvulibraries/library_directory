@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_202449) do
+ActiveRecord::Schema.define(version: 2018_07_26_220321) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 2018_07_26_202449) do
     t.string "phoneable_type"
     t.bigint "phoneable_id"
     t.index ["phoneable_type", "phoneable_id"], name: "index_phones"
+  end
+
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "subjectable_type"
+    t.bigint "subjectable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subjectable_type", "subjectable_id"], name: "index_subjects_on_subjectable_type_and_subjectable_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|

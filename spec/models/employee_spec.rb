@@ -21,9 +21,14 @@ RSpec.describe Employee, type: :model do
     it { should have_many(:addresses) }
     it { should have_many(:phones) }
     it { should have_many(:departments) }
+    it { should have_many(:subjects) }
   end
 
   context 'image uploader' do
     it_behaves_like 'imageable'
+
+    # it 'can tell if there is an image' do
+    #   expect(employee.image?).to eq true
+    # end 
   end
 end
