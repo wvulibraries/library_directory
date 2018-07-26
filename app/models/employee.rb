@@ -1,6 +1,19 @@
+# Employee
+#
+# @description: A sub class of the user model uses single table inheritance to
+# determine type of profile and add extra details to user model
+# @author David J. Davis
+# @data_model
+# @since 0.0.1
 class Employee < User
-  validates :job_title, presence: true, length: { within: 2..70 }
-  validates :university_classification, presence: true, length: { within: 2..70 }
+  # validations
+  validates :job_title,
+            presence: true,
+            length: { within: 2..70 }
+
+  validates :university_classification,
+            presence: true,
+            length: { within: 2..70 }
 
   validates :description, length: { maximum: 500 }
 

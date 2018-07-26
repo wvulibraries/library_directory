@@ -3,6 +3,7 @@
 # @author David J. Davis
 # @concern
 # @since 0.0.1
+# frozen_string_literal: true
 module Imageable
   extend ActiveSupport::Concern
 
