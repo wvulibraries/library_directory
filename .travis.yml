@@ -20,6 +20,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - mysql -e 'create database library_directory_test'
-  - cp -i ./.travis.database.yml ./config/database.yml
+  - cp -f ./.travis.database.yml ./config/database.yml
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
