@@ -13,31 +13,31 @@
 ActiveRecord::Schema.define(version: 2018_07_25_171829) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "line1"
-    t.string "line2"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
+    t.string "line1", limit: 191
+    t.string "line2", limit: 191
+    t.string "city", limit: 191
+    t.string "state", limit: 191
+    t.string "zip", limit: 191
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "addressable_type"
+    t.string "addressable_type", limit: 191
     t.bigint "addressable_id"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses"
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name"
-    t.string "map_link"
+    t.string "name", limit: 191
+    t.string "map_link", limit: 191
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", limit: 191
     t.index ["name"], name: "index_buildings_on_name", unique: true
   end
 
   create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
+    t.string "name", limit: 191
+    t.string "image", limit: 191
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
@@ -47,22 +47,22 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
 
   create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "number_types"
-    t.string "number"
+    t.string "number", limit: 191
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phoneable_type"
+    t.string "phoneable_type", limit: 191
     t.bigint "phoneable_id"
     t.index ["phoneable_type", "phoneable_id"], name: "index_phones"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "prefix"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "suffix"
-    t.string "email"
-    t.string "wvu_username"
+    t.string "prefix", limit: 191
+    t.string "first_name", limit: 191
+    t.string "middle_name", limit: 191
+    t.string "last_name", limit: 191
+    t.string "suffix", limit: 191
+    t.string "email", limit: 191
+    t.string "wvu_username", limit: 191
     t.integer "status"
     t.integer "role"
     t.datetime "created_at", null: false
