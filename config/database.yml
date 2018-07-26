@@ -17,19 +17,19 @@ default: &default
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: db
 
-# development:
-#   <<: *default
-#   database: library_directory_development
-
-# test:
-#   <<: *default
-#   database: library_directory_test
+development:
+  <<: *default
+  database: library_directory_development
 
 test:
-  adapter: mysql2
-  username: travis
+  <<: *default
   database: library_directory_test
-  encoding: utf8mb4
+
+# test:
+#   adapter: mysql2
+#   username: travis
+#   database: library_directory_test
+#   encoding: utf8mb4
 
 production:
   <<: *default
