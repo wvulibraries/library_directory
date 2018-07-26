@@ -2,17 +2,10 @@ require 'simplecov'
 require 'simplecov-console'
 ENV['RAILS_ENV'] ||= 'test'
 
-SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
-SimpleCov.start do
-  add_filter %r{^/spec/}
-  add_filter %r{^/bin/}
-  add_filter %r{^/config/}
-end
-
 RSpec.configure do |config|
   # clear uploads after tests are complete
   config.after(:each) do
-    if Rails.env.test? || Rails.env.cucumber?
+    if Rails.env.test?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test"])
     end
   end
@@ -33,3 +26,9 @@ RSpec.configure do |config|
   config.order = :random
 end
 
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start do
+  add_filter %r{^/spec/}
+  add_filter %r{^/bin/}
+  add_filter %r{^/config/}
+end

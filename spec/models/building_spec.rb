@@ -40,8 +40,5 @@ RSpec.describe Building, type: :model do
 
   context 'image uploader' do
     it_behaves_like "imageable"
-  end 
-  # it 'expects building to have a valid map url' do
-  #   expect(building).to be_valid
-  # end
+  end
 end
