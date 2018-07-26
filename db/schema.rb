@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_171829) do
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", limit: 191, index: { unique: true}
+    t.string "name", limit: 191
     t.string "map_link", limit: 191
     t.integer "status", default: 0
     t.datetime "created_at", null: false
