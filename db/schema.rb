@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_175348) do
+ActiveRecord::Schema.define(version: 2018_07_26_202449) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2018_07_26_175348) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.index ["name"], name: "index_buildings_on_name", unique: true
+  end
+
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "departmentable_type"
+    t.bigint "departmentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departmentable_type", "departmentable_id"], name: "index_departments_on_departmentable_type_and_departmentable_id"
   end
 
   create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|

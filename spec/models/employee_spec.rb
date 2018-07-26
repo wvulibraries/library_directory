@@ -20,6 +20,7 @@ RSpec.describe Employee, type: :model do
   context 'associations' do
     it { should have_many(:addresses) }
     it { should have_many(:phones) }
+    it { should have_many(:departments) }
   end
 
   context 'image uploader' do
