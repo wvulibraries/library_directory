@@ -1,3 +1,8 @@
+# User Class
+#
+# @author David J. Davis
+# @concern
+# @since 0.0.1
 class User < ApplicationRecord
   # validation
   validates :first_name, presence: true, length: { within: 2..70 }
@@ -6,7 +11,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validate  :valid_email
-  
+
   # associations
 
   # enums

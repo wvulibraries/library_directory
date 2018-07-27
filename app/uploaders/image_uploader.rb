@@ -1,3 +1,8 @@
+# ImageUploader based on documentation from carrierwave.
+# 
+# @author David J. Davis
+# @uploader
+# @since 0.0.1
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
@@ -7,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/public/uploads/#{Rails.env}/tmp/"
   end
 
-  # store directory 
+  # store directory
   def store_dir
     "#{Rails.root}/public/uploads/#{Rails.env}/#{model.class.to_s.underscore}/"
   end

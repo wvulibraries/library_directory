@@ -1,5 +1,5 @@
-# Library Departments 
-# 
+# Library Departments
+#
 # @author David J. Davis
 # @data_model
 # @since 0.0.1
