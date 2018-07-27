@@ -1,2 +1,11 @@
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Style/DoubleNegation:
+  Enabled: false
