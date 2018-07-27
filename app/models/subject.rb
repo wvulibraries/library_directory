@@ -1,3 +1,8 @@
+# Subject for liasons
+#
+# @author David J. Davis
+# @data_model
+# @since 0.0.1
 class Subject < ApplicationRecord
   # validation
   validates :name,

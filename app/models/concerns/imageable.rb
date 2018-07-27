@@ -1,5 +1,5 @@
 # Imageable
-# 
+#
 # @author David J. Davis
 # @concern
 # @since 0.0.1

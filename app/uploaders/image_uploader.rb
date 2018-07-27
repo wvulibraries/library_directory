@@ -1,5 +1,5 @@
 # ImageUploader based on documentation from carrierwave.
-# 
+#
 # @author David J. Davis
 # @uploader
 # @since 0.0.1
