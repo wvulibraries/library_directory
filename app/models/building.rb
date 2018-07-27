@@ -1,5 +1,5 @@
 # Building Active Record Object for storing the directories buildings
-# 
+#
 # @author David J. Davis
 # @data_model
 # @since 0.0.1
