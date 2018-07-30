@@ -9,3 +9,10 @@ AllCops:
 
 Style/DoubleNegation:
   Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Metrics/LineLength: 
+  Exclude: 
+    - 'spec/**/*.rb'
