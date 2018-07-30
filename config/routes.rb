@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # home index
+  root to: 'application#home'
+  get '/home', to: 'application#home', as: 'home'
+
+  # admin panel
+  namespace :admin do
+    resources :buildings
+  end
+
 end
