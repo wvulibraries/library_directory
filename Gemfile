@@ -26,7 +26,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick'
 
 # cas client
-gem 'rubycas-client', :git => 'https://github.com/rubycas/rubycas-client.git'
+gem 'rack-cas', '~> 0.16.0'
 
 # development and testing
 group :development, :test do

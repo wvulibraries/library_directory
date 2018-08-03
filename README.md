@@ -30,6 +30,16 @@ Pay attention to the attaching part you should also be able to attach by name.
 
 ---- 
 
+
+# TODO BEFORE PRODUCTION 
+
+## CRSF Protection 
+In `controllers/application_controller.rb` there is a line to protect from CRSF attacks.  To test this is working we will need to do the following.  
+
+- The authenticity token is part of the form data: edit page to alter / remove these and form submission should result in an exception. Ajax submitted forms can also csrf meta tags in the head portion of the page - you may wish to alter these to.
+- Create a standalone html page (outside of your app) which contains a form posting to the action you want to test
+- The authenticity token is stored in the session, so after the form has been displayed hit a url in another browser tab / session that calls reset_session. Now submit the form - it should fail.
+
 # ADD TO README 
 
 Things you may want to cover:
