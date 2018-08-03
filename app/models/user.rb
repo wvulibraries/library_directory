@@ -30,6 +30,10 @@ class User < ApplicationRecord
     end
   end
 
+  def admin?
+    role == 'admin'
+  end
+
   # custom validations
   def valid_email
     email_regex = !!(email =~ /^[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.edu/i)

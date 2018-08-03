@@ -55,4 +55,21 @@ RSpec.describe User, type: :model do
       expect(user.display_name).to eq("#{user.first_name} #{user.last_name}")
     end
   end
+
+  context '.admin?' do
+    it 'should true user is an admin' do
+      user.role = 1
+      expect(user.admin?).to eq true
+    end
+
+    it 'should return false user is not an admin' do
+      user.role = 0
+      expect(user.admin?).to eq false
+    end
+
+    it 'should return a boolean even if the role is not valid' do
+      user.role = nil
+      expect(user.admin?).to eq false
+    end
+  end
 end

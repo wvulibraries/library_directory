@@ -7,4 +7,10 @@ RSpec.describe ApplicationController, type: :routing do
       expect(get: '/home').to route_to('application#home')
     end
   end
+
+  context 'logging in' do
+    it 'routes to the login url' do
+      expect(get: '/login').to route_to('application#login')
+    end 
+  end 
 end
