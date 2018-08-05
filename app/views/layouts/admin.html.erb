@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> Admin || Library Directory </title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title> <%= yield :title %> :: Library Directory :: WVU </title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= yield :head %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <!-- Skip to Navigation --> 
+  <a class="wvu-skip-nav" href="#main">Skip to main content</a>
+  
+  <!-- Header --> 
+  <header class="wvu-masthead">
+    <div class="wvu-masthead__container"> 
+      <a class="wvu-masthead__logo header-logo" href="/">
+        <span class="wvu-masthead__title"> Library Directory </span>
+      </a>
+      <div class="button-container">  
+        <a href="#menu" class="button button--pms-629-c">
+          <span class="fa fa-bars" aria-hidden="true"></span> Menu
+        </a>
+        <%= link_to "Logout", "/logout", :class=>"button button--wvu-gold" %>
+      </div> 
+    </div> 
+  </header>
+
+  <!-- Main -->
+  <main id="#main">
+    <div class="wvu-container"> 
+      <!-- Flash -->
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+
+      <!-- Admin Menu -->
+      <menu id="menu">
+        <ul>
+          <li> <h2> Facilities </h2> </li>
+          <li><a href="/admin/buildings"> Buildings </a></li>
+          <li><a href="/admin/departments"> Departments </a></li>
+          <li><a href="/admin/floors"> Floors </a></li>
+          <li> <h2> Personnel </h2> </li>
+          <li><a href="/admin/employees"> Employees </a></li>
+          <li><a href="/admin/subjects"> Subjects </a></li>
+          <li><a href="/admin/buildings"> Buildings</a></li>
+        </ul>
+      </Menu>
+
+      <!-- Yield -->
+      <div class="main-content">
+        <%= yield %>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footers -->
+  <footer>
+      <div class="builtBy">
+          <span class="built">Built</span>
+          <span class="by">By </span>
+          <span class="wvu">WVU</span>
+          <span class="libs">Libraries</span>
+      </div>
+  </footer>
+
+  <!-- JavaScripts -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= yield :js %>
+</body>
 </html>

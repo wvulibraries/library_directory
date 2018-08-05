@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LibraryDirectory</title>
+    <title>Library Directory</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <!-- Flash Messages / Alerts -->
+    <% flash.each do |key, value| %>
+      <div class="alert <%= key %>">
+        <div class="content"> <%= value %> </div>
+        <span class="exit-alert"> <i class="fa fa-times-circle-o" aria-hidden="true"></i> </span>
+      </div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>

@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   root to: 'application#home'
   get '/home', to: 'application#home', as: 'home'
 
-  # admin panel
-  namespace :admin do
-    resources :buildings
-  end
+  # auth
+  get '/login', to: 'application#login', as: 'login'
+  get '/logout', to: 'application#logout', as: 'logout'
 
+  # admin
+  get '/admin', to: 'admin#home', as: 'admin_home'
+
+  # admin namespaces for crud tasks
+  namespace :admin do
+    resources :buildings, :departments, :employees, :floors, :subjects
+  end
 end
+  

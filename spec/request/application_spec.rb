@@ -9,7 +9,7 @@ RSpec.describe 'Application', type: :request do
 
     it 'sucessfully gets the home page by the root path' do
       get root_path
-      expect(responce).to have_http_status(200)
+      expect(response).to have_http_status(200)
     end
   end
 end
