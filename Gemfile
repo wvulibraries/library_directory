@@ -28,6 +28,13 @@ gem 'mini_magick'
 # cas client
 gem 'rack-cas', '~> 0.16.0'
 
+# frontend
+# gem 'bourbon'
+# gem 'neat'
+# gem 'bitters'
+gem 'normalize-scss'
+gem 'font-awesome-sass'
+
 # development and testing
 group :development, :test do
   gem 'rspec-rails'
