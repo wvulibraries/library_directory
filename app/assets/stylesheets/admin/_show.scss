@@ -1,0 +1,34 @@
+$background-color: rgba(#eee, .4); 
+
+.show-action { 
+  @include span-columns(12); 
+  padding:1em; 
+  margin-bottom:1em;
+  position:relative; 
+  padding-bottom:calc(76px + 1em); 
+
+  .image {
+    @include span-columns(12); 
+    img { width:100%;}
+    @include media(720px){ 
+      @include span-columns(4);
+    }
+  } 
+
+  .text-attributes { 
+    @include span-columns(12); 
+    @include media(720px){ 
+      @include span-columns(8);
+      @include omega(); 
+    }
+  } 
+
+  .actions { 
+    @include span-columns(12); 
+    padding:1em; 
+    position:absolute; 
+    bottom:0; 
+    left:0;
+    text-align:right;
+  }
+}

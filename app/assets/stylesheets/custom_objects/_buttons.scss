@@ -1,33 +1,36 @@
 .show-button {
-  @include button_maker($success, 'ghost');
+  @include button_maker($success, 'solid');
 }
 
 .edit-button {
-  @include button_maker($warning, 'ghost');
+  @include button_maker($warning, 'solid');
 }
 
 .delete-button {
-  @include button_maker($error, 'ghost');
+  @include button_maker($error, 'solid');
 }
 
-.submit-button {
-  @include button_maker($success, 'ghost');
+.submit-button, button, input[type="submit"], input[type="reset"] {
+  @include button_maker($success, 'solid');
+  height:44px; 
+  top:-2px; 
+  position:relative; 
+  text-decoration: underline;
+  color:#222; 
+  &:hover,&:active, &:visited { 
+    color:#222;
+  }
 }
 
 .cancel-button {
-  @include button_maker(darken($default,20%), 'ghost');
+  @include button_maker(darken($default,20%), 'solid');
+  color:#222; 
+  &:hover,&:active, &:visited { 
+    color:#222;
+  }
 }
 
-.button {
-  @include button_maker($action-color, 'ghost');
+.new-button {
+  @include button_maker($action-color, 'solid');
 }
 
-.button-hero {
-  @include button_maker(#fff, 'ghost');
-}
-
-.show-button, .edit-button, .delete-button {
-  i { font-size:1.25em; }
-  padding:5px;
-  padding-top:10px;
-}
