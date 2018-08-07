@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem "factory_bot_rails"
+  gem 'database_cleaner'
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
