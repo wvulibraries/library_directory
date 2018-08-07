@@ -4,9 +4,11 @@ module Authenticatable
 
   # detrmine if the user can access the admin panel
   def access_permissions
-    return true if authenticated? # && admin?
-    flash[:error] = I18n.t('auth.invalid_permissions')
-    redirect_to root_path
+    return true if authenticated? && admin?
+    error_string = ''
+    error_string += I18n.t('auth.invalid_access') unless authenticated?
+    error_string += I18n.t('auth.invalid_permissions') unless admin?
+    redirect_to root_path, error: error_string
   end
 
   # return unauthorized status if not authenticated
@@ -22,7 +24,7 @@ module Authenticatable
 
   # return the current signed in user
   def current_user
-    User.find_by(wvu_username: session[:cas][:user]) if authenticated?
+    User.find_by(wvu_username: session['cas']['user']) if authenticated?
   end
 
   # return true if admin
@@ -34,8 +36,7 @@ module Authenticatable
   # login methods
   def login
     if authenticated?
-      flash[:success] = I18n.t('auth.success')
-      redirect_to root_path
+      redirect_to root_path, success: I18n.t('auth.success')
     else
       render(plain: 'Unauthorized!', status: :unauthorized)
     end
@@ -44,7 +45,6 @@ module Authenticatable
   # logout
   def logout
     session.delete('cas')
-    flash[:success] = I18n.t('auth.log_out')
-    redirect_to root_path
+    redirect_to root_path, success: I18n.t('auth.log_out')
   end
 end

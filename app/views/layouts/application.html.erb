@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Library Directory</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title> <%= yield :title %> :: Library Directory :: WVU </title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= yield :head %>
+</head>
 
-  <body>
-    <!-- Flash Messages / Alerts -->
-    <% flash.each do |key, value| %>
-      <div class="alert <%= key %>">
-        <div class="content"> <%= value %> </div>
-        <span class="exit-alert"> <i class="fa fa-times-circle-o" aria-hidden="true"></i> </span>
+<body>
+  <!-- Skip to Navigation --> 
+  <a class="wvu-skip-nav" href="#main">Skip to main content</a>
+  
+  <!-- Header --> 
+  <header class="wvu-masthead">
+    <div class="wvu-masthead__container"> 
+      <a class="wvu-masthead__logo header-logo" href="/">
+        <span class="wvu-masthead__title"> Libraries </span>
+      </a>
+      <div class="button-container">  
+        <%= link_to "Admin", "/admin", :class=>"button button--pms-629-c" %>
+        <%= link_to "Login", "/login", :class=>"button button--wvu-gold" %>
+      </div> 
+    </div> 
+  </header>
+
+  <!-- Main -->
+  <main id="main" class="frontend">
+    <div class="wvu-container"> 
+      <!-- Flash -->
+      <%= render "utilities/alerts" %>
+      
+      <!-- Yield -->
+      <div class="app-content">
+        <%= yield %>
       </div>
-    <% end %>
-    
-    <%= yield %>
-  </body>
+    </div>
+  </main>
+
+  <!-- Footers -->
+  <footer>
+      <div class="builtBy">
+          <span class="built">Built</span>
+          <span class="by">By </span>
+          <span class="wvu">WVU</span>
+          <span class="libs">Libraries</span>
+      </div>
+  </footer>
+
+  <!-- JavaScripts -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= yield :js %>
+</body>
 </html>

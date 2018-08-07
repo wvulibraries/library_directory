@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= yield :head %>
 </head>
 
@@ -29,14 +30,10 @@
   </header>
 
   <!-- Main -->
-  <main id="#main">
+  <main id="main" class="backend">
     <div class="wvu-container"> 
       <!-- Flash -->
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
+      <%= render "utilities/alerts" %>
 
       <!-- Admin Menu -->
       <menu id="menu">
@@ -70,7 +67,6 @@
   </footer>
 
   <!-- JavaScripts -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= yield :js %>
 </body>
 </html>

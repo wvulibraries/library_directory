@@ -1,0 +1,35 @@
+<%= form_for [:admin, building], html: { multipart: true } do |f| %>
+  <% if building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "Error") %> </h2> 
+      <p> The following prohibited this building from being saved: </p>
+      <ul>
+      <% building.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :map_link %>
+    <%= f.text_field :map_link %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image %>
+    <%= image_tag(building.image_url) if building.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Cancel', admin_buildings_path, class: 'cancel-button' %>
+    <%= f.submit 'Submit', class: 'submit-button' %>
+  </div>
+<% end %>

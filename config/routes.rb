@@ -15,4 +15,3 @@ Rails.application.routes.draw do
     resources :buildings, :departments, :employees, :floors, :subjects
   end
 end
-  

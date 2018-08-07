@@ -1,1 +1,35 @@
-Building index html
+<div class="top-action">
+  <h2> Manage Buildings </h2>
+  <%= link_to 'New building', new_admin_building_path, { class: 'new-button' } %>
+</div>
+
+<% @buildings.each do |building| %>
+  <div class="crud-list building-list">
+    <div class="image">
+      <img src="<%= building.image %>" alt="buildings profile image"/>
+    </div>
+
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= building.name %>
+        </li>
+        <li> 
+          <strong> Map Link: </strong> 
+          <%= building.map_link %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_building_path(building), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_building_path(building), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_building_path(building), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="bottom-action"> 
+  <%= link_to 'New building', new_admin_building_path, { class: 'new-button' } %>
+</div>

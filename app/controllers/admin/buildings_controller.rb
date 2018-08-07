@@ -5,10 +5,10 @@ class Admin::BuildingsController < AdminController
   # before_actions
   before_action :set_building, only: %i[show edit update destroy]
 
-  # GET /buildings
-  # GET /buildings.json
+  # GET admin/buildings
+  # GET admin/buildings.json
   def index
-    @buildings = building.all.order(:name)
+    @buildings = Building.all.order(:name)
   end
 
   # GET /buildings/1
@@ -17,7 +17,7 @@ class Admin::BuildingsController < AdminController
 
   # GET /buildings/new
   def new
-    @building = building.new
+    @building = Building.new
   end
 
   # GET /buildings/1/edit
@@ -26,14 +26,12 @@ class Admin::BuildingsController < AdminController
   # POST /buildings
   # POST /buildings.json
   def create
-    @building = building.new(building_params)
+    @building = Building.new(building_params)
     respond_to do |format|
       if @building.save
-        format.html { redirect_to @building, success: success_str }
-        format.json { render :show, status: :created, location: @building }
+        format.html { redirect_to admin_building_path(@building), success: I18n.t('building.success') }
       else
         format.html { render :new }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +41,9 @@ class Admin::BuildingsController < AdminController
   def update
     respond_to do |format|
       if @building.update(building_params)
-        format.html { redirect_to @building, success: success_str }
-        format.json { render :show, status: :ok, location: @building }
+        format.html { redirect_to admin_building_path(@building), success: I18n.t('building.edited') }
       else
         format.html { render :edit }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,9 +53,7 @@ class Admin::BuildingsController < AdminController
   def destroy
     @building.destroy
     respond_to do |format|
-      success_str = 'building was successfully destroyed.'
-      format.html { redirect_to buildings_url, success: success_str }
-      format.json { head :no_content }
+      format.html { redirect_to '/admin/buildings', success: I18n.t('building.deleted') }
     end
   end
 
@@ -68,11 +62,11 @@ class Admin::BuildingsController < AdminController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_building
-    @building = building.find(params[:id])
+    @building = Building.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def building_params
-    params.require(:building).permit(:name, :description)
+    params.require(:building).permit(:name, :map_link, :image)
   end
 end
