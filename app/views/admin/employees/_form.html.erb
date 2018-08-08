@@ -1,0 +1,54 @@
+<%= form_for [:admin, employee], html: { multipart: true } do |f| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "Error") %> </h2> 
+      <p> The following prohibited this employee from being saved: </p>
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :prefix %>
+      <div class="select-style">
+        <%= f.select :prefix, options_for_select(name_prefixes, selected: employee.prefix ), include_blank: "Select a Prefix" %>
+      </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+      <%= f.label :suffix %>
+      <div class="select-style">
+        <%= f.select :suffix, options_for_select(name_suffixes, selected: employee.suffix ), include_blank: "Select a Suffix" %>
+      </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image %>
+    <%= image_tag(employee.image_url) if employee.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Cancel', admin_employees_path, class: 'cancel-button' %>
+    <%= f.submit 'Submit', class: 'submit-button' %>
+  </div>
+<% end %>

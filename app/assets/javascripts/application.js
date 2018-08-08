@@ -14,3 +14,4 @@
 // Interface Components
 // ----------------------------------------------------------------
 //= require plugins/alerts.js
+//= require plugins/nested_forms.js

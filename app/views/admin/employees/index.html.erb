@@ -1,0 +1,82 @@
+<div class="top-action">
+  <h2> Manage Employees </h2>
+  <%= link_to 'New Employee', new_admin_employee_path, { class: 'new-button' } %>
+</div>
+
+<% @employees.each do |employee| %>
+  <div class="crud-list employee-list">
+    <div class="image">
+      <img src="<%= employee.image %>" alt="employees profile image"/>
+    </div>
+
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> First Name: </strong> 
+          <%= employee.first_name %>
+        </li>
+        <li> 
+          <strong> Middle Name: </strong> 
+          <%= employee.middle_name %>
+        </li>
+        <li> 
+          <strong> Last Name: </strong> 
+          <%= employee.last_name %>
+        </li>
+        <li>
+          <strong> Display Name: </strong>
+          <%= employee.display_name %>
+        </li>
+        <li> 
+          <strong> Email: </strong> 
+          <%= employee.email %>
+        </li>
+        <li> 
+          <strong> WVU Username: </strong> 
+          <%= employee.wvu_username %>
+        </li> 
+        <li> 
+          <strong> Display Status: </strong> 
+          <%= employee.status %>
+        </li> 
+        <li> 
+          <strong> User Role: </strong> 
+          <%= employee.role %>
+        </li> 
+        <li> 
+          <strong> Job Title: </strong> 
+          <%= employee.job_title %>
+        </li>
+        <li> 
+          <strong> University Classification: </strong> 
+          <%= employee.university_classification %>
+        </li> 
+        <li> 
+          <strong> Description/Biography: </strong> 
+          <%= employee.description %>
+        </li> 
+        <li> 
+          <strong> User Type: </strong> 
+          <%= employee.type %>
+        </li> 
+        <li> 
+          <strong> Office Number: </strong> 
+          <%= employee.office_number %>
+        </li> 
+       
+
+        <% employee.inspect %>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_employee_path(employee), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_employee_path(employee), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_employee_path(employee), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="bottom-action"> 
+  <%= link_to 'New employee', new_admin_employee_path, { class: 'new-button' } %>
+</div>

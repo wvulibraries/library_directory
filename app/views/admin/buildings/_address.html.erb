@@ -1,0 +1,36 @@
+<fieldset>
+  <legend> Address </legend>
+
+  <div class="field">
+    <%= form.label :line1, "Street Address" %>
+    <%= form.text_field :line1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :line2, "Additional Line (Optional)" %>
+    <%= form.text_field :line2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <div class="select-style">
+      <%= form.select :state, options_for_select(us_states, selected: :state ), include_blank: "Select a State" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip %>
+    <%= form.text_field :zip %>
+  </div>
+
+  <div class="action">
+    <%= form.hidden_field :_destroy %>
+    <%# form.label :_destroy, "Delete Address" %>
+    <%= link_to "Delete Address", '#', class: "remove-fields" %>
+  </div>
+</fieldset>

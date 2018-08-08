@@ -20,6 +20,11 @@
     <%= f.label :map_link %>
     <%= f.text_field :map_link %>
   </div>
+
+  <%= f.fields_for :addresses do |form| %>
+    <%= render "address", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Address", f, :addresses %>
   
   <div class="field">
     <%= f.label :image %>

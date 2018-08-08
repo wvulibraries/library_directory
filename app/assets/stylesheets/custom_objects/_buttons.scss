@@ -10,16 +10,20 @@
   @include button_maker($error, 'solid');
 }
 
-.submit-button, button, input[type="submit"], input[type="reset"] {
+.submit-button{
   @include button_maker($success, 'solid');
-  height:44px; 
-  top:-2px; 
-  position:relative; 
   text-decoration: underline;
   color:#222; 
   &:hover,&:active, &:visited { 
     color:#222;
   }
+}
+
+input[type="submit"], input[type="reset"]{
+  position:relative; 
+  height:44px; 
+  top:-1px; 
+  @extend .submit-button;
 }
 
 .cancel-button {

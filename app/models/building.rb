@@ -4,6 +4,9 @@
 # @data_model
 # @since 0.0.1
 class Building < ApplicationRecord
+  # attr accessors
+  # attr_accessor :addresses
+
   # validation
   validates :name,
             presence: true,
@@ -19,6 +22,9 @@ class Building < ApplicationRecord
   has_many :phones, as: :phoneable, dependent: :destroy
   has_many :departments, as: :departmentable
   has_many :floors
+
+  # form logic 
+  accepts_nested_attributes_for :addresses, allow_destroy: true
 
   # active status
   enum status: %i[active disabled]
