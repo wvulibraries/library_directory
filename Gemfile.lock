@@ -68,6 +68,9 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.1)
+    capybara-webkit (1.15.0)
+      capybara (>= 2.3, < 4.0)
+      json
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -213,7 +216,7 @@ GEM
     sassc (1.12.1)
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
-    selenium-webdriver (3.13.1)
+    selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     shoulda-matchers (3.1.2)
@@ -270,6 +273,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15, < 4.0)
+  capybara-webkit
   carrierwave (~> 1.2, >= 1.2.3)
   chromedriver-helper
   coffee-rails (~> 4.2)
@@ -289,7 +293,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rspec-rails
   sass-rails (~> 5.0)
-  selenium-webdriver
+  selenium-webdriver (~> 3.14)
   shoulda-matchers
   simplecov
   simplecov-console

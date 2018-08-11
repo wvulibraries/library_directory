@@ -45,7 +45,8 @@ group :development, :test do
   gem 'simplecov-console'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'capybara', '>= 2.15', '< 4.0'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.14'  
+  gem 'capybara-webkit'
   gem 'chromedriver-helper'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # from rails new
   gem 'pry'
