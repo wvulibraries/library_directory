@@ -36,11 +36,11 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it 'expects that data is correct use wv to test' do
-      expect(helper.us_states['wv']).to eq('West Virginia')
+      expect(helper.us_states['WV']).to eq('West Virginia')
     end
   end
 
-  describe '#link_to_add_fields' do
-    it 'should be tested in integration not a unit test'
-  end
+  # describe '#link_to_add_fields' do
+  #   it 'should be tested in integration not a unit test'
+  # end
 end

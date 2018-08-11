@@ -21,17 +21,30 @@
     <%= f.text_field :map_link %>
   </div>
 
+  <div class="field">
+    <%= f.label :image %>
+    <%= image_tag(building.image_url, class:'image-preview') if building.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <!-- Addresses -->
   <%= f.fields_for :addresses do |form| %>
     <%= render "address", form: form %>
   <% end %>
   <%= link_to_add_fields "Add Address", f, :addresses %>
-  
-  <div class="field">
-    <%= f.label :image %>
-    <%= image_tag(building.image_url) if building.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
+
+  <!-- Phones -->
+  <%= f.fields_for :phones do |form| %>
+    <%= render "phone", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Phones", f, :phones %>
+
+  <!-- Floors -->
+  <%= f.fields_for :floors do |form| %>
+    <%= render "floor", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Floors", f, :floors %>
 
   <div class="actions">
     <%= link_to 'Cancel', admin_buildings_path, class: 'cancel-button' %>

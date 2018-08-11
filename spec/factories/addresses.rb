@@ -9,5 +9,9 @@ FactoryBot.define do
     factory :address_building_association do
       association :addressable, factory: :building_no_image
     end
+
+    factory :building_seed_association do
+      association :addressable, factory: :building_seed
+    end
   end
 end

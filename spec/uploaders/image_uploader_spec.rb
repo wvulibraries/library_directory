@@ -50,7 +50,7 @@ describe ImageUploader do
       expect(uploader.extension_whitelist).to eq(files)
     end
     it 'expects a default file' do
-      expect(uploader.default_url).to eq("#{Rails.root}/public/default/default_building.jpg")
+      expect(uploader.default_url).to eq("/default/default_building.jpg")
     end 
   end
 end

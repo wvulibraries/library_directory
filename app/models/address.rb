@@ -13,4 +13,9 @@ class Address < ApplicationRecord
   validates :city, length: { within: 0..60 }
   validates :state, length: { within: 0..50 }
   validates :zip, length: { within: 0..20 }
+
+  # human_readable 
+  def human_readable
+    "#{line1} #{line2}, #{city}, #{state} #{zip}"
+  end 
 end

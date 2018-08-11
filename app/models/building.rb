@@ -20,11 +20,14 @@ class Building < ApplicationRecord
   # associations
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
-  has_many :departments, as: :departmentable
-  has_many :floors
+  has_many :departments, as: :departmentable, dependent: :destroy
+  has_many :floors, dependent: :destroy
 
-  # form logic 
+  # form logic
   accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :phones, allow_destroy: true
+  # accepts_nested_attributes_for :departments, allow_destroy: true
+  accepts_nested_attributes_for :floors, allow_destroy: true
 
   # active status
   enum status: %i[active disabled]

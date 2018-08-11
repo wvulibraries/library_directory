@@ -8,7 +8,7 @@ class Admin::BuildingsController < AdminController
   # GET admin/buildings
   # GET admin/buildings.json
   def index
-    @buildings = Building.all.order(:name)
+    @buildings = Building.all.includes(:addresses, :phones, :floors).order(:name)
   end
 
   # GET /buildings/1
@@ -67,10 +67,13 @@ class Admin::BuildingsController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def building_params
-    params.require(:building).permit( :name,
-                                      :map_link,
-                                      :image,
-                                      :image_cache,
-                                      addresses_attributes: %i[id line1 line2 city state zip _destroy])
+    params.require(:building)
+    .permit(  :name,
+              :map_link,
+              :image,
+              :image_cache,
+              addresses_attributes: %i[id line1 line2 city state zip _destroy],
+              floors_attributes: %i[id name image image_cache],
+              phones_attributes: %i[id number_types number])
   end
 end

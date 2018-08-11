@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Admin::Buildings', type: :feature do
   let(:building) { FactoryBot.create(:building) }
   let(:new_building) { FactoryBot.attributes_for(:building_seed) }
+  let(:address) { FactoryBot.attributes_for(:address) }
 
   scenario 'building index page and it works properly' do
     visit '/admin/buildings'
@@ -36,6 +37,8 @@ RSpec.feature 'Admin::Buildings', type: :feature do
   end
 
   scenario 'errors on creating editing building' do
+    building = FactoryBot.create(:building_seed)
+    building.save!
     visit "/admin/buildings/#{building.id}/edit"
     fill_in 'Name', with: 'test' # must be 7 chars
     fill_in 'Map link', with: 'google' # must be a link fail
@@ -47,10 +50,26 @@ RSpec.feature 'Admin::Buildings', type: :feature do
 
   scenario 'deletes an existing building' do
     building = FactoryBot.create(:building_seed)
+    building.save!
     visit '/admin/buildings'
     click_link 'Destroy'
     expect(page).to have_content('Manage Buildings')
     expect(page).to have_content('Demolition Success! We destroyed the building!')
     expect(page).to_not have_content(building.name)
+  end
+
+  @javascript
+  scenario 'accepts nested attributes for address' do
+    visit '/admin/buildings/new'
+    fill_in 'Name', with: new_building[:name]
+    fill_in 'Map link', with: new_building[:map_link]
+    attach_file('Image', File.join(Rails.root, '/spec/support/files/test_8.jpg'))
+    click_link 'Add Address'
+    fill_in 'Street Address', with: address[:line_1]
+    fill_in 'City', with: address[:city]
+    fill_in 'State', with: address[:state]
+    fill_in 'Zip', with: address[:zip]
+    click_button 'Submit'
+    expect(page).to have_content('Success! We built a brand new building with an address!')
   end
 end

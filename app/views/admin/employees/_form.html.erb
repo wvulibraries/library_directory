@@ -11,43 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-      <%= f.label :prefix %>
+  <div class="field one-fourth">
+      <%= f.label :prefix, class:'select-label' %>
       <div class="select-style">
         <%= f.select :prefix, options_for_select(name_prefixes, selected: employee.prefix ), include_blank: "Select a Prefix" %>
       </div>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %>
+  <div class="field two-fourth">
+    <%= f.label :first_name, class: 'required' %>
     <%= f.text_field :first_name %>
   </div>
   
-  <div class="field">
-    <%= f.label :middle_name %>
+  <div class="field one-fourth last">
+    <%= f.label :middle_name, class: 'required' %>
     <%= f.text_field :middle_name %>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name %>
+  <div class="field three-fourth">
+    <%= f.label :last_name, class: 'required' %>
     <%= f.text_field :last_name %>
   </div>
 
-  <div class="field">
-      <%= f.label :suffix %>
+  <div class="field one-fourth last">
+      <%= f.label :suffix, class:'select-label' %>
       <div class="select-style">
         <%= f.select :suffix, options_for_select(name_suffixes, selected: employee.suffix ), include_blank: "Select a Suffix" %>
       </div>
   </div>
+
   
-  <div class="field">
+  <div class="field full">
     <%= f.label :image %>
     <%= image_tag(employee.image_url) if employee.image? %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
 
-  <div class="actions">
+  <div class="actions full">
     <%= link_to 'Cancel', admin_employees_path, class: 'cancel-button' %>
     <%= f.submit 'Submit', class: 'submit-button' %>
   </div>

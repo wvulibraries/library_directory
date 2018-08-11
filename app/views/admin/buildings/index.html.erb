@@ -20,8 +20,33 @@
           <%= building.map_link %>
         </li>
         <li> 
-          <strong> Address: </strong>
-          <%= building.addresses.inspect %>
+          <strong> Address(es): </strong>
+          <ul>
+          <% building.addresses.each do |address| %>
+            <li> <%= address.human_readable %> </li>
+          <% end %>
+          </ul>
+        </li>
+        <li> 
+          <strong> Phone(s): </strong>
+          <ul>
+          <% building.phones.each do |phone| %>
+            <li> 
+              <a href="tel:<%= phone.number %>">
+                <%= phone.number %> 
+              </a> 
+            </li>
+          <% end %>
+          </ul>
+        </li>
+
+        <li> 
+          <strong> Floor(s): </strong>
+          <ul>
+          <% building.floors.each do |floor| %>
+            <li> <%= floor.name %> </li>
+          <% end %>
+          </ul>
         </li>
       </ul>
     </div>
