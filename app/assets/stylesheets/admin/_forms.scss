@@ -27,7 +27,18 @@ form{
       color: $font-color;
     }
   }
-
+  .add-fields { 
+    @include button_maker($action-color, 'solid');
+    @include determine-text-color($action-color);
+    margin: .5em 0; 
+    text-decoration: none !important;
+    &:before { 
+      font-family: "Font Awesome 5 Free"; 
+      font-weight: 900; 
+      content: "\f067";
+      padding-right: .5em; 
+    }
+  }
   .remove-fields { 
     display: block;
     font-size:1.2em;

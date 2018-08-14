@@ -40,6 +40,5 @@ input[type="submit"], input[type="reset"]{
 .new-button {
   @include button_maker($action-color, 'solid');
   @include determine-text-color($action-color);
-
 }
 
