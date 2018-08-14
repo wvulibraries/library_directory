@@ -19,7 +19,7 @@
   <div class="field third">
     <%= form.label :state %>
     <div class="select-style">
-      <%= form.select :state, options_for_select(us_states, selected: form.object.state), include_blank: "Select a State" %>
+      <%= form.select :state, options_for_select(us_states, selected: form.object.state), { include_blank: "Select a State" }, { class: "state-select" } %>
     </div>
   </div>
 
@@ -31,6 +31,6 @@
   <div class="action">
     <%= form.hidden_field :_destroy %>
     <%# form.label :_destroy, "Delete Address" %>
-    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe , '#', class: "remove-fields", title: "Delete Address" %>
+    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe , '#', class: "remove-fields delete-address", title: "Delete Address" %>
   </div>
 </fieldset>

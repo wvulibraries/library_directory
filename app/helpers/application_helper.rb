@@ -17,6 +17,11 @@ module ApplicationHelper
     Hash[abbr.zip(states)]
   end
 
+  # logged in user
+  def logged_in?
+    session['cas'] && session['cas']['user']
+  end
+
   # dynamically add fieldsets
   # setup from rails casts
   def link_to_add_fields(name, form, association)

@@ -33,4 +33,3 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.default_max_wait_time = 10

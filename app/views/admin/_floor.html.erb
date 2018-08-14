@@ -2,12 +2,12 @@
   <legend> Floor </legend>
 
   <div class="field full">
-    <%= form.label :name %>
+    <%= form.label :name, 'Floor Name' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
+    <%= form.label :image, 'Floor Map' %>
     <%= image_tag(form.object.image_url, class:'image-preview') if form.object.image? %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
@@ -16,6 +16,6 @@
   <div class="action">
     <%= form.hidden_field :_destroy %>
     <%# form.label :_destroy, "Delete Address" %>
-    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe , '#', class: "remove-fields", title: "Delete Floor" %>
+    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe , '#', class: "remove-fields delete-floor", title: "Delete Floor" %>
   </div>
 </fieldset>
