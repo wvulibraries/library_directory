@@ -18,10 +18,10 @@ class Employee < User
   validates :description, length: { maximum: 500 }
 
   # associations
+  belongs_to :department
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
-  has_many :departments, as: :departmentable
-  has_many :subjects, as: :subjectable
+  has_many :subjects, as: :subjectable, dependent: :destroy
 
   # concerns
   include Imageable

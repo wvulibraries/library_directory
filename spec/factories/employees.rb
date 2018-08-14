@@ -15,6 +15,8 @@ FactoryBot.define do
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/files/test_2.jpg'), 'image/jpeg') }
     office_number { "#{Faker::Address.building_number} #{Faker::Address.community}"}
 
+    association :department, factory: :department_building
+
     factory :non_admin_cas do
       wvu_username 'johntest'
       role 0

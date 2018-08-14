@@ -13,5 +13,9 @@ class Department < ApplicationRecord
             length: { maximum: 500 }
 
   # associations
-  belongs_to :departmentable, polymorphic: true
+  belongs_to :building
+  has_many :service_points, dependent: :destroy
+
+  # form logic
+  accepts_nested_attributes_for :service_points, allow_destroy: true
 end

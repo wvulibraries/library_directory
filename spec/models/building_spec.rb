@@ -7,7 +7,7 @@ RSpec.describe Building, type: :model do
   context 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).case_insensitive }
-    it { should validate_length_of(:name).is_at_least(7) }
+    it { should validate_length_of(:name).is_at_least(4) }
     it { should validate_length_of(:name).is_at_most(50) }
     it { should validate_presence_of(:map_link) }
     it { should define_enum_for(:status).with(%i[active disabled]) }
@@ -36,7 +36,7 @@ RSpec.describe Building, type: :model do
     it 'expects name to be too short' do
       building.name = Faker::String.random(3)
       expect(building).to_not be_valid
-      expect(building.errors.messages[:name]).to eq ['is too short (minimum is 7 characters)']
+      expect(building.errors.messages[:name]).to eq ['is too short (minimum is 4 characters)']
     end
   end
 
