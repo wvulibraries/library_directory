@@ -1,0 +1,48 @@
+<div class="top-action">
+  <h2> Manage Departments </h2>
+  <%= link_to 'New Department', new_admin_department_path, { class: 'new-button' } %>
+</div>
+
+<% @departments.each do |dept| %>
+  <div class="crud-list department-list">
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= dept.name %>
+        </li>
+
+        <li> 
+          <strong> Description: </strong> 
+          <%= dept.description %>
+        </li>
+
+        <li> 
+          <strong> Service Point(s): </strong>
+          <ul>
+          <% dept.service_points.each do |sp| %>
+            <li> 
+              <strong> Name : </strong> <%= sp.name %>
+              <ul> 
+                <% sp.phones.each do |phone| %>
+                  <li> <%= phone.number %> </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_department_path(dept), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_department_path(dept), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_department_path(dept), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="bottom-action"> 
+  <%= link_to 'New Department', new_admin_department_path, { class: 'new-button' } %>
+</div>
