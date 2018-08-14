@@ -23,11 +23,11 @@ RSpec.feature 'Admin::Buildings', type: :feature do
 
   scenario 'errors on creating a new building' do
     visit '/admin/buildings/new'
-    fill_in 'Name', with: 'test' # must be 7 chars
+    fill_in 'Name', with: 'tes' # must be 4 chars
     fill_in 'Map link', with: 'google' # must be a link fail
     click_button 'Submit'
     expect(page).to have_content('2 Errors')
-    expect(page).to have_content('Name is too short (minimum is 7 characters)')
+    expect(page).to have_content('Name is too short (minimum is 4 characters)')
     expect(page).to have_content('Map link is not a valid URL')
   end
 
@@ -42,11 +42,11 @@ RSpec.feature 'Admin::Buildings', type: :feature do
     building = FactoryBot.create(:building_seed)
     building.save!
     visit "/admin/buildings/#{building.id}/edit"
-    fill_in 'Name', with: 'test' # must be 7 chars
+    fill_in 'Name', with: 'tes' # must be 4 chars
     fill_in 'Map link', with: 'google' # must be a link fail
     click_button 'Submit'
     expect(page).to have_content('2 Errors')
-    expect(page).to have_content('Name is too short (minimum is 7 characters)')
+    expect(page).to have_content('Name is too short (minimum is 4 characters)')
     expect(page).to have_content('Map link is not a valid URL')
   end
 
