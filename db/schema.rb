@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_220321) do
+ActiveRecord::Schema.define(version: 2018_08_14_174123) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -38,11 +38,10 @@ ActiveRecord::Schema.define(version: 2018_07_26_220321) do
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "departmentable_type"
-    t.bigint "departmentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["departmentable_type", "departmentable_id"], name: "index_departments_on_departmentable_type_and_departmentable_id"
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_departments_on_building_id"
   end
 
   create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -63,6 +62,14 @@ ActiveRecord::Schema.define(version: 2018_07_26_220321) do
     t.string "phoneable_type"
     t.bigint "phoneable_id"
     t.index ["phoneable_type", "phoneable_id"], name: "index_phones"
+  end
+
+  create_table "service_points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_service_points_on_department_id"
   end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -92,6 +99,8 @@ ActiveRecord::Schema.define(version: 2018_07_26_220321) do
     t.string "office_number"
     t.string "type"
     t.string "university_classification"
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_users_on_department_id"
   end
 
 end

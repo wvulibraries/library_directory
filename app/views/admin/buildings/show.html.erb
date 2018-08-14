@@ -2,10 +2,10 @@
 
 <div class="show-action">
     <div class="image">
-      <img src="<%= @building.image %>" alt="buildings profile image"/>
+      <img src="<%= @building.image %>" alt="@buildings profile image"/>
     </div>
 
-    <div class="text-attributes">
+        <div class="text-attributes">
       <ul>
         <li> 
           <strong> Name: </strong> 
@@ -15,11 +15,50 @@
           <strong> Map Link: </strong> 
           <%= @building.map_link %>
         </li>
+        <li> 
+          <strong> Address(es): </strong>
+          <ul>
+          <% @building.addresses.each do |address| %>
+            <li> <%= address.human_readable %> </li>
+          <% end %>
+          </ul>
+        </li>
+        <li> 
+          <strong> Phone(s): </strong>
+          <ul>
+          <% @building.phones.each do |phone| %>
+            <li> 
+              <a href="tel:<%= phone.number %>">
+                <%= phone.number %> 
+              </a> 
+            </li>
+          <% end %>
+          </ul>
+        </li>
+
+        <li> 
+          <strong> Department(s): </strong>
+          <ul>
+          <% @building.departments.each do |dept| %>
+            <li> <%= dept.name %> </li>
+            <li> <%= dept.description %> </li>
+          <% end %>
+          </ul>
+        </>
+
+        <li> 
+          <strong> Floor(s): </strong>
+          <ul>
+          <% @building.floors.each do |floor| %>
+            <li> <img src="<%= floor.image %>" alt="buildings profile image"/> <%= floor.name %> </li>
+          <% end %>
+          </ul>
+        </li>
       </ul>
     </div>
 
     <div class="actions"> 
-      <%= link_to '<span class="fas fa-building"></span> Buildings'.html_safe, '/admin/buildings', { class: 'new-button' } %>
+      <%= link_to '<span class="fas fa-building"></span> buildings'.html_safe, '/admin/buildings', { class: 'new-button' } %>
       <%= link_to '<span class="fas fa-edit"></span> Edit'.html_safe, edit_admin_building_path(@building), { class: 'edit-button' } %>
       <%= link_to '<span class="fas fa-trash"></span> Destroy'.html_safe, admin_building_path(@building), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
     </div>

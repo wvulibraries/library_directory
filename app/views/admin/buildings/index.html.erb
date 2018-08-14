@@ -41,6 +41,15 @@
         </li>
 
         <li> 
+          <strong> Department(s): </strong>
+          <ul>
+          <% building.departments.each do |dept| %>
+            <li> <%= dept.name %> </li>
+          <% end %>
+          </ul>
+        </li>
+
+        <li> 
           <strong> Floor(s): </strong>
           <ul>
           <% building.floors.each do |floor| %>

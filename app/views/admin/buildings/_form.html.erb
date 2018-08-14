@@ -40,6 +40,12 @@
   <% end %>
   <%= link_to_add_fields "Add Phones", f, :phones %>
 
+  <!-- Departments -->
+  <%= f.fields_for :departments do |form| %>
+    <%= render "department", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Departments", f, :departments %>
+  
   <!-- Floors -->
   <%= f.fields_for :floors do |form| %>
     <%= render "floor", form: form %>

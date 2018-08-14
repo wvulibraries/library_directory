@@ -72,8 +72,9 @@ class Admin::BuildingsController < AdminController
               :map_link,
               :image,
               :image_cache,
+              departments_attributes: %i[id name description _destroy],
               addresses_attributes: %i[id line1 line2 city state zip _destroy],
-              floors_attributes: %i[id name image image_cache],
-              phones_attributes: %i[id number_types number])
+              floors_attributes: %i[id name image image_cache _destroy],
+              phones_attributes: %i[id number_types number _destroy])
   end
 end
