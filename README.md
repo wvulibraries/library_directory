@@ -8,7 +8,62 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 - Ruby  2.5.1 
 
 ## Testing and Quality Control 
-The test suite includes rspec, simplecov, travisCI, and code climate.  These tools are to make sure there is no odd code and the code is tested at 100%.  Quality assurance should also consist of RuboCop to ensure style of syntax is followed.  
+The test suite includes rspec, capybara, selnium, simplecov, travisCI, and code climate. 
+
+### Docker Selenium Capybara Problem 
+Docker adds some oddities to the normal rails way of doing things and testing.  Since we are using our docker containers to develop the same way it will be deployed in production we have some gotchas.  From the testing aspect we have to attach some items differently and get a working browser in a docker container with a GUI.  To do this we use the senlinium premade docker containers, and set it up to use a remote host.  We will also have to expose another port on our rails app for our test server.  We are just going to expose port 3001.  
+
+```
+/docker-compose.yml
+
+ selenium:
+    image: selenium/standalone-chrome-debug
+    container_name: selenium
+    privileged: true
+    ports:
+      - '4444:4444'
+      - '5900:5900'
+    environment:
+      - SCREEN_WIDTH=1440
+      - SCREEN_HEIGHT=900
+      - VNC_NO_PASSWORD=true
+    logging:
+      driver: none
+```
+
+```
+/spec/support/capybara.rb 
+Capybara.run_server = true
+Capybara.server_host = '0.0.0.0'
+Capybara.server_port = 3001
+
+Capybara.register_driver :remote_browser do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu no-sandbox] }
+  )
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :remote,
+    url: 'http://selenium:4444/wd/hub',
+    desired_capabilities: capabilities
+  )
+end
+
+Capybara.javascript_driver = :remote_browser
+
+RSpec.configure do |config|
+  config.before(:each) do
+    Capybara.app_host = 'http://rails:3001'
+  end
+
+  config.after(:each) do
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+    Capybara.app_host = nil
+  end
+end
+```
 
 - `RAILS_ENV=test bundle exec rspec` for testing in docker container. 
 
