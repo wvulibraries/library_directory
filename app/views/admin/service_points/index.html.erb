@@ -1,0 +1,46 @@
+<div class="top-action">
+  <h2> Manage Service Points </h2>
+  <%= link_to 'New Service Point', new_admin_service_point_path, { class: 'new-button' } %>
+</div>
+
+<% @service.each do |service| %>
+  <div class="crud-list service-point-list">
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= service.name %>
+        </li>
+
+        <li>
+          <strong> Department: </strong>
+          <%= service.department.name %>
+        </li>
+
+        <li> 
+          <strong> Phones(s): </strong>
+          <ul>
+            <% service.phones.each do |phone| %>
+              <li> 
+                <strong> <%= phone.number_types.capitalize %>:  </strong>
+                <a href="tel:<%= phone.number %>">
+                  <%= phone.number %> 
+                </a> 
+              </li> 
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_service_point_path(service), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_service_point_path(service), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_service_point_path(service), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="bottom-action"> 
+  <%= link_to 'New Service Point', new_admin_service_point_path, { class: 'new-button' } %>
+</div>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :building %>
+    <%= f.label :building_id, "Building" %>
     <div class="select-style">
       <%= f.collection_select :building_id, Building.all, :id, :name, { prompt: 'Building for Department' } %>
     </div>
@@ -27,13 +27,6 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-
-  <!-- Service Points -->
-  <%= f.fields_for :service_points do |form| %>
-    <%= render "service_point", form: form %>
-  <% end %>
-  <%= link_to_add_fields "Add Service Points", f, :service_points %>
-
 
   <div class="actions">
     <%= link_to 'Cancel', admin_departments_path, class: 'cancel-button' %>

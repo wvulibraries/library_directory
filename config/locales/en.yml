@@ -39,6 +39,14 @@ en:
     success: "Success! We built a brand new building!"
     deleted: "Demolition Success! We destroyed the building!"
     edited: "Success! We have edited the building!"
+  department:
+    success: "Success! We built a brand new department!"
+    deleted: "Demolition Success! We destroyed the department!"
+    edited: "Success! We have edited the department!"
+  service:
+    success: "Success! We built a brand new service point!"
+    deleted: "Demolition Success! We destroyed the service point!"
+    edited: "Success! We have edited the service point!"
   names: 
     prefix: [Mr., Mrs., Ms., Miss, Dr.]
     suffix: [Jr., Sr., I, II, III, IV, V, MD, DDS, PhD, DVM]

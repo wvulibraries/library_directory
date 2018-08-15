@@ -1,20 +1,25 @@
-<h2> Showing <%= @department.name %> </h2>
+<h2> <%= @department.name %> </h2>
 
-<div class="show-action">
-    <div class="text-attributes">
+<div class="description">
+  <strong> Description: </strong> 
+  <%= @department.description %>
+</div>
+
+<% if @department.service_points.present? %>
+  <% @deptartment.service_points.each do |sp| %>
+  <div class="service-points">
+    <strong> Service Point(s): </strong>
       <ul>
         <li> 
-          <strong> Name: </strong> 
-          <%= @department.name %>
+          <strong> Name : </strong> <%# sp.name %>
+          <%# sp.phones.inspect %>
         </li>
-        <li> 
-          <strong> Description: </strong> 
-          <%= @department.description %>
-        </li>
-
       </ul>
-    </div>
+  </div>
+  <% end %>
+<% end %>
 
+<div class="show-action">
     <div class="actions"> 
       <%= link_to '<span class="fas fa-building"></span> Departments'.html_safe, '/admin/departments', { class: 'new-button' } %>
       <%= link_to '<span class="fas fa-edit"></span> Edit'.html_safe, edit_admin_department_path(@department), { class: 'edit-button' } %>

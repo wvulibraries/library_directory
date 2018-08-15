@@ -53,9 +53,9 @@ class Admin::DepartmentsController < AdminController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
-    @building.destroy
+    @department.destroy
     respond_to do |format|
-      format.html { redirect_to '/admin/departments', success: I18n.t('building.deleted') }
+      format.html { redirect_to '/admin/departments', success: I18n.t('department.deleted') }
     end
   end
 
@@ -71,9 +71,9 @@ class Admin::DepartmentsController < AdminController
   def department_params
     params.require(:department)
     .permit(  :building,
+              :building_id,
               :name,
-              :description,
-              service_points_attributes: [:id, :name, phone_attributes: [:id, :number_types, :number, :_destroy]]
+              :description
             )
   end
 end

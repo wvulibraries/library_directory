@@ -16,6 +16,9 @@ FactoryBot.define do
     end
 
     factory :building_no_image do
+      name { Faker::Simpsons.location }
+      map_link { Faker::Internet.url }
+      status { rand 0..1 }
       image { nil }
     end
   end

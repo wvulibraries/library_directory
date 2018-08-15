@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :department do
-    name { Faker::String.random(7..49) }
+    name { Faker::Address.community }
     description { Faker::Lorem.paragraph }
     
     factory :department_building do

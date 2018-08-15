@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   # admin namespaces for crud tasks
   namespace :admin do
-    resources :buildings, :departments, :employees, :floors, :subjects
+    resources :buildings, :departments, :employees, :floors, :subjects, :service_points
   end
 end
