@@ -32,3 +32,14 @@ $background-color: rgba(#eee, .4);
     text-align:right;
   }
 }
+
+.floor-container { 
+  @include span-columns(12);
+}
+.floor-map{ 
+  @include span-columns(4);
+}
+.floor-name { 
+  @include span-columns(8);
+  @include omega(); 
+}
