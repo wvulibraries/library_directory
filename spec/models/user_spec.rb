@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'testing enums' do
-    it { should define_enum_for(:status).with(%i[active disabled]) }
+    it { should define_enum_for(:status).with(%i[disabled enabled]) }
     it { should define_enum_for(:role).with(%i[basic admin]) }
   end
 
@@ -57,19 +57,53 @@ RSpec.describe User, type: :model do
   end
 
   context '.admin?' do
-    it 'should true user is an admin' do
+    it 'should true user is an admin because user is an admin and enabled' do
       user.role = 1
+      user.status = 1
+      expect(user.role).to eq 'admin'
       expect(user.admin?).to eq true
     end
 
     it 'should return false user is not an admin' do
       user.role = 0
+      user.status = 1
+      expect(user.role).to eq 'basic'
+      expect(user.status).to eq 'enabled'
+      expect(user.admin?).to eq false
+    end
+
+    it 'should return false because the user is not active' do
+      user.role = 1
+      user.status = 0
       expect(user.admin?).to eq false
     end
 
     it 'should return a boolean even if the role is not valid' do
       user.role = nil
       expect(user.admin?).to eq false
+    end
+
+    it 'should return a boolean even if the status is not valid' do
+      user.status = nil
+      expect(user.admin?).to eq false
+    end
+  end
+
+
+  context '.status?' do
+    it 'should return true user is enabled' do
+      user.status = 1
+      expect(user.status?).to eq true
+    end
+
+    it 'should return false user is not an admin' do
+      user.status = 0
+      expect(user.status?).to eq false
+    end
+
+    it 'should return a boolean even if the role is not valid' do
+      user.status = nil
+      expect(user.status?).to eq false
     end
   end
 end

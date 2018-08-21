@@ -39,19 +39,29 @@ en:
     success: "Success! We built a brand new building!"
     deleted: "Demolition Success! We destroyed the building!"
     edited: "Success! We have edited the building!"
+  employee:
+    success: "Success! Employee profile was created!"
+    deleted: "Employee Removed! The employee profile was removed, for temporary removal you should change the employee status."
+    edited: "Success! Employee profile was edited."
   department:
     success: "Success! We built a brand new department!"
     deleted: "Demolition Success! We destroyed the department!"
     edited: "Success! We have edited the department!"
+  floor:
+    success: "Success! We built a brand new floor!"
+    deleted: "Demolition Success! We destroyed the floor!"
+    edited: "Success! We have edited the floor!"
   service:
     success: "Success! We built a brand new service point!"
     deleted: "Demolition Success! We destroyed the service point!"
     edited: "Success! We have edited the service point!"
   names: 
-    prefix: [Mr., Mrs., Ms., Miss, Dr.]
-    suffix: [Jr., Sr., I, II, III, IV, V, MD, DDS, PhD, DVM]
+    prefix: [Atty, Dr, Fr, Gov, Hon, Master, Miss, Mr, Mrs, Ms, Ofc, Pres, Prof, Rev, VP]
+    suffix: [AB, BA, BE, BFA, BS, BSc, BTech, DBA, DC, DD, DDS, DO, DPhil, DVM, EdD, Hons, JD, Jr, LLB, LLM, MA, MBA, MD, ME, MFA, MLA, MS, MSW, PhD, Sr, I, II, III, IV, V]
   address:
     state: [Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming]
     state_abbr: [AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY]
+  notes: 
+    user_status: "If a users status and role are not given, it is assumed that they have basic status and are disabled.  A user with the disabled status will not be viewable in the public interface, and will not have access if admin persmissions have been given." 
   
   

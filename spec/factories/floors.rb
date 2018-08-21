@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :floor do
-    name { Faker::String.random(3..50) }
+    name { Faker::Lorem.characters(3..50) }
     association :building, factory: :building
  
     factory :floor_image do 

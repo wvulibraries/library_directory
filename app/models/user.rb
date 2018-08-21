@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # associations
 
   # enums
-  enum status: %i[active disabled]
+  enum status: %i[disabled enabled]
   enum role: %i[basic admin]
 
   # concerns
@@ -31,7 +31,11 @@ class User < ApplicationRecord
   end
 
   def admin?
-    role == 'admin'
+    role == 'admin' && status? == true
+  end
+
+  def status?
+    status == 'enabled'
   end
 
   # custom validations

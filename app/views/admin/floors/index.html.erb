@@ -1,0 +1,39 @@
+<div class="top-action">
+  <h2> Manage Floors </h2>
+  <%= link_to 'New Floor', new_admin_floor_path, { class: 'new-button' } %>
+</div>
+
+<% @floors.each do |floor| %>
+  <div class="crud-list floor-list">
+
+   <div class="image">
+      <img src="<%= floor.image %>" alt="floors map image"/>
+    </div>
+
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= floor.name %>
+        </li>
+
+        <li> 
+          <strong> Building: </strong>
+          <a href='/admin/buildings/<%=floor.building.id%>'>
+            <%= floor.building.name %>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_floor_path(floor), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_floor_path(floor), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_floor_path(floor), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="bottom-action"> 
+  <%= link_to 'New Floor', new_admin_floor_path, { class: 'new-button' } %>
+</div>

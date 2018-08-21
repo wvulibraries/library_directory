@@ -23,6 +23,10 @@ class Employee < User
   has_many :phones, as: :phoneable, dependent: :destroy
   has_many :subjects, as: :subjectable, dependent: :destroy
 
+  # form logic
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :phones, allow_destroy: true
+
   # concerns
   include Imageable
 end

@@ -1,0 +1,37 @@
+<%= form_for [:admin, floor], html: { multipart: true } do |f| %>
+  <% if floor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(floor.errors.count, "error") %> prohibited this floor from being saved:</h2>
+
+      <ul>
+      <% floor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :building_id, "Building" %>
+    <div class="select-style">
+      <%= f.collection_select :building_id, Building.all, :id, :name, { prompt: 'Building for Floor' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "Floor Map" %>
+    <%= image_tag(floor.image_url, class:'image-preview') if floor.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Cancel', admin_floors_path, class: 'cancel-button' %>
+    <%= f.submit 'Submit', class: 'submit-button' %>
+  </div>
+<% end %>

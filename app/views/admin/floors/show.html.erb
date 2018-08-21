@@ -1,0 +1,26 @@
+<h2> Showing <%= @floor.name %> </h2>
+
+<div class="show-action">
+    <div class="image">
+      <img src="<%= @floor.image %>" alt="floor map"/>
+    </div>
+
+    <div class="text-attributes">
+    <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= @floor.name %>
+        </li>
+        <li>
+          <strong> Building: </strong>
+          <%= @floor.building.name %>
+        </li>
+      </ul>
+  </div>
+<div class="show-action">
+    <div class="actions"> 
+      <%= link_to '<span class="fas fa-eye"></span> Floors'.html_safe, '/admin/floors', { class: 'new-button' } %>
+      <%= link_to '<span class="fas fa-edit"></span> Edit'.html_safe, edit_admin_floor_path(@floor), { class: 'edit-button' } %>
+      <%= link_to '<span class="fas fa-trash"></span> Destroy'.html_safe, admin_floor_path(@floor), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>

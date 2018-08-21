@@ -19,12 +19,17 @@ Bundler.require(*Rails.groups)
 
 module LibraryDirectory
   class Application < Rails::Application
+    # Time Zone
+    config.time_zone = 'Eastern Time (US & Canada)'
+    config.active_record.default_timezone = :local 
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators.system_tests = nil # don't use minitest 
+
     # CAS
     config.rack_cas.server_url = 'https://ssodev.wvu.edu/cas/'
+    
     # force ssl
     # config.force_ssl = true
   end
