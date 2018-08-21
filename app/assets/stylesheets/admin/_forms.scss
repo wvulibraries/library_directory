@@ -274,9 +274,24 @@ form{
   .field_with_errors { 
     input, textarea, .select-style { 
       border: 2px solid $error;
-      background: lighten($error,70%);
+      background: lighten($error,40%);
     }
     label { color:$error; }
+  }
+}
+
+#error_explanation { 
+  @include span-columns(12);
+  padding:1em; 
+  color:$error; 
+  background: rgba($error, .1); 
+  border: 2px solid $error; 
+  margin-bottom:2em; 
+  h3 { color:$error; }
+  ul { 
+    @include span-columns(12); 
+    padding:1em;
+    padding-left:2.5em; 
   }
 }
 

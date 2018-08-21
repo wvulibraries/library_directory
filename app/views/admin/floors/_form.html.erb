@@ -1,7 +1,7 @@
 <%= form_for [:admin, floor], html: { multipart: true } do |f| %>
   <% if floor.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(floor.errors.count, "error") %> prohibited this floor from being saved:</h2>
+      <h3><%= pluralize(floor.errors.count, "error") %> prohibited this floor from being saved:</h3>
 
       <ul>
       <% floor.errors.full_messages.each do |message| %>
