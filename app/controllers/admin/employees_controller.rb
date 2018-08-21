@@ -29,7 +29,7 @@ class Admin::EmployeesController < AdminController
     @employee = Employee.new(employee_params)
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to admin_employee_path(@employee), success: I18n.t('building.success') }
+        format.html { redirect_to admin_employee_path(@employee), success: I18n.t('employee.success') }
       else
         format.html { render :new }
       end
@@ -40,8 +40,8 @@ class Admin::EmployeesController < AdminController
   # PATCH/PUT /Employees/1.json
   def update
     respond_to do |format|
-      if @employee.update(building_params)
-        format.html { redirect_to admin_employee_path(@employee), success: I18n.t('building.edited') }
+      if @employee.update(employee_params)
+        format.html { redirect_to admin_employee_path(@employee), success: I18n.t('employee.edited') }
       else
         format.html { render :edit }
       end
@@ -53,7 +53,7 @@ class Admin::EmployeesController < AdminController
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.html { redirect_to '/admin/employees', success: I18n.t('building.deleted') }
+      format.html { redirect_to '/admin/employees', success: I18n.t('employee.deleted') }
     end
   end
 
@@ -67,6 +67,25 @@ class Admin::EmployeesController < AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def employee_params
-    params.require(:building).permit(:name, :map_link, :image)
+    params.require(:employee).permit(
+      :department, 
+      :department_id,
+      :prefix,
+      :suffix, 
+      :first_name, 
+      :middle_name, 
+      :last_name, 
+      :image,
+      :image_cache,
+      :wvu_username, 
+      :email, 
+      :job_title, 
+      :university_classification, 
+      :description,
+      :status, 
+      :role, 
+      addresses_attributes: %i[id line1 line2 city state zip _destroy],
+      phones_attributes: %i[id number_types number _destroy]
+    )
   end
 end

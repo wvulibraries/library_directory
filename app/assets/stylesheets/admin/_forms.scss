@@ -267,25 +267,17 @@ form{
       position:relative;
       z-index:2;
       color:#000;
-
-      // &option { 
-      //   color:#000; 
-      //   &:checked { color:#000 !important; }
-      //   &:first-child { 
-      //     color:darken($input-bg,20%) !important; 
-      //     &:checked { color:darken($input-bg,20%) !important;}
-      //   }
-      // }
     }
-    
-    // select option:nth-child(1):checked { color:darken($input-bg,20%) !important; }
-    // select option:checked{ color: #000; }
   }
 
-  // Oditiy with selects needs margin
-  // .select-label {
-  //   margin: 3px 3px 2px 3px;
-  // }
+  // ERRORS 
+  .field_with_errors { 
+    input, textarea, .select-style { 
+      border: 2px solid $error;
+      background: lighten($error,70%);
+    }
+    label { color:$error; }
+  }
 }
 
 .actions { 

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :building do
-    name { Faker::String.random(7..49) }
+    name { Faker::Lorem.characters(7..49) }
     map_link { Faker::Internet.url }
     status { rand 0..1 }
 

@@ -18,13 +18,13 @@ FactoryBot.define do
     association :department, factory: :department_building
 
     factory :non_admin_cas do
-      wvu_username 'johntest'
-      role 0
+      wvu_username { 'johntest' }
+      role { 0 }
     end
 
     factory :admin_cas do
-      wvu_username 'johntest'
-      role 1
+      wvu_username { 'johntest' }
+      role { 1 }
     end
   end
 end

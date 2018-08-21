@@ -37,22 +37,9 @@ RSpec.describe User, type: :model do
   end
 
   context '.display_name' do
-    it 'expects display name to be first middle last' do
-      expect(user.display_name).to eq("#{user.first_name} #{user.middle_name} #{user.last_name}")
-    end
-
-    it 'expects display name to be a string' do
-      expect(user.display_name.class).to eq(String)
-    end
-
-    it 'expects display name to be first last because middle does not exist' do
-      user.middle_name = nil
-      expect(user.display_name).to eq("#{user.first_name} #{user.last_name}")
-    end
-
-    it 'expects an empty string to also return first and last name only' do
-      user.middle_name = ''
-      expect(user.display_name).to eq("#{user.first_name} #{user.last_name}")
+    it 'expects display name to have all the proper items by joining what exists and what does not exist' do
+      name = [user.prefix, user.first_name, user.middle_name, user.last_name, user.suffix].join(' ')
+      expect(user.display_name).to eq(name)
     end
   end
 

@@ -12,60 +12,25 @@
     <div class="text-attributes">
       <ul>
         <li> 
-          <strong> First Name: </strong> 
-          <%= employee.first_name %>
-        </li>
-        <li> 
-          <strong> Middle Name: </strong> 
-          <%= employee.middle_name %>
-        </li>
-        <li> 
-          <strong> Last Name: </strong> 
-          <%= employee.last_name %>
-        </li>
-        <li>
-          <strong> Display Name: </strong>
+          <strong> Name: </strong> 
           <%= employee.display_name %>
         </li>
-        <li> 
-          <strong> Email: </strong> 
+
+        <li>
+          <strong> Email: </strong>
           <%= employee.email %>
         </li>
-        <li> 
-          <strong> WVU Username: </strong> 
-          <%= employee.wvu_username %>
-        </li> 
-        <li> 
-          <strong> Display Status: </strong> 
-          <%= employee.status %>
-        </li> 
-        <li> 
-          <strong> User Role: </strong> 
-          <%= employee.role %>
-        </li> 
-        <li> 
-          <strong> Job Title: </strong> 
-          <%= employee.job_title %>
-        </li>
-        <li> 
-          <strong> University Classification: </strong> 
-          <%= employee.university_classification %>
-        </li> 
-        <li> 
-          <strong> Description/Biography: </strong> 
-          <%= employee.description %>
-        </li> 
-        <li> 
-          <strong> User Type: </strong> 
-          <%= employee.type %>
-        </li> 
-        <li> 
-          <strong> Office Number: </strong> 
-          <%= employee.office_number %>
-        </li> 
-       
 
-        <% employee.inspect %>
+        <li>
+          <strong> Role: </strong>
+          <%= employee.role.capitalize %>
+        </li>
+
+        <li>
+          <strong> Status: </strong>
+          <%= employee.status.capitalize %>
+        </li>
+
       </ul>
     </div>
 
@@ -78,5 +43,5 @@
 <% end %>
 
 <div class="bottom-action"> 
-  <%= link_to 'New employee', new_admin_employee_path, { class: 'new-button' } %>
+  <%= link_to 'New Employee', new_admin_employee_path, { class: 'new-button' } %>
 </div>

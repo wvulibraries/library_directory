@@ -48,11 +48,17 @@
 
         <li> 
           <strong> Floor(s): </strong>
-          <ul>
           <% @building.floors.each do |floor| %>
-            <li> <img src="<%= floor.image %>" alt="buildings profile image"/> <%= floor.name %> </li>
+          <div class="floor-container">
+            <div class="floor-map"> 
+              <img src="<%= floor.image %>" alt="buildings profile image"/> 
+            </div>
+
+            <div class="floor-name"> 
+              <%= floor.name %> 
+            </div>
+          </div>
           <% end %>
-          </ul>
         </li>
       </ul>
     </div>

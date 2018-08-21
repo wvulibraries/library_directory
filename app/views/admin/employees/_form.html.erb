@@ -1,8 +1,8 @@
 <%= form_for [:admin, employee], html: { multipart: true } do |f| %>
   <% if employee.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(employee.errors.count, "Error") %> </h2> 
-      <p> The following prohibited this employee from being saved: </p>
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
       <ul>
       <% employee.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,45 +11,124 @@
     </div>
   <% end %>
 
-  <div class="field one-fourth">
-      <%= f.label :prefix, class:'select-label' %>
-      <div class="select-style">
-        <%= f.select :prefix, options_for_select(name_prefixes, selected: employee.prefix ), include_blank: "Select a Prefix" %>
+  <fieldset> 
+    <legend> Profile Information </legend>
+    <div class="row"> 
+      <div class="field one-fourth">
+        <%= f.label :prefix, class:'select-label' %>
+        <div class="select-style">
+          <%= f.select :prefix, options_for_select(name_prefixes, selected: employee.prefix ), include_blank: "Select a Prefix" %>
+        </div>
       </div>
-  </div>
 
-  <div class="field two-fourth">
-    <%= f.label :first_name, class: 'required' %>
-    <%= f.text_field :first_name %>
-  </div>
-  
-  <div class="field one-fourth last">
-    <%= f.label :middle_name, class: 'required' %>
-    <%= f.text_field :middle_name %>
-  </div>
-
-  <div class="field three-fourth">
-    <%= f.label :last_name, class: 'required' %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field one-fourth last">
-      <%= f.label :suffix, class:'select-label' %>
-      <div class="select-style">
-        <%= f.select :suffix, options_for_select(name_suffixes, selected: employee.suffix ), include_blank: "Select a Suffix" %>
+      <div class="field two-fourth">
+        <%= f.label :first_name, class: 'required' %>
+        <%= f.text_field :first_name, placeholder: "Joanna" %>
       </div>
-  </div>
 
-  
-  <div class="field full">
-    <%= f.label :image %>
-    <%= image_tag(employee.image_url) if employee.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
+      <div class="field one-fourth last">
+        <%= f.label :middle_name, class: 'required' %>
+        <%= f.text_field :middle_name, placeholder: "Q. (Quinn)" %>
+      </div>
 
-  <div class="actions full">
-    <%= link_to 'Cancel', admin_employees_path, class: 'cancel-button' %>
+      <div class="field three-fourth">
+        <%= f.label :last_name, class: 'required' %>
+        <%= f.text_field :last_name, placeholder: "Smith" %>
+      </div>
+
+      <div class="field one-fourth last">
+        <%= f.label :suffix, class:'select-label' %>
+        <div class="select-style">
+          <%= f.select :suffix, options_for_select(name_suffixes, selected: employee.suffix ), include_blank: "Select a Suffix" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field full">
+      <%= f.label :image, 'Profile Image' %>
+      <%= image_tag(employee.image_url) if employee.image? %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend> WVU Profile Information </legend>
+     <div class="row"> 
+      <div class="field half">
+        <%= f.label :wvu_username, class: 'required' %>
+        <%= f.text_field :wvu_username, placeholder: "jqsmith001" %>
+      </div>
+
+      <div class="field half last">
+        <%= f.label :email, class: 'required' %>
+        <%= f.text_field :email, placeholder: "jqsmith@mail.wvu.edu" %>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="field half">
+        <%= f.label :job_title, class: 'required' %>
+        <%= f.text_field :job_title, placeholder: "Accountant EBO" %>
+      </div>
+
+      <div class="field half last">
+        <%= f.label :university_classification, class: 'required' %>
+        <%= f.text_field :university_classification, placeholder: "Business Professional" %>
+      </div>
+
+      <div class="field full">
+        <%= f.label :department_id, "Department" %>
+        <div class="select-style">
+          <%= f.grouped_collection_select :department_id, Building.all, :departments, :name, :id, :name, { prompt: 'Employee Department' } %>
+        </div>
+      </div>
+
+      <div class="field full">
+        <%= f.label :description %>
+        <%= f.text_area :description, placeholder: "Basic description of what the employee does in simple terms for the public." %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend> Application Access Information </legend>
+    <div class="row">
+      <div class="field half">
+        <%= f.label :role, 'User Role', class:'required' %>
+        <div class="select-style">
+            <%= f.select :role, options_for_select(User.roles.keys.to_a, selected: f.object.role), include_blank: "Select a Role" %>
+        </div>
+      </div>
+
+      <div class="field half last">
+       <%= f.label :status, 'User Status', class:'required' %>
+        <div class="select-style">
+            <%= f.select :status, options_for_select(User.statuses.keys.to_a, selected: f.object.status), include_blank: "Select a Status" %>
+        </div>
+      </div>
+
+      <div class="micro-text"> 
+        <%= t('notes.user_status') %>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Addresses -->
+  <%= f.fields_for :addresses do |form| %>
+    <%= render "address", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Address", f, :addresses %>
+
+  <!-- Phones -->
+  <%= f.fields_for :phones do |form| %>
+    <%= render "phone", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Phones", f, :phones %>
+
+  <div class="actions">
+    <%= link_to 'Cancel', admin_buildings_path, class: 'cancel-button' %>
     <%= f.submit 'Submit', class: 'submit-button' %>
   </div>
 <% end %>
