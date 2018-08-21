@@ -2,30 +2,30 @@
   <legend> Address </legend>
 
   <div class="field full">
-    <%= form.label :line1, "Street Address" %>
-    <%= form.text_field :line1 %>
+    <%= form.label :line1, "Street Address", class: 'required' %>
+    <%= form.text_field :line1, placeholder:'124 Fake Street' %>
   </div>
 
   <div class="field full">
     <%= form.label :line2, "Additional Line (Optional)" %>
-    <%= form.text_field :line2 %>
+    <%= form.text_field :line2, placeholder:'Room 2020 Cube 1' %>
   </div>
 
   <div class="field third">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.label :city, class: 'required' %>
+    <%= form.text_field :city, placeholder: 'Great City Falls' %>
   </div>
 
   <div class="field third">
-    <%= form.label :state %>
+    <%= form.label :state, class: 'required' %>
     <div class="select-style">
       <%= form.select :state, options_for_select(us_states, selected: form.object.state), { include_blank: "Select a State" }, { class: "state-select" } %>
     </div>
   </div>
 
   <div class="field third">
-    <%= form.label :zip %>
-    <%= form.text_field :zip %>
+    <%= form.label :zip, class: 'required' %>
+    <%= form.text_field :zip, placeholder: '55555' %>
   </div>
 
   <div class="action">

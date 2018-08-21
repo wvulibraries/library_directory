@@ -2,12 +2,12 @@
   <legend> department </legend>
 
   <div class="field full">
-    <%= form.label :name, 'Department Name' %>
+    <%= form.label :name, 'Department Name', class: 'required' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field full">
-    <%= form.label :description, 'Department Description' %>
+    <%= form.label :description, 'Department Description', class: 'required' %>
     <%= form.text_area :description %>
   </div>
 

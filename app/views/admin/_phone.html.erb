@@ -2,15 +2,15 @@
   <legend> Phones </legend>
 
   <div class="field one-third">
-    <%= form.label :number_types %>
+    <%= form.label :number_types, class: 'required' %>
     <div class="select-style">
       <%= form.select :number_types, options_for_select(Phone.number_types.keys, selected: form.object.number_types), include_blank: "Select a Type" %>
     </div>
   </div>
 
   <div class="field two-third last">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+    <%= form.label :number, class: 'required' %>
+    <%= form.text_field :number, placeholder: '304.555.5555' %>
   </div>
 
   <div class="action">
