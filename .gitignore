@@ -28,6 +28,7 @@
 
 # ignore elastic search and other dev data stores
 /mysql/*
+/mysql-files
 /search_data/* 
 
 # DS_store is no good
@@ -35,3 +36,7 @@
 
 # ignore my personal cleanup script
 reset-docker.sh 
+
+# ignore database migration
+/data_migration
+/data_migration/* 
