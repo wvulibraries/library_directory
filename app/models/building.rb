@@ -13,9 +13,9 @@ class Building < ApplicationRecord
             length: { within: 4..50 },
             uniqueness: { case_sensitive: false }
 
-  validates :map_link,
-            presence: true,
-            url: true
+  # validates :map_link,
+  #           presence: true,
+  #           url: true
 
   # associations
   has_many :addresses, as: :addressable, dependent: :destroy
@@ -30,7 +30,7 @@ class Building < ApplicationRecord
   accepts_nested_attributes_for :floors, allow_destroy: true
 
   # active status
-  enum status: %i[active disabled]
+  enum status: %i[enabled disabled]
 
   # concerns
   include Imageable
