@@ -19,7 +19,12 @@ module ApplicationHelper
 
   # logged in user
   def logged_in?
-    session['cas'] && session['cas']['user']
+    !!(session['cas'] && session['cas']['user'])
+  end
+
+  # get current user for views
+  def current_user
+    User.where(wvu_username: session['cas']['user']) if logged_in?
   end
 
   # dynamically add fieldsets

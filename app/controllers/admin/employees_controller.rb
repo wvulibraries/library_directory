@@ -68,24 +68,25 @@ class Admin::EmployeesController < AdminController
   # Never trust parameters from the scary internet, only allow the white list through.
   def employee_params
     params.require(:employee).permit(
-      :department, 
-      :department_id,
       :prefix,
-      :suffix, 
-      :first_name, 
-      :middle_name, 
-      :last_name, 
+      :suffix,
+      :first_name,
+      :middle_name,
+      :last_name,
+      :preferred_name, 
       :image,
       :image_cache,
-      :wvu_username, 
-      :email, 
-      :job_title, 
-      :university_classification, 
+      :wvu_username,
+      :email,
+      :job_title,
+      :university_classification,
       :description,
-      :status, 
-      :role, 
+      :status,
+      :role,
       addresses_attributes: %i[id line1 line2 city state zip _destroy],
-      phones_attributes: %i[id number_types number _destroy]
+      phones_attributes: %i[id number_types number _destroy],
+      subject_ids: [], 
+      department_ids: []
     )
   end
 end
