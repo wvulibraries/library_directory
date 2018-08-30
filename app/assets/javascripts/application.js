@@ -15,3 +15,8 @@
 // ----------------------------------------------------------------
 //= require plugins/alerts.js
 //= require plugins/nested_forms.js
+
+// Interface Components
+// ----------------------------------------------------------------
+//= require multi-select
+//= require plugins/mult_select_attach.js

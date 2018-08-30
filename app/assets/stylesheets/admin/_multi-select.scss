@@ -1,0 +1,107 @@
+// MODIFIED BY DAVID DAVIS FOR USE WITH DIRECTORY APP
+// WVU Libraries 
+
+// VARS
+$font-color:#666; 
+$input-bg: #eee; 
+$input-border: #666;
+$label-color:$font-color; 
+$fieldset:#666; 
+$borders: 2px solid darken($input-bg,10%);
+
+.ms-container{
+  background: transparent image-url('switch.png') no-repeat 50% 50%;
+  width: 100%;
+}
+
+.ms-container:after{
+  content: ".";
+  display: block;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  clear: both;
+  min-height: 0;
+  visibility: hidden;
+}
+
+.ms-container .ms-selectable, .ms-container .ms-selection{
+  background: $input-bg;
+  color: $font-color;
+  float: left;
+  width: 45%;
+  @include transition(
+    color 0.6s $easeOutExpo, 
+    border 0.6s $easeOutExpo, 
+    background 0.6s $easeOutExpo
+  );
+}
+.ms-container .ms-selection{
+  float: right;
+}
+
+.ms-container .ms-list{
+  border: $borders;
+  position: relative;
+  height: 200px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.ms-container .ms-list.ms-focus{
+  border: 2px solid $link-color;
+  background: lighten($input-bg,2%);
+  outline: none;
+}
+
+.ms-container ul{
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ms-container .ms-optgroup-container{
+  width: 100%;
+}
+
+.ms-container .ms-optgroup-label{
+  margin: 0;
+  padding: 1em;
+  cursor: pointer;
+  color: #999;
+}
+
+.ms-container .ms-selectable li.ms-elem-selectable,
+.ms-container .ms-selection li.ms-elem-selection{
+  border-bottom: 1px solid #fff;
+  padding: .5em 1em;
+  color: $font-color;
+  font-size: 1em;
+}
+
+.ms-container .ms-selectable li,
+.ms-container .ms-selection li{
+  margin:0; 
+  padding: .5em 1em;
+  &:hover, &:focus {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    background-color: $link-color;
+  }
+}
+
+.ms-container .ms-selectable li.disabled,
+.ms-container .ms-selection li.disabled{
+  background-color: #eee;
+  color: #aaa;
+  cursor: text;
+}
+
+.select { 
+  text-align:left;
+}
+
+.deselect {
+  text-align:right; 
+}

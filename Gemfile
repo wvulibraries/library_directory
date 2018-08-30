@@ -24,6 +24,7 @@ gem "validate_url"
 # interface items
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick'
+gem 'multi-select-rails'
 
 # cas client
 gem 'rack-cas', '~> 0.16.0'

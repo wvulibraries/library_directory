@@ -116,40 +116,45 @@ form{
   }
 
   .checkbox-wrapper { 
+    @include span-columns(12);
 
       .checkbox { 
-          background:$input-bg;
-          padding:5px; 
-          width:100%; 
-          display:block;
+        @include span-columns(12);
+        background:$input-bg;
+        padding:5px; 
+        width:100%; 
+        display:block;
       }
 
       .heading { 
-          text-align: left;
-          display: block;
-          width: 100%;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          color:$font-color;
+        text-align: left;
+        display: block;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color:$font-color;
       }
 
-      label {   
-          display:inline-block; 
-          width:calc(100% - 40px);
-          margin:0;  
-          text-transform:none; 
-          font-size:12px;
+      label {
+        float:left;
+        display:inline-block; 
+        width:calc(100% - 40px);
+        margin:0;  
+        text-transform:none; 
+        font-size:12px;
       } 
 
       input[type='hidden'] { 
-          display:none; 
+        display:none; 
       }
 
-      input[type='checkbox'] { 
-          display:inline-block; 
-          width:20px;
-          text-align:left;
-          margin:0 5px 0 0; 
+      input[type='checkbox'], input[type='radio'] { 
+        float:left; 
+        display:inline-block; 
+        width:20px;
+        text-align:left;
+        margin:0 5px 0 0; 
+        height:unset;
       }
   }
 
@@ -278,6 +283,11 @@ form{
     }
     label { color:$error; }
   }
+}
+
+.image-preview { 
+  max-width:320px; 
+  margin-bottom:.5em; 
 }
 
 #error_explanation { 
