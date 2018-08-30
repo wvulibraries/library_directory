@@ -15,8 +15,8 @@
 
 # Ignore uploaded files in development
 /storage/*
-/public/uploads
-/public/uploads/*
+/public/uploads/development
+/public/uploads/test
 
 /yarn-error.log
 
