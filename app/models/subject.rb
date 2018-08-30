@@ -10,5 +10,6 @@ class Subject < ApplicationRecord
             length: { within: 3..50 }
 
   # association
-  belongs_to :subjectable, polymorphic: true
+  has_many :subjectables, dependent: :nullify
+  has_many :employees, through: :subjectables
 end

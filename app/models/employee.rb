@@ -18,10 +18,14 @@ class Employee < User
   validates :description, length: { maximum: 500 }
 
   # associations
-  belongs_to :department
+  has_many :departmentable, dependent: :nullify
+  has_many :departments, through: :departmentable
+
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
-  has_many :subjects, as: :subjectable, dependent: :destroy
+
+  has_many :subjectables, dependent: :nullify
+  has_many :subjects, through: :subjectables
 
   # form logic
   accepts_nested_attributes_for :addresses, allow_destroy: true
