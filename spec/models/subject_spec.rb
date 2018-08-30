@@ -10,10 +10,10 @@ RSpec.describe Subject, type: :model do
   end
 
   context 'associations' do
-    it { should belong_to(:subjectable) }
-  end 
+    it { should have_many(:employees) }
+  end
 
-  context 'valid object' do 
+  context 'valid object' do
     it 'expects subject to be valid' do
       expect(subject).to be_valid
     end

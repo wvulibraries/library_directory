@@ -20,7 +20,7 @@ RSpec.describe Employee, type: :model do
   context 'associations' do
     it { should have_many(:addresses) }
     it { should have_many(:phones) }
-    it { should belong_to(:department) }
+    it { should have_many(:departments) }
     it { should have_many(:subjects) }
   end
 

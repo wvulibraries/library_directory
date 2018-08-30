@@ -21,12 +21,17 @@
         </div>
       </div>
 
-      <div class="field two-fourth">
+      <div class="field three-fourth last">
         <%= f.label :first_name, class: 'required' %>
         <%= f.text_field :first_name, placeholder: "Joanna" %>
       </div>
 
-      <div class="field one-fourth last">
+      <div class="field two-fourth">
+        <%= f.label :preferred_name, class: 'required' %>
+        <%= f.text_field :preferred_name, placeholder: "Smith" %>
+      </div>
+      
+      <div class="field two-fourth last">
         <%= f.label :middle_name, class: 'required' %>
         <%= f.text_field :middle_name, placeholder: "Q. (Quinn)" %>
       </div>
@@ -78,10 +83,16 @@
         <%= f.text_field :university_classification, placeholder: "Business Professional" %>
       </div>
 
-      <div class="field full">
-        <%= f.label :department_id, "Department" %>
-        <div class="select-style">
-          <%= f.grouped_collection_select :department_id, Building.all, :departments, :name, :id, :name, { prompt: 'Employee Department' } %>
+      <div class="field">
+        <%= f.label :department_ids, 'Departments' %>
+        <%= f.collection_select :department_ids, Department.all.order(:name), :id, :name, { include_hidden: false }, { multiple: true }%>
+
+        <div class="half select">
+          <a href='#' id='department_select_all'> Select All </a>
+        </div>
+        
+        <div class="half deselect">
+          <a href='#' id='department_deselect_all'> Deselect All </a>
         </div>
       </div>
 
@@ -126,6 +137,24 @@
     <%= render "phone", form: form %>
   <% end %>
   <%= link_to_add_fields "Add Phones", f, :phones %>
+
+
+  <!-- Subjects -->
+   <fieldset>
+    <legend> Subject Liasons </legend>
+    <div class="field">
+      <%= f.label :subject_ids, 'Subjects' %>
+      <%= f.collection_select :subject_ids, Subject.all.order(:name), :id, :name, { include_hidden: false }, { multiple: true }%>
+
+      <div class="half select">
+        <a href='#' id='employee_select_all'> Select All </a>
+      </div>
+      
+      <div class="half deselect">
+        <a href='#' id='employee_deselect_all'> Deselect All </a>
+      </div>
+    </div>
+  </fieldset>
 
   <div class="actions">
     <%= link_to 'Cancel', admin_buildings_path, class: 'cancel-button' %>

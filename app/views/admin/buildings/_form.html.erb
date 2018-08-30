@@ -22,11 +22,30 @@
   </div>
 
   <div class="field">
-    <%= f.label :image %>
-    <%= image_tag(building.image_url, class:'image-preview') if building.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.label :directions %>
+    <%= f.text_area :directions %>
   </div>
+
+  <div class="field">
+    <div class="row"> 
+      <%= f.label :image %>
+      <%= image_tag(building.image_url, class:'image-preview') if building.image? %>
+
+      <div class="checkbox-wrapper">
+        <div class="checkbox">
+          <%= f.check_box :remove_image %>
+          <%= f.label :remove_image %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field row">
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
+
+  
 
   <!-- Addresses -->
   <%= f.fields_for :addresses do |form| %>

@@ -3,7 +3,8 @@
   <%= link_to 'New building', new_admin_building_path, { class: 'new-button' } %>
 </div>
 
-<% @buildings.each do |building| %>
+<% @buildings.each do |building| %> 
+
   <div class="crud-list building-list">
     <div class="image">
       <img src="<%= building.image %>" alt="buildings profile image"/>
@@ -15,9 +16,9 @@
           <strong> Name: </strong> 
           <%= building.name %>
         </li>
-        <li> 
+        <li>  
           <strong> Map Link: </strong> 
-          <%= building.map_link %>
+          <a href="<%= building.map_link %>"> Google Maps </a>
         </li>
         <li> 
           <strong> Address(es): </strong>

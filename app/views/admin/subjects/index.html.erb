@@ -1,27 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="top-action">
+  <h2> Manage Subjects </h2>
+  <%= link_to 'New Subject', new_admin_subject_path, { class: 'new-button' } %>
+</div>
 
-<h1>Admin Subjects</h1>
+<% @subjects.each do |subject| %>
+  
+  <%= subject.employees.count.inspect %> <br/>
+  <div class="test"> <%=  subject.inspect %> </div> 
+  <br/><br/>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_subjects.each do |admin_subject| %>
-      <tr>
-        <td><%= admin_subject.name %></td>
-        <td><%= link_to 'Show', admin_subject %></td>
-        <td><%= link_to 'Edit', edit_admin_subject_path(admin_subject) %></td>
-        <td><%= link_to 'Destroy', admin_subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Admin Subject', new_admin_subject_path %>
+<div class="bottom-action"> 
+  <%= link_to 'New Subject', new_admin_subject_path, { class: 'new-button' } %>
+</div>

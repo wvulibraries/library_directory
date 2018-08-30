@@ -13,7 +13,13 @@
         </li>
         <li> 
           <strong> Map Link: </strong> 
-          <%= @building.map_link %>
+          <a href="<%= @building.map_link %>"> Google Map Link </a>
+        </li>
+        <li>
+          <strong> Directions: </strong>
+          <div class="directions">
+            <%= raw @building.directions %>
+          </div>
         </li>
         <li> 
           <strong> Address(es): </strong>
@@ -44,7 +50,7 @@
             <li> <%= dept.description %> </li>
           <% end %>
           </ul>
-        </>
+        </p>
 
         <li> 
           <strong> Floor(s): </strong>

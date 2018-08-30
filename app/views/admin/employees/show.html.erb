@@ -93,6 +93,15 @@
           <% end %>
           </ul>
         </li>
+
+        <li> 
+          <strong> Subject(s): </strong>
+          <ul>
+          <% @employee.subjects.each do |subject| %>
+            <li> <%= subject.name %> </li>
+          <% end %>
+          </ul>
+        </li>
       </ul>
       <div class="micro-text">
         Created at <%= @employee.created_at.strftime("%B %d, %Y at %I:%M%p") %> <br/> Updated at <%= @employee.updated_at.strftime("%B %d, %Y at %I:%M%p")%>

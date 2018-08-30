@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_174123) do
+ActiveRecord::Schema.define(version: 2018_08_30_162652) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -27,12 +27,22 @@ ActiveRecord::Schema.define(version: 2018_08_14_174123) do
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
-    t.string "map_link"
+    t.text "map_link"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.text "directions"
     t.index ["name"], name: "index_buildings_on_name", unique: true
+  end
+
+  create_table "departmentables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_departmentables_on_department_id"
+    t.index ["employee_id"], name: "index_departmentables_on_employee_id"
   end
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -41,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_174123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
+    t.integer "status"
     t.index ["building_id"], name: "index_departments_on_building_id"
   end
 
@@ -72,13 +83,19 @@ ActiveRecord::Schema.define(version: 2018_08_14_174123) do
     t.index ["department_id"], name: "index_service_points_on_department_id"
   end
 
-  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.string "subjectable_type"
-    t.bigint "subjectable_id"
+  create_table "subjectables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subjectable_type", "subjectable_id"], name: "index_subjects_on_subjectable_type_and_subjectable_id"
+    t.index ["employee_id"], name: "index_subjectables_on_employee_id"
+    t.index ["subject_id"], name: "index_subjectables_on_subject_id"
+  end
+
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -100,6 +117,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_174123) do
     t.string "type"
     t.string "university_classification"
     t.bigint "department_id"
+    t.string "preferred_name"
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 

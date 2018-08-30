@@ -22,6 +22,22 @@
           <%= dept.building.name %>
         </li>
 
+        <% if dept.phones.length %>
+        <li>
+          <strong> Department Phone Numbers: </strong>
+          <ul class="phone">
+            <% dept.phones.each do |phone| %>
+            <li>
+              <strong> <%= phone.number_types.capitalize %>:  </strong>
+              <a href="tel:<%= phone.number %>">
+                <%= phone.number %> 
+              </a> 
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+
         <% if dept.service_points.present? %>
         <li> 
           <% dept.service_points.each do |sp| %>

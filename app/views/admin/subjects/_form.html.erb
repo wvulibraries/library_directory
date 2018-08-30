@@ -1,10 +1,10 @@
-<%= form_with(model: admin_subject, local: true) do |form| %>
-  <% if admin_subject.errors.any? %>
+<%= form_for [:admin, subject] do |form| %>
+  <% if subject.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(admin_subject.errors.count, "error") %> prohibited this admin_subject from being saved:</h3>
+      <h3><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h3>
 
       <ul>
-      <% admin_subject.errors.full_messages.each do |message| %>
+      <% subject.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,6 +14,18 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employee_ids, 'Subject Librarians' %>
+    <%= form.collection_select :employee_ids, Employee.all.order(:last_name), :id, :display_name, { include_hidden: false }, { multiple: true }%>
+    <div class="half select">
+      <a href='#' id='subject_select_all'> Select All </a>
+    </div>
+    
+    <div class="half deselect">
+      <a href='#' id='subject_deselect_all'> Deselect All </a>
+    </div>
   </div>
 
   <div class="actions">
