@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     it 'expects email to be invalid as anything, but .edu at the end' do
       user.email = Faker::Internet.email
       expect(user).to_not be_valid
-      expect(user.errors.messages[:email]).to eq ['Email must be a valid WVU email.']
+      expect(user.errors.messages[:email]).to eq ['must be a valid WVU email.']
     end
   end
 
@@ -39,6 +39,12 @@ RSpec.describe User, type: :model do
   context '.display_name' do
     it 'expects display name to have all the proper items by joining what exists and what does not exist' do
       name = [user.prefix, user.first_name, user.middle_name, user.last_name, user.suffix].join(' ')
+      expect(user.display_name).to eq(name)
+    end
+
+    it 'expects display name to user preferred name instead of first name' do
+      user.preferred_name = 'Jo Jo'
+      name = [user.prefix, user.preferred_name, user.middle_name, user.last_name, user.suffix].join(' ')
       expect(user.display_name).to eq(name)
     end
   end

@@ -46,11 +46,11 @@ describe ImageUploader do
       expect(uploader.store_dir).to eq(up_path)
     end
     it 'checks whitelist types' do
-      files =  %w[jpg jpeg png]
+      files =  %w[jpg jpeg png gif]
       expect(uploader.extension_whitelist).to eq(files)
     end
     it 'expects a default file' do
-      expect(uploader.default_url).to eq("/default/default_building.jpg")
-    end 
+      expect(uploader.default_url).to eq('/default/default_building.jpg')
+    end
   end
 end

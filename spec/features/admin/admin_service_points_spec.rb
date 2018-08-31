@@ -69,7 +69,7 @@ RSpec.feature 'Admin::Buildings', type: :feature do
     select(select_option, from: 'Department')
     fill_in 'Name', with: new_service[:name]
     click_link 'Add Phones'
-    select('campus', from: 'Number types')
+    select('phone', from: 'Number types')
     fill_in 'Number', with: phone[:number]
     click_button 'Submit'
     expect(page).to have_content('Success! We built a brand new service point!')

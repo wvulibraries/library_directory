@@ -4,10 +4,33 @@
 </div>
 
 <% @subjects.each do |subject| %>
-  
-  <%= subject.employees.count.inspect %> <br/>
-  <div class="test"> <%=  subject.inspect %> </div> 
-  <br/><br/>
+  <div class="crud-list subject-point-list">
+    <div class="text-attributes">
+      <ul>
+        <li> 
+          <strong> Name: </strong> 
+          <%= subject.name %>
+        </li>
+
+        <li> 
+          <strong> Liason: </strong>
+          <ul>
+            <% subject.employees.each do |emp| %>
+              <li> 
+                <%= emp.display_name %>
+              </li> 
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="crud-actions"> 
+      <%= link_to 'Show', admin_subject_path(subject), { class: 'show-button' } %>
+      <%= link_to 'Edit', edit_admin_subject_path(subject), { class: 'edit-button' } %>
+      <%= link_to 'Destroy', admin_subject_path(subject), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    </div>
+  </div>
 <% end %>
 
 <div class="bottom-action"> 

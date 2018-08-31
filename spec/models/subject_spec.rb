@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Subject, type: :model do
-  let(:subject) { FactoryBot.create :subject_association }
+  let(:subject) { FactoryBot.create :subject }
 
   context 'validations' do
     it { should validate_length_of(:name).is_at_least(3) }
@@ -10,7 +10,7 @@ RSpec.describe Subject, type: :model do
   end
 
   context 'associations' do
-    it { should have_many(:employees) }
+    it { should have_many(:subjectables) }
   end
 
   context 'valid object' do

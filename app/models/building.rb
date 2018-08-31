@@ -13,8 +13,8 @@ class Building < ApplicationRecord
             length: { within: 4..50 },
             uniqueness: { case_sensitive: false }
 
-  # validates :map_link,
-  #           presence: true,
+  validates :map_link,
+            presence: true
   #           url: true
 
   # associations

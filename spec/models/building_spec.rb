@@ -9,7 +9,7 @@ RSpec.describe Building, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
     it { should validate_length_of(:name).is_at_least(4) }
     it { should validate_length_of(:name).is_at_most(50) }
-    # it { should validate_presence_of(:map_link) }
+    it { should validate_presence_of(:map_link) }
     it { should define_enum_for(:status).with(%i[enabled disabled]) }
   end
 
@@ -21,12 +21,6 @@ RSpec.describe Building, type: :model do
   end
 
   context 'invalid options' do
-    it 'expects invalid from bad map url' do
-      building.map_link = 'soemthing'
-      expect(building).to_not be_valid
-      expect(building.errors.messages[:map_link]).to eq ['is not a valid URL']
-    end
-
     it 'expects name to be too long' do
       building.name = Faker::String.random(51)
       expect(building).to_not be_valid

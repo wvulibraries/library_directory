@@ -23,7 +23,11 @@ class User < ApplicationRecord
   # custom methods
 
   def display_name
-    [prefix, first_name, middle_name, last_name, suffix].join(' ')
+    if preferred_name.blank?
+      [prefix, first_name, middle_name, last_name, suffix].join(' ')
+    else
+      [prefix, preferred_name, middle_name, last_name, suffix].join(' ')
+    end
   end
 
   def admin?

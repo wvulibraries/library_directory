@@ -24,11 +24,11 @@ RSpec.feature 'Admin::Buildings', type: :feature do
   scenario 'errors on creating a new building' do
     visit '/admin/buildings/new'
     fill_in 'Name', with: 'tes' # must be 4 chars
-    fill_in 'Map link', with: 'google' # must be a link fail
+    fill_in 'Map link', with: '' # must be a link fail
     click_button 'Submit'
     expect(page).to have_content('2 Errors')
     expect(page).to have_content('Name is too short (minimum is 4 characters)')
-    expect(page).to have_content('Map link is not a valid URL')
+    expect(page).to have_content('Map link can\'t be blank')
   end
 
   scenario 'updates an existing building' do
@@ -43,11 +43,11 @@ RSpec.feature 'Admin::Buildings', type: :feature do
     building.save!
     visit "/admin/buildings/#{building.id}/edit"
     fill_in 'Name', with: 'tes' # must be 4 chars
-    fill_in 'Map link', with: 'google' # must be a link fail
+    fill_in 'Map link', with: '' # must be a link fail
     click_button 'Submit'
     expect(page).to have_content('2 Errors')
     expect(page).to have_content('Name is too short (minimum is 4 characters)')
-    expect(page).to have_content('Map link is not a valid URL')
+    expect(page).to have_content('Map link can\'t be blank')
   end
 
   scenario 'deletes an existing building' do
@@ -78,7 +78,7 @@ RSpec.feature 'Admin::Buildings', type: :feature do
     fill_in 'Name', with: new_building[:name]
     fill_in 'Map link', with: new_building[:map_link]
     click_link 'Add Phones'
-    select('campus', from: 'Number types')
+    select('phone', from: 'Number types')
     fill_in 'Number', with: phone[:number]
     click_button 'Submit'
     expect(page).to have_content('Success! We built a brand new building!')

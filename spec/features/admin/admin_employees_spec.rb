@@ -32,8 +32,6 @@ RSpec.feature "Admin::Employees", type: :feature do
     fill_in 'Email', with: employee[:email]
     fill_in 'Job title', with: employee[:job_title]
     fill_in 'University classification', with: employee[:university_classification]
-    select_option = find("#employee_department_id > optgroup:nth-child(3) > option").text
-    select(select_option, from: 'Department')
     fill_in 'Description', with: employee[:description]
     select('basic', from: 'User Role')
     select('enabled', from: 'User Status')
@@ -41,22 +39,23 @@ RSpec.feature "Admin::Employees", type: :feature do
     expect(page).to have_content('Success! Employee profile was created!')
   end
 
-  scenario 'fails creating a new employee because of no department' do
+  scenario 'fails creating a new employee because of no wvu username' do
     visit '/admin/employees/new'
     select('Mr', from: 'Prefix')
     fill_in 'First name', with: employee[:first_name]
     fill_in 'Middle name', with: employee[:middle_name]
     fill_in 'Last name', with: employee[:last_name]
     select('I', from: 'Suffix')
-    fill_in 'Wvu username', with: employee[:wvu_username]
+    fill_in 'Wvu username', with: ''
     fill_in 'Email', with: employee[:email]
-    fill_in 'Job title', with: employee[:job_title]
+    fill_in 'Job title', with: 'employee[:job_title]'
     fill_in 'University classification', with: employee[:university_classification]
     fill_in 'Description', with: employee[:description]
     select('basic', from: 'User Role')
     select('enabled', from: 'User Status')
     click_button 'Submit'
-    expect(page).to have_content('Department must exist')
+    expect(page).to have_content('Wvu username can\'t be blank')
+    expect(page).to have_content('Wvu username is too short (minimum is 7 characters)')
   end
 
   scenario 'updates an existing employee' do
