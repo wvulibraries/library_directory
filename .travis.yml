@@ -17,9 +17,9 @@ before_install:
   - docker-compose build
   - docker-compose up -d && docker ps
 script:
-  - docker exec directory bin/rails db:create
-  - docker exec directory bin/rails db:migrate
-  - docker exec directory bundle exec rspec
+  - docker exec -it directory sh -c 'bin/rails db:create; exit $?' 
+  - docker exec -it directory sh -c 'bin/rails db:migrate; exit $?' 
+  - docker exec -it directory sh -c 'bundle exec rspec; exit $?'
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
