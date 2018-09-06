@@ -4,8 +4,9 @@
 # @data_model
 # @since 0.0.1
 class Building < ApplicationRecord
-  # attr accessors
-  # attr_accessor :addresses
+  # concerns
+  include Imageable
+  include Searchable
 
   # validation
   validates :name,
@@ -15,7 +16,6 @@ class Building < ApplicationRecord
 
   validates :map_link,
             presence: true
-  #           url: true
 
   # associations
   has_many :addresses, as: :addressable, dependent: :destroy
@@ -31,7 +31,4 @@ class Building < ApplicationRecord
 
   # active status
   enum status: %i[enabled disabled]
-
-  # concerns
-  include Imageable
 end

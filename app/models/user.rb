@@ -18,10 +18,7 @@ class User < ApplicationRecord
   enum status: %i[disabled enabled]
   enum role: %i[basic admin]
 
-  # concerns
-
   # custom methods
-
   def display_name
     if preferred_name.blank?
       [prefix, first_name, middle_name, last_name, suffix].join(' ')

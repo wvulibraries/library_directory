@@ -1,0 +1,37 @@
+<h2> Library Buildings </h2>
+
+<% @buildings.each do |building| %> 
+
+  <div class="display-list">
+    <div class="image">
+      <img src="<%= building.image %>" alt="buildings profile image"/>
+    </div>
+
+    <div class="text-attributes">
+      <h3> <%= building.name %> </h3>
+
+      <div class="addresses">
+       <% building.addresses.each do |address| %>
+            <div> <%= address.human_readable %> </div>
+          <% end %>
+      </div>
+
+      <ul class="phones">
+        <% building.phones.each do |phone| %>
+          <li>
+            <strong> <%= phone.number_types.capitalize %> : </strong> 
+            <a href="tel:<%= phone.number %>">
+              <%= phone.number %> 
+            </a> 
+          </li>
+          <% end %>
+      </ul>
+      
+      <div class="buttons"> 
+        <a href="<%= building.map_link %>" class="button"> Google Map </a>
+        <a href="/buildings/<%= building.id %>/employees" class="button"> Building Employees </a>
+        <a href="/buildings/<%= building.id %>" class="button">  Building Details </a>
+      </div>
+    </div>
+  </div>
+<% end %>

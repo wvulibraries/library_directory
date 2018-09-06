@@ -37,4 +37,12 @@ RSpec.describe Building, type: :model do
   context 'image uploader' do
     it_behaves_like "imageable"
   end
+
+  context 'elastic search' do
+    it 'should be indexed' do
+      building # instantiate creation
+      Building.__elasticsearch__.refresh_index! # refresh the index
+      expect(Building.search(building.name).records.length).to eq(1)
+    end
+  end
 end

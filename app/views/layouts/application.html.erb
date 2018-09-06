@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= yield :head %>
 </head>
 
@@ -31,13 +32,55 @@
   </header>
 
   <!-- Main -->
-  <main id="main" class="frontend">
+  <main id="main" class="backend">
     <div class="wvu-container"> 
       <!-- Flash -->
       <%= render "utilities/alerts" %>
+
+      <!-- Admin Menu -->
+      <menu id="menu">
+        <ul>
+          <li>
+            <a href="/buildings">
+              <span class="fa fa-building"></span>
+              Buildings
+            </a>
+          </li>
+	        <li>
+            <a href="/about/directory/departments/">
+              <span class="fa fa-university"></span>
+              Departments
+            </a>
+          </li>
+          <li>
+            <a href="/about/directory/employees/">
+              <span class="fa fa-user"></span>
+              Employees
+            </a>
+          </li>
+          <li>
+            <a href="/about/directory/liaisons/">
+              <span class="fa fa-book"></span>
+              Subject Librarians
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="fa fa-phone"></span>
+              Phone List (Morgantown)
+            </a>
+          </li>
+	        <li>
+            <a href="">
+              <span class="fa fa-phone"></span> 
+              Phone List (All)
+            </a>
+          </li>
+        </ul>
+      </menu>
       
       <!-- Yield -->
-      <div class="app-content">
+      <div class="main-content">
         <%= yield %>
       </div>
     </div>
@@ -54,7 +97,7 @@
   </footer>
 
   <!-- JavaScripts -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   <%= yield :js %>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<h2> <%= @building.name %> </h2>
+
+<div class="show-action">
+    <div class="image">
+      <img src="<%= @building.image %>" alt="@buildings profile image"/>
+    </div>
+
+    <div class="text-attributes">
+      <ul>
+
+        <li> 
+          <strong> Map Link: </strong> 
+          <a href="<%= @building.map_link %>"> Google Map Link </a>
+        </li>
+
+        <% unless @building.directions.blank? %>
+        <li>
+          <strong> Directions: </strong>
+          <div class="directions">
+            <%= raw @building.directions %>
+          </div>
+        </li>
+        <% end %>
+        
+        <li> 
+          <strong> Address(es): </strong>
+          <ul>
+          <% @building.addresses.each do |address| %>
+            <li> <%= address.human_readable %> </li>
+          <% end %>
+          </ul>
+        </li>
+        <li> 
+          <strong> Phone(s): </strong>
+          <ul>
+          <% @building.phones.each do |phone| %>
+            <li> 
+              <a href="tel:<%= phone.number %>">
+                <%= phone.number %> 
+              </a> 
+            </li>
+          <% end %>
+          </ul>
+        </li>
+
+        <li> 
+          <strong> Department(s): </strong>
+          <ul>
+          <% @building.departments.each do |dept| %>
+            <li> <%= dept.name %> 
+              <% unless dept.description.nil? %>
+              <span class="micro"> <%= dept.description %> </span>
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+        </p>
+
+        <li> 
+          <strong> Floor(s): </strong>
+          <% @building.floors.each do |floor| %>
+            <div class="floor-container">
+              <div class="floor-map"> 
+                <img src="<%= floor.image %>" alt="buildings profile image"/> 
+                <p> <%= floor.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+</div>

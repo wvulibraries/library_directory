@@ -33,8 +33,9 @@
           <ul>
           <% building.phones.each do |phone| %>
             <li> 
+              <strong> <%= phone.number_types.capitalize %> </strong>
               <a href="tel:<%= phone.number %>">
-                <%= phone.number %> 
+                 <%= phone.number %> 
               </a> 
             </li>
           <% end %>
@@ -43,6 +44,7 @@
 
         <li> 
           <strong> Department(s): </strong>
+          <%= building.departments.count %>
           <ul>
           <% building.departments.each do |dept| %>
             <li> <%= dept.name %> </li>

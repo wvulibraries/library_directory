@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Rails Specific 
+# =====================================================================================
+
 # Rails, MySQL, Puma
 gem 'rails', '~> 5.2.0'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -18,8 +21,10 @@ gem 'jbuilder', '~> 2.5'
 # loads rails apps faster 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# active model time savers
-gem "validate_url"
+# Application Specific 
+# =====================================================================================
+
+gem "validate_url" # active model time savers
 
 # interface items
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
@@ -30,23 +35,32 @@ gem 'multi-select-rails'
 gem 'rack-cas', '~> 0.16.0'
 
 # frontend
-# gem 'bourbon'
-# gem 'neat'
-# gem 'bitters'
 gem 'normalize-scss'
 gem 'font-awesome-sass'
 
-# development and testing
-group :development, :test do
+# searching / indexing for speeds
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
+
+# Test Suite
+# =====================================================================================
+group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem "factory_bot_rails"
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'simplecov-console'
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver', '~> 3.14'  
+  gem 'elasticsearch-extensions'
+end
+
+# Developoment / Test Items (Primarily debugging)
+# =====================================================================================
+group :development, :test do
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # from rails new
   gem 'pry'
   gem 'pry-rails'

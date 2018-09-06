@@ -66,7 +66,6 @@ $borders: 2px solid darken($input-bg,10%);
 
 .ms-container .ms-optgroup-label{
   margin: 0;
-  padding: 1em;
   cursor: pointer;
   color: #999;
 }
@@ -74,7 +73,6 @@ $borders: 2px solid darken($input-bg,10%);
 .ms-container .ms-selectable li.ms-elem-selectable,
 .ms-container .ms-selection li.ms-elem-selection{
   border-bottom: 1px solid #fff;
-  padding: .5em 1em;
   color: $font-color;
   font-size: 1em;
 }
@@ -82,12 +80,11 @@ $borders: 2px solid darken($input-bg,10%);
 .ms-container .ms-selectable li,
 .ms-container .ms-selection li{
   margin:0; 
-  padding: .5em 1em;
   &:hover, &:focus {
     cursor: pointer;
-    color: #fff;
+    color: $link-color;
     text-decoration: none;
-    background-color: $link-color;
+    background-color: $input-bg;
   }
 }
 
@@ -104,4 +101,17 @@ $borders: 2px solid darken($input-bg,10%);
 
 .deselect {
   text-align:right; 
+}
+
+.ms-optgroup-label { 
+  margin:0; 
+  padding:0; 
+  background:$input-bg !important; 
+  color:#999 !important; 
+}
+
+.ms-elem-selectable { 
+  padding-left:1em; 
+  padding-top:.25em; 
+  padding-left:.25em; 
 }

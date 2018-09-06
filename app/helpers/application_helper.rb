@@ -37,4 +37,13 @@ module ApplicationHelper
     end
     link_to(name, '#', class: 'add-fields', data: { id: id, fields: fields.gsub("\n", "") })
   end
+
+  # phone logic helper 
+  def phone_icon_class(phone)
+    if phone.number_types == 'fax'
+      'fas fa-fax'
+    else
+      'fas fa-mobile-alt'
+    end 
+  end 
 end
