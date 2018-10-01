@@ -5,6 +5,16 @@
   margin-bottom:1em;
   position:relative; 
 
+  h3 { 
+    margin-top:0; padding:0;
+    .micro-text {
+      font-size:12px; 
+      font-style: italic;
+      padding:0; margin:0;
+      margin-bottom:1em;
+    }
+  }
+
   .image {
     @include span-columns(12); 
     img { width:100%;}
@@ -20,4 +30,24 @@
       @include omega(); 
     }
   } 
+
+  .phone-item { 
+    padding-left:1em; 
+  }
+  .phone { 
+    margin-bottom:1em;
+  }
+}
+
+.building-card, .department-card { 
+  h4 {
+    @include span-columns(12);
+    margin:0;
+    padding:0; 
+    border-bottom: 2px dotted $border-color; 
+    color: rgba($wvu-blue, .8); 
+    font-weight: 400;
+  }
+  
+  .phones, .addresses { margin-bottom: 1em; }
 }

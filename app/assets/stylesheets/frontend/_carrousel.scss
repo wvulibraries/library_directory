@@ -1,0 +1,30 @@
+.floor-maps { 
+  @include span-columns(10);
+  @include shift(1);
+  background:black;
+  img { width:100%; }
+  margin-top:2em;
+
+  @include breakpoint(720px){ 
+    @include span-columns(6);
+    @include shift(3);
+  }
+}
+
+.slick-arrow { 
+  &:before { 
+    color:$link-color;
+  }
+}
+
+.slick-dots { 
+  &:before { 
+    color:$link-color;
+  }
+}
+
+.slick-dots li button{ 
+  &:before { 
+    color:$link-color;
+  }
+}

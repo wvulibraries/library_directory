@@ -1,72 +1,63 @@
-<h2> <%= @building.name %> </h2>
+<div class="building"> 
+  <h2> <%= @building.name %> </h2>
 
-<div class="show-action">
-    <div class="image">
+  <div class="row">
+    <div class="side-panel">
       <img src="<%= @building.image %>" alt="@buildings profile image"/>
     </div>
 
-    <div class="text-attributes">
-      <ul>
-
-        <li> 
-          <strong> Map Link: </strong> 
-          <a href="<%= @building.map_link %>"> Google Map Link </a>
-        </li>
-
-        <% unless @building.directions.blank? %>
-        <li>
-          <strong> Directions: </strong>
-          <div class="directions">
-            <%= raw @building.directions %>
-          </div>
-        </li>
+    <div class="main-panel">
+      <h3> Addresses </h3>
+      <div class="addresses">
+        <% @building.addresses.each do |address| %>
+          <p> <%= address.human_readable %> </p>
         <% end %>
-        
-        <li> 
-          <strong> Address(es): </strong>
-          <ul>
-          <% @building.addresses.each do |address| %>
-            <li> <%= address.human_readable %> </li>
-          <% end %>
-          </ul>
-        </li>
-        <li> 
-          <strong> Phone(s): </strong>
-          <ul>
-          <% @building.phones.each do |phone| %>
-            <li> 
-              <a href="tel:<%= phone.number %>">
-                <%= phone.number %> 
-              </a> 
-            </li>
-          <% end %>
-          </ul>
-        </li>
+      </div>
 
-        <li> 
-          <strong> Department(s): </strong>
-          <ul>
-          <% @building.departments.each do |dept| %>
-            <li> <%= dept.name %> 
-              <% unless dept.description.nil? %>
-              <span class="micro"> <%= dept.description %> </span>
-              <% end %>
-            </li>
-          <% end %>
-          </ul>
-        </p>
+      <h3> Phones </h3>
+      <div class="phones">
+      <% @building.phones.each do |phone| %>
+        <div class="phone-item">
+          <span class="<%= phone_icon_class(phone) %>"></span>
+          <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+          <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+        </div>
+      <% end %>
+      </div>
 
-        <li> 
-          <strong> Floor(s): </strong>
-          <% @building.floors.each do |floor| %>
-            <div class="floor-container">
-              <div class="floor-map"> 
-                <img src="<%= floor.image %>" alt="buildings profile image"/> 
-                <p> <%= floor.name %> </p>
-              </div>
-            </div>
+      <h3> Departments </h3>
+      <ul class="department-tags">
+      <% @building.departments.each do |dept| %>
+        <li> <%= dept.name %> 
+          <% unless dept.description.nil? %>
+          <span class="micro"> <%= dept.description %> </span>
           <% end %>
         </li>
+      <% end %>
       </ul>
+      
+      <h3> Directions </h3>
+      <div class="map-link">
+        <a href="<%= @building.map_link %>"> Google Map </a>
+      </div>
+
+      <% unless @building.directions.blank? %>
+        <div class="directions">
+          <%= raw @building.directions %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="row">
+    <h2> Floor Maps </h2>
+    <div class="floor-maps">
+      <% @building.floors.each do |floor| %>
+        <div>
+          <img src="<%= floor.image %>" alt="<%= floor.name%> Map Image"/>
+        </div>
+      <% end %>
     </div>
+    </div>
+  </div>
 </div>
+

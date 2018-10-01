@@ -1,0 +1,26 @@
+<div class="search-image">
+</div>
+
+<div class="search-title">
+  <a href="/departments/<%= department.id %>">
+    <%= department.name %>
+  </a>
+</div>
+
+<div class="search-info micro-text">  
+  <div class="description">
+    <%= department.description %>
+  </div>
+
+  <div>
+    <strong> Building: </strong> 
+    <%= department.building_name %>
+  </div>
+  
+  <% if department.service_points.count > 0 %>
+  <div>
+    <strong> Service Points: </strong> <br/>
+    <%= department.service_points.map(&:values).flatten.join(', ') %>
+  </div>
+  <% end %>
+</div>

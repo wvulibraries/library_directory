@@ -12,7 +12,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
 
 # Rails Dependencies
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
@@ -24,7 +24,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Application Specific 
 # =====================================================================================
 
-gem "validate_url" # active model time savers
+gem 'validate_url'
+gem 'sanitize'
 
 # interface items
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
@@ -38,7 +39,8 @@ gem 'rack-cas', '~> 0.16.0'
 gem 'normalize-scss'
 gem 'font-awesome-sass'
 
-# searching / indexing for speeds
+# searching / indexing for speeds / pagination for elegance
+# gem 'kaminari'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 

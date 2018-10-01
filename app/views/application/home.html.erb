@@ -1,13 +1,19 @@
-<h1> Welcome to the WVU Libraries Directory </h1>
+<div class="search-box-wrapper">
+  <div class="search-box">
+    <h1> WVU Libraries Directory </h1>
 
-<p> Testing home page here </p>
+    <form action="/search">          
+      <label for="search" class="visually-hidden"> 
+        WVU Library Directory Search
+      </label>
+      
+      <input type="search" name="query" title="Search Query" placeholder="Search Library Directory... " id="search" class="search-field"/>
+      
+      <button class="search-button button">
+          <span class="fa fa-search"></span> 
+        <span class="visually-hidden"> Search </span>
+      </button>
+    </form>
 
-<%= session['cas'].inspect %> 
-
-<br/><br/>
-
-<%= current_user.inspect %>
-
-<br/><br/>
-
-<%= logged_in? %>
+  </div>
+</div>

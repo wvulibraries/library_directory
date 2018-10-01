@@ -26,4 +26,34 @@ class Department < ApplicationRecord
   # form logic
   accepts_nested_attributes_for :service_points, allow_destroy: true
   accepts_nested_attributes_for :phones, allow_destroy: true
+
+  # search
+  include Searchable
+
+  # return building name for search index
+  def building_name
+    building.name.to_s
+  end
+
+  # scopes
+  scope :visible, -> { where(status: 'enabled') }
+
+  # Elastic Search Settings
+  #
+  # @author David J. Davis
+  #
+  # @description
+  # indexed json, this will help with search rankings.
+  #
+  # rake environment elasticsearch:import:model CLASS='Department' SCOPE="visible" FORCE=y
+  def as_indexed_json(_options)
+    as_json(
+      methods: [:building_name],
+      only: [:id, :name, :building_name],
+      include: {
+        service_points: { only: :name },
+        phones: { only: :number }
+      }
+    )
+  end
 end

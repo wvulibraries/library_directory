@@ -1,0 +1,43 @@
+<div class="search-image">
+  <img src="<%= employee.image.url %>" alt="<%= employee.first_name %> <%= employee.last_name %>">
+</div>
+
+<div class="search-title">
+  <a href="/employee/<%= employee.id %>">
+  <% if employee.preferred_name.blank? %>
+    <%= [employee.prefix, employee.first_name, employee.middle_name, employee.last_name, employee.suffix].join(' ') %>
+  <% else %>
+    <%= [employee.prefix, employee.preferred_name, employee.middle_name, employee.last_name, employee.suffix].join(' ') %>
+  <% end %>
+  </a>
+</div>
+
+<div class="search-info micro-text"> 
+  <div> 
+    <strong> Job Title: </strong> <br/>
+    <% unless employee.job_title.nil? %>
+      <%= employee.job_title %> |
+    <% end %>
+    
+    <%= employee.university_classification %> 
+  </div>
+
+  <div>
+    <strong> Departments: </strong> <br/>
+    <%= employee.departments.map(&:values).flatten.join(', ') %> 
+  </div>
+
+  <% if employee.subjects.count > 0 %>
+  <div>
+    <strong> Subjects: </strong> <br/>
+    <%= employee.subjects.map(&:values).flatten.join(', ') %>
+  </div>
+  <% end %>
+
+  <% if employee.phones.count > 0 %>
+  <div>
+    <strong> Phones: </strong> <br/>
+    <%= employee.phones.map(&:values).flatten.join('<br/>') %>
+  </div>
+  <% end %>
+</div>

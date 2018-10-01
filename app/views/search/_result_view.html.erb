@@ -1,0 +1,18 @@
+<% type = result[:_type] %>
+
+<% type.inspect %>
+<div class="result">
+  <% if type == 'employee' %>
+    <%= render partial: "employee", locals: {employee: result[:_source]} %>
+  <% elsif type == 'building'%>
+    <%= render partial: "building", locals: {building: result[:_source]} %>
+  <% else %>
+    <%= render partial: "department", locals: {department: result[:_source]} %>
+  <% end %>
+
+  <div class="text-muted micro-text visually-hidden">
+    <small> Type: <%= result[:_type] %> </small>
+    <small> Score: <%= result[:_score] %> </small>
+    <small> Index: <%= result[:_index] %> </small>
+  </div>
+</div>

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info, :error
 
   layout 'application'
+  layout 'splash', only: :home
 
   # concerns
   include Authenticatable

@@ -1,0 +1,20 @@
+<div class="search-image">
+  <img src="<%= building.image.url %>" alt="<%= building.name %>">
+</div>
+
+<div class="search-title">
+  <a href="/buildings/<%= building.id %>">
+    <%= building.name %>
+  </a>
+</div>
+
+<div class="search-info micro-text">  
+  <div> 
+    <%= building.description %> 
+  </div>
+
+  <div>
+    <strong> Departments: </strong> <br/>
+    <%= building.departments.map(&:values).flatten.join(', ') %> 
+  </div>
+</div>

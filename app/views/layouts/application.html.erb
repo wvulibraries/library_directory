@@ -12,12 +12,12 @@
 
 <body>
   <!-- Skip to Navigation --> 
-  <a class="wvu-skip-nav" href="#main">Skip to main content</a>
+  <a class="wvu-skip-nav" href="#main"> Skip to Main Content </a>
   
   <!-- Header --> 
   <header class="wvu-masthead">
     <div class="wvu-masthead__container"> 
-      <a class="wvu-masthead__logo header-logo" href="/">
+      <a class="wvu-masthead__logo header-logo" href="">
         <span class="wvu-masthead__title"> Libraries </span>
       </a>
       <div class="button-container">
@@ -31,56 +31,17 @@
     </div> 
   </header>
 
+  <!-- Nav -->
+  <%= render 'utilities/navigation' %>
+
   <!-- Main -->
-  <main id="main" class="backend">
+  <main id="main" class="frontend">
     <div class="wvu-container"> 
       <!-- Flash -->
       <%= render "utilities/alerts" %>
-
-      <!-- Admin Menu -->
-      <menu id="menu">
-        <ul>
-          <li>
-            <a href="/buildings">
-              <span class="fa fa-building"></span>
-              Buildings
-            </a>
-          </li>
-	        <li>
-            <a href="/about/directory/departments/">
-              <span class="fa fa-university"></span>
-              Departments
-            </a>
-          </li>
-          <li>
-            <a href="/about/directory/employees/">
-              <span class="fa fa-user"></span>
-              Employees
-            </a>
-          </li>
-          <li>
-            <a href="/about/directory/liaisons/">
-              <span class="fa fa-book"></span>
-              Subject Librarians
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="fa fa-phone"></span>
-              Phone List (Morgantown)
-            </a>
-          </li>
-	        <li>
-            <a href="">
-              <span class="fa fa-phone"></span> 
-              Phone List (All)
-            </a>
-          </li>
-        </ul>
-      </menu>
       
       <!-- Yield -->
-      <div class="main-content">
+      <div class="app-main-content">
         <%= yield %>
       </div>
     </div>

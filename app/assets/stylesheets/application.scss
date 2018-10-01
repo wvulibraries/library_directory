@@ -15,6 +15,10 @@
  // Font Awesome
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+ // Slick
+ @import 'slick-carousel/slick/slick';
+ @import 'slick-carousel/slick/slick-theme.scss';
  
  // import mixins so that all partials can use them.
  @import "mixins/*";
@@ -25,3 +29,4 @@
  @import "admin/*";
  @import "partials/*";
  @import "frontend/*";
+

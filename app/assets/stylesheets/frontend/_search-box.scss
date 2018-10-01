@@ -1,0 +1,115 @@
+.search-box-wrapper {
+  @include fill-parent;
+  @include clearfix; 
+  height:600px;
+  float:left;
+  background: asset_url("search_bg.jpg") no-repeat center center;
+  background-size:cover;
+}
+
+.search-results-container{ 
+  padding:0;
+}
+
+.search-box { 
+  @include clearfix; 
+  text-align: center; 
+  transform: translateY(200px);
+  
+  @include span-columns(8); 
+  @include shift(2);
+
+  form { 
+    @include appearance(none);
+    @include clearfix; 
+    @include box-sizing; 
+    background:rgba(#000,.2);
+    padding:2em;
+  }
+
+  h1 { 
+    font-size:3em; 
+    color:#fff;
+    letter-spacing:1px; 
+    font-weight:400;
+  }
+}
+
+.result-search-wrapper{ 
+  background: asset_url("search_bg.jpg") no-repeat center center;
+  background-size:cover;
+  border-bottom:4px solid darken($border-color,5%);
+}
+
+.search-box, .results-search-box{
+  @include clearfix; 
+  @include span-columns(8); 
+  @include shift(2);
+
+  .search-field {
+    @include appearance(none);
+    @include span-columns(10);
+    @include box-sizing; 
+    display:inline-block;
+    height:unset;
+    margin:0; 
+
+    &:focus, &:hover, &:active { 
+      outline:none;
+    }
+
+    @include media(720px){ 
+      @include clearfix; 
+      width:80%; 
+      margin:0; 
+      height:60px;
+    }
+  }
+
+  .search-button { 
+    @include span-columns(2); 
+    @include box-sizing; 
+    display:inline-block;
+    height:unset;
+    margin:0; 
+    border-radius:unset; 
+    background-color: $link-color; 
+    border-color: $link-color;
+
+    @include media(720px){ 
+      @include clearfix; 
+      width:20%; 
+      margin:0; 
+      height:60px;
+    }
+}
+}
+
+.search-results{ 
+  @include span-columns(12); 
+  .result { 
+    @include span-columns(12); 
+    padding:1em;
+    border-top: $border; 
+    border-bottom: $border;
+  }
+}
+
+.search-title{ 
+  font-size:2em; 
+}
+
+.search-image { 
+  display:none; 
+  @include media(720px){ 
+    @include span-columns(3); 
+  }
+}
+
+.search-info { 
+  @include span-columns(12);
+  @include media(720px){ 
+    @include span-columns(9); 
+    @include omega();
+  }
+}

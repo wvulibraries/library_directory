@@ -20,3 +20,8 @@
 // ----------------------------------------------------------------
 //= require multi-select
 //= require plugins/mult_select_attach.js
+
+// Floor Maps / Rotating Images 
+// ----------------------------------------------------------------
+//= require slick-carousel/slick/slick.min.js
+//= require plugins/maps.js 

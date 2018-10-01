@@ -1,0 +1,69 @@
+.building {
+  h2 { 
+    margin-top:0; padding:0;
+    .micro-text {
+      font-size:12px; 
+      font-style: italic;
+      padding:0; margin:0;
+      margin-bottom:1em;
+    }
+  }
+
+  h3 {
+    @include span-columns(12);
+    margin:0;
+    padding:0; 
+    border-bottom: 2px dotted $border-color; 
+    color: rgba($wvu-blue, .8); 
+    font-weight: 400;
+  }
+
+  .row{ 
+    @include span-columns(12);
+    margin-bottom:1em;
+  }
+
+  .side-panel { 
+    @include span-columns(12); 
+    img { width:100%; margin-bottom:1em; }
+    text-align: center;
+    @include media(720px){ 
+      @include span-columns(4);
+    }
+  }
+
+  .main-panel { 
+    @include span-columns(12); 
+    @include media(720px){ 
+      @include span-columns(8);
+      @include omega();
+    }
+  } 
+
+  .department-tags { 
+    list-style:none; 
+    margin:0 0 .5em; 
+    padding:0; 
+    li { 
+      font-size:12px;
+      padding:.5em 1em; 
+      border-radius: 4px;
+      display:inline-block; 
+      margin:.25em;
+      background:$pms-5625-c; 
+      @include determine-text-color($pms-5625-c); 
+      font-weight:bold;
+    }
+  }
+  
+  .map-link { 
+    margin-bottom: 1em;
+  }
+
+  .phone-item { 
+    padding-left:1em; 
+  }
+  .phone, .phones { 
+    margin-bottom:1em;
+  }
+}

@@ -7,30 +7,31 @@
       <img src="<%= building.image %>" alt="buildings profile image"/>
     </div>
 
-    <div class="text-attributes">
-      <h3> <%= building.name %> </h3>
+    <div class="text-attributes building-card">
+      <h3 id="building_name"> <%= building.name %> </h3>
 
+      <h4> Address </h4>
       <div class="addresses">
        <% building.addresses.each do |address| %>
             <div> <%= address.human_readable %> </div>
           <% end %>
       </div>
 
-      <ul class="phones">
+      <h4> Phones </h4>
+      <div class="phones">
         <% building.phones.each do |phone| %>
-          <li>
-            <strong> <%= phone.number_types.capitalize %> : </strong> 
-            <a href="tel:<%= phone.number %>">
-              <%= phone.number %> 
-            </a> 
-          </li>
-          <% end %>
-      </ul>
+          <div class="phone-item">
+            <span class="<%= phone_icon_class(phone) %>"></span>
+            <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+            <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+          </div>
+        <% end %>
+      </div>
       
       <div class="buttons"> 
-        <a href="<%= building.map_link %>" class="button"> Google Map </a>
-        <a href="/buildings/<%= building.id %>/employees" class="button"> Building Employees </a>
-        <a href="/buildings/<%= building.id %>" class="button">  Building Details </a>
+        <a href="/buildings/<%= building.id %>/employees" class="button" aria-labelledby="building_name"> Building Employees </a>
+        <a href="/buildings/<%= building.id %>" class="button" aria-labelledby="building_name">  Building Details </a>
+         <a href="<%= building.map_link %>" class="button" aria-labelledby="building_name"> Google Map </a>
       </div>
     </div>
   </div>

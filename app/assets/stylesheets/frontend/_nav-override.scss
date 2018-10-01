@@ -1,0 +1,7 @@
+.wvu-nav__items li.more > a:after, .wvu-nav ul li.more > a:after {
+  position: absolute;
+  top: auto;
+  top: calc(50% - 0.75em);
+  right: 0.5em;
+  content: '\25BE';
+}

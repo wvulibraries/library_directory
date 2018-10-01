@@ -2,10 +2,10 @@ footer{
   @include span-columns(12);
   background: $wvu-blue;
   padding: 10px;
-  border-top: $border;
+  //border-top: $border;
   font-size:10px;
   height:35px;
-  margin-top:35px;
+  // margin-top:35px;
 
   .builtBy {
     color: $gray-text;

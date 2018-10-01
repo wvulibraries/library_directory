@@ -20,10 +20,8 @@ class Employee < User
   # associations
   has_many :departmentable, dependent: :nullify
   has_many :departments, through: :departmentable
-
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
-
   has_many :subjectables, dependent: :nullify
   has_many :subjects, through: :subjectables
 
@@ -33,4 +31,26 @@ class Employee < User
 
   # concerns
   include Imageable
+  include Searchable
+
+  # scopes
+  scope :visible, -> { where(status: 'enabled') }
+
+  # Elastic Search Settings
+  # -----------------------------------------------------
+  # @author David J. Davis
+  # @description indexed json, this will help with search rankings.
+  # rake environment elasticsearch:import:model CLASS='Employee' SCOPE="visible" FORCE=y
+  def as_indexed_json(_options)
+    as_json(
+      methods: [:display_name],
+      only: [:id, :first_name, :last_name, :preferred_name, :display_name, :description, :job_title, :university_classification, :image],
+      include: {
+        departments: { methods: [:building_name],
+                       only: %i[name building_name] },
+        subjects: { only: :name },
+        phones: { only: :number }
+      }
+    )
+  end
 end

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> <%= yield :title %> :: Library Directory :: WVU </title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= yield :head %>
+</head>
+
+<body>
+  <!-- Skip to Navigation --> 
+  <a class="wvu-skip-nav" href="#main"> Skip to Main Content </a>
+  
+  <!-- Header --> 
+  <header class="wvu-masthead">
+    <div class="wvu-masthead__container"> 
+      <a class="wvu-masthead__logo header-logo" href="">
+        <span class="wvu-masthead__title"> Libraries </span>
+      </a>
+      <div class="button-container">
+        <% if logged_in? %>
+          <%= link_to "Admin", "/admin", :class=>"button button--pms-629-c" %>
+          <%= link_to "Logout", "/logout", :class=>"button button--wvu-gold" %>
+        <% else %>
+          <%= link_to "Login", "/login", :class=>"button button--wvu-gold" %>
+        <% end %>
+      </div> 
+    </div> 
+  </header>
+
+  <!-- Nav -->
+  <%= render 'utilities/navigation' %>
+
+  <!-- Main -->
+  <main id="main" class="frontend">
+    <%= yield %>
+  </main>
+
+  <!-- Footers -->
+  <footer>
+      <div class="builtBy">
+          <span class="built">Built</span>
+          <span class="by">By </span>
+          <span class="wvu">WVU</span>
+          <span class="libs">Libraries</span>
+      </div>
+  </footer>
+
+  <!-- JavaScripts -->
+  
+  <%= yield :js %>
+</body>
+</html>

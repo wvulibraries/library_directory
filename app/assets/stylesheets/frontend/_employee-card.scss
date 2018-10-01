@@ -5,7 +5,6 @@
   @include clearfix;
   position:relative;
   margin-bottom:2em;
-  height:calc(300px + 2em);
   overflow: hidden;
 
   border-bottom:2px solid $border-color; 
@@ -36,7 +35,6 @@
     position:relative; 
     padding:1em; 
     overflow: hidden;
-    height:300px;
 
     img { 
       width:100%;
@@ -89,6 +87,11 @@
     .phone-item, .email { 
       padding-left:1em;
       .fa, .fas { width:1em; }
+    }
+
+    .profile-link { 
+      @include span-columns(12);
+      padding:1em 0; 
     }
   }
 }

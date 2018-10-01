@@ -1,0 +1,26 @@
+<div class="department">
+  <h2> <%= @department.name %> <span class="micro-text"> <%= @department.building_name %> </span></h2>
+
+  <% if @department.description.present? %>
+    <p class="description">
+      <%= @department.description %>
+    </p>
+  <% end %>
+
+  <% if @department.service_points.present? %>
+    <% @department.service_points.each do |sp| %>
+    <div class="service-points">
+      <h4> <%= sp.name %> </h4>
+      <div class="phone">
+        <% sp.phones.each do |phone| %>
+        <div class="phone-item">
+            <span class="<%= phone_icon_class(phone) %>"></span>
+            <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+            <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>

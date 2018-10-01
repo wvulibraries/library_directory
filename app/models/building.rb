@@ -4,10 +4,6 @@
 # @data_model
 # @since 0.0.1
 class Building < ApplicationRecord
-  # concerns
-  include Imageable
-  include Searchable
-
   # validation
   validates :name,
             presence: true,
@@ -31,4 +27,29 @@ class Building < ApplicationRecord
 
   # active status
   enum status: %i[enabled disabled]
+
+  # concerns
+  include Imageable
+  include Searchable
+
+  # scopes
+  scope :visible, -> { where(status: 'enabled') }
+
+  # Elastic Search Settings
+  #
+  # @author David J. Davis
+  #
+  # @description
+  # indexed json, this will help with search rankings.
+  #
+  # rake environment elasticsearch:import:model CLASS='Building' SCOPE="visible" FORCE=y
+  def as_indexed_json(_options)
+    as_json(
+      only: [:id, :name, :image],
+      include: {
+        departments: { only: :name },
+        floors: { only: :number }
+      }
+    )
+  end
 end

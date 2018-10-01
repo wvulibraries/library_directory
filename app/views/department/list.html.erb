@@ -1,0 +1,31 @@
+<h2> Library Departments </h2>
+
+<% @departments.each do |dept| %>
+  <div class="display-list department-card">
+    <h3 id="department-name"> <%= dept.name %> <span class="micro-text"> <%= dept.building_name %> </span> </h3>
+    
+    <% if dept.description.present? %>
+      <p> <%= dept.description %></p>
+    <% end %>
+
+    <% if dept.phones.present? %>
+      <h4> Phones </h4>
+      <div class="phone-numbers">
+          <div class="phone">
+            <% dept.phones.each do |phone| %>
+              <div class="phone-item">
+                <span class="<%= phone_icon_class(phone) %>"></span>
+                <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+                <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+
+    <div class="buttons"> 
+      <a href="/departments/<%= dept.id %>/employees" class="button" aria-labelledby="department-name"> Department Employees </a>
+      <a href="/departments/<%= dept.id %>/" class="button" aria-labelledby="department-name"> Department Details </a>
+    </div>
+  </div>
+<% end %>
