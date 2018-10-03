@@ -10,22 +10,19 @@ module Searchable
     include Elasticsearch::Model
     # include Elasticsearch::Model::Callbacks
     index_name [base_class.to_s.pluralize.underscore, Rails.env].join('_')
-    
-    # set number of shards 
+
+    # set number of shards
     settings number_of_shards: 1
-    
+
     # create
     after_commit on: [:create] do
-      __elasticsearch__.index_document if self.status == 'enabled'
+      __elasticsearch__.index_document if status == 'enabled'
     end
 
     # update
     after_commit on: [:update] do
-      if self.status == 'enabled'
-        __elasticsearch__.update_document
-      else
-        __elasticsearch__.delete_document
-      end
+      __elasticsearch__.update_document
+      __elasticsearch__.delete_document unless status == 'enabled'
     end
 
     # delete

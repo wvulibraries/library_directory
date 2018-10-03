@@ -7,7 +7,7 @@ FactoryBot.define do
     suffix { Faker::Name.suffix }
     email { "#{Faker::Internet.username(7..36)}@mail.wvu.edu" }
     wvu_username { Faker::Internet.username(7..36) }
-    status { rand(0..1) }
+    status { 1 }
     role { rand(0..1) }
     university_classification { Faker::Job.field }
     job_title {  Faker::Job.title }

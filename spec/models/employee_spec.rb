@@ -16,7 +16,7 @@ RSpec.describe Employee, type: :model do
 
     it { should validate_length_of(:description).is_at_most(500) }
   end
-  
+
   context 'associations' do
     it { should have_many(:addresses) }
     it { should have_many(:phones) }
@@ -27,4 +27,54 @@ RSpec.describe Employee, type: :model do
   context 'image uploader' do
     it_behaves_like 'imageable'
   end
+
+  describe 'elasticsearch' do
+    before do
+      employee # instantiate employee
+    end
+    context 'determining indexes' do
+      it 'should be indexed' do
+        name = employee.first_name
+        Employee.import(force: true, refresh: true)
+        expect(Employee.search(name).records.length).to eq(1)
+      end
+    end
+  end
+
+  describe 'conditional elasticsearch indexing using callbacks' do
+    before do
+      employee # instantiate
+      Employee.import(force: true, refresh: true)
+    end
+    context 'conditional indexes' do
+      it 'a new record should be indexed' do
+        new_employee = FactoryBot.create :employee
+        Employee.__elasticsearch__.refresh_index!
+        expect(Employee.search(new_employee.first_name).records.length).to eq(1)
+      end
+
+      it 'should remove employee after the update because of the status' do
+        new_employee = FactoryBot.create :employee
+        Employee.__elasticsearch__.refresh_index!
+        new_employee.update(status: 0)
+        sleep 2
+        expect(Employee.search(new_employee.first_name).records.length).to eq(0)
+      end
+
+      it 'should keep employee in index after the update because of status' do
+        new_employee = FactoryBot.create :employee
+        Employee.__elasticsearch__.refresh_index!
+        new_employee.update(status: 'enabled')
+        expect(Employee.search(new_employee.first_name).records.length).to eq(1)
+      end
+
+      it 'should delete the index after destroy' do
+        # verify that the employee exists before
+        expect(Employee.search(employee.first_name).records.length).to eq(1)
+        employee.destroy
+        expect(Employee.search(employee.first_name).records.length).to eq(0)
+      end
+    end
+  end
+
 end

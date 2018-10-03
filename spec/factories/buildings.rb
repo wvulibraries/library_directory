@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :building do
     name { Faker::Lorem.characters(7..49) }
     map_link { Faker::Internet.url }
-    status { rand 0..1 }
+    status { 'enabled' }
 
     factory :building_seed do
       name { Faker::Simpsons.location }

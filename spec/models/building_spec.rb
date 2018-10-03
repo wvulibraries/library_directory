@@ -38,11 +38,50 @@ RSpec.describe Building, type: :model do
     it_behaves_like "imageable"
   end
 
-  context 'elastic search' do
-    it 'should be indexed' do
-      building # instantiate creation
-      Building.__elasticsearch__.refresh_index! # refresh the index
-      expect(Building.search(building.name).records.length).to eq(1)
+  describe 'elasticsearch' do
+    before do
+      building # instantiate building
+      Building.import(force: true, refresh: true)
+    end
+    context 'determining indexes' do
+      it 'should be indexed' do
+        expect(Building.search(building.name).records.length).to eq(1)
+      end
+    end
+  end
+
+  describe 'conditional elasticsearch indexing' do
+    before do
+      building # instantiate
+      Building.import(force: true, refresh: true)
+    end
+    context 'conditional indexes' do
+      it 'a new record should be indexed' do
+        new_building = FactoryBot.create :building
+        Building.__elasticsearch__.refresh_index!
+        expect(Building.search(new_building.name).records.length).to eq(1)
+      end
+
+      it 'should remove building after the update because of the status' do
+        Building.__elasticsearch__.refresh_index!
+        building.update(status: 'disabled')
+        sleep 2 # let the callbacks work
+        expect(Building.search(building.name).records.length).to eq 0
+      end
+
+      it 'should keep building in index after the update because of status' do
+        Building.__elasticsearch__.refresh_index!
+        building.update(status: 'enabled')
+        sleep 2 # let the callbacks work
+        expect(Building.search(building.name).records.length).to eq 1
+      end
+
+      it 'should delete the index after destroy' do
+        # verify that the building exists before
+        expect(Building.search(building.name).records.length).to eq 1
+        building.destroy
+        expect(Building.search(building.name).records.length).to eq 0
+      end
     end
   end
 end
