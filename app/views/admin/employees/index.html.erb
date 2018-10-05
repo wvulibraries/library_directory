@@ -34,10 +34,11 @@
       </ul>
     </div>
 
-    <div class="crud-actions"> 
-      <%= link_to 'Show', admin_employee_path(employee), { class: 'show-button' } %>
-      <%= link_to 'Edit', edit_admin_employee_path(employee), { class: 'edit-button' } %>
-      <%= link_to 'Destroy', admin_employee_path(employee), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+    <div class="crud-actions">
+      <%= link_to raw('<span class="fas fa-user-alt"></span>View'), admin_employee_path(employee), { class: 'show-button' } %>
+      <%= link_to raw('<span class="fa fa-user-edit"></span> Edit'), edit_admin_employee_path(employee), { class: 'edit-button' } %>
+      <%= link_to raw('<span class="fas fa-user-tag"></span> Roles'), admin_employee_leadership_index_path(employee), { class: 'new-button' } %>
+      <%# link_to raw('<span class="fas fa-user-times"></span> Delete'), admin_employee_path(employee), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
     </div>
   </div>
 <% end %>

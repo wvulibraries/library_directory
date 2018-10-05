@@ -1,0 +1,34 @@
+
+<%= form_for :departmentable, method: :patch, url:admin_employee_leadership_path(departmentable.employee_id, departmentable.id), html: { multipart: true } do |form| %>
+  <% if departmentable.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(departmentable.errors.count, "Error") %> </h3> 
+      <p> The following prohibited this departmentable from being saved: </p>
+      <ul>
+      <% departmentable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :leadership_role, class: 'required' %>
+
+    <div class="full">
+      <p class="micro-text"> Member, the default choice denotes that the employee does not have a membership role. </p>
+    </div>
+
+    <div class="select-style">
+      <%= form.select :leadership_role, 
+                      options_for_select(Departmentable.leadership_roles.keys, #.map(&:titlecase), 
+                      selected: :leadership_role), 
+                      include_blank: "Select a Role" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Cancel', admin_employee_leadership_path(departmentable.employee_id, departmentable.id), class: 'cancel-button' %>
+    <%= form.submit 'Submit', class: 'submit-button' %>
+  </div>
+<% end %>

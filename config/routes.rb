@@ -68,5 +68,9 @@ Rails.application.routes.draw do
               :floors,
               :subjects,
               :service_points
+
+    resources :employees do
+      resources :leadership, only: [:index, :edit, :update, :destroy]
+    end
   end
 end

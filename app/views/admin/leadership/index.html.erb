@@ -1,0 +1,27 @@
+<h2> <%= @employee.display_name %> Department Roles </h2>
+
+  <table class="department">
+    <thead>
+      <tr>
+        <th> Department</th>
+        <th> Employee Role </th>
+        <th colspan="2"> </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @departments.each do |assoc| %>
+      <tr>
+        <td> <%= assoc.department.name %> </td>
+        <td> <%= assoc.leadership_role.titlecase %> </td>
+        <td class="align-right" style="width:100px; text-align:right;"> 
+          <%= link_to 'Edit', edit_admin_employee_leadership_path(assoc.employee_id, assoc.id), { class: 'edit-button' } %>
+        </td>
+
+        
+        <td class="align-right" style="width:100px; text-align:right;"> 
+          <%= link_to 'Destroy', admin_employee_leadership_path(assoc.employee_id, assoc.id), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

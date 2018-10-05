@@ -1,0 +1,26 @@
+<fieldset class="department-form">
+  <legend> Departments </legend>
+  
+  <div class="field half">
+    <%= form.label :department, class: 'required' %>
+    <div class="select-style">
+      <%= form.grouped_collection_select :department, Building.includes(:departments).order("departments.name asc"), :departments, :name, :id, :name, { include_hidden: false }, { multiple: false } %>
+    </div> 
+  </div>
+
+  <div class="field half last">
+    <%= form.label :leadership_role, class: 'required' %>
+    <div class="select-style">
+      <%= form.select :leadership_role, 
+                      options_for_select(Departmentable.leadership_roles.keys, #.map(&:titlecase), 
+                      selected: form.object.leadership_role), 
+                      include_blank: "Select a Role" %>
+    </div>
+  </div>
+
+  <div class="action">
+    <%= form.hidden_field :_destroy %>
+    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe, '#', class: "remove-fields delete-department", title: "Delete Department" %>
+  </div>
+
+</fieldset>

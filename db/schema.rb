@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_162652) do
+ActiveRecord::Schema.define(version: 2018_10_05_142317) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "line1"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_162652) do
     t.bigint "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "leadership_role", default: 0, null: false
     t.index ["department_id"], name: "index_departmentables_on_department_id"
     t.index ["employee_id"], name: "index_departmentables_on_employee_id"
   end
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_162652) do
     t.string "university_classification"
     t.bigint "department_id"
     t.string "preferred_name"
+    t.string "resume"
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 

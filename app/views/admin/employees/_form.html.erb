@@ -48,12 +48,38 @@
         </div>
       </div>
     </div>
+  </fieldset>
+
+  <fieldset> 
+    <legend> File Uploads </legend>
+    <div class="field full">
+      <%= image_tag employee.image_url, { class:'preview-image' } if employee.image? %>
+      <%= f.label :image, 'Profile Image' %>
+      <%= f.file_field :image %>
+      <% if employee.image? %>
+        <div class="checkbox-wrapper">
+          <div class="checkbox">
+            <%= f.check_box :remove_image %>
+            <%= f.label :remove_image, 'Remove Image' %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.hidden_field :image_cache %>
+    </div>
 
     <div class="field full">
-      <%= f.label :image, 'Profile Image' %>
-      <%= image_tag(employee.image_url) if employee.image? %>
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
+      <%= link_to 'View Current CV / Resume', employee.resume.url, target: :_blank if employee.resume? %>
+      <%= f.label :resume, 'CV / Resume Upload' %>
+      <%= f.file_field :resume %>
+      <% if employee.resume? %>
+        <div class="checkbox-wrapper">
+          <div class="checkbox">
+            <%= f.check_box :remove_resume %>
+            <%= f.label :remove_resume, 'Remove Resume' %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.hidden_field :resume_cache %>
     </div>
 
   </fieldset>
@@ -160,7 +186,7 @@
   </fieldset>
 
   <div class="actions">
-    <%= link_to 'Cancel', admin_buildings_path, class: 'cancel-button' %>
+    <%= link_to 'Cancel', admin_employees_path, class: 'cancel-button' %>
     <%= f.submit 'Submit', class: 'submit-button' %>
   </div>
 <% end %>

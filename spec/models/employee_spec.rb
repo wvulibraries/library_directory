@@ -28,6 +28,26 @@ RSpec.describe Employee, type: :model do
     it_behaves_like 'imageable'
   end
 
+  context 'resume uploader' do
+    it 'resume? should be true' do
+      obj = FactoryBot.create(:employee, resume: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/files/resume_1.pdf'), 'image/pdf'))
+      expect(obj.resume?).to eq true
+      expect(obj.resume?).to be_in([true, false])
+    end
+
+    it 'resume? should be false' do
+      obj = FactoryBot.create(:employee, resume: nil)
+      expect(obj.resume?).to eq false
+      expect(obj.resume?).to be_in([true, false])
+    end
+
+    it 'should not take any other formats' do
+      obj = FactoryBot.build(:employee, resume: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/files/test_1.jpg'), 'image/jpeg'))
+      expect(obj.valid?).to eq false
+      expect(obj.errors[:resume].first).to eq('You are not allowed to upload "jpg" files, allowed types: pdf')
+    end
+  end
+
   describe 'elasticsearch' do
     before do
       employee # instantiate employee

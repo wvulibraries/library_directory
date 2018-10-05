@@ -59,6 +59,9 @@ en:
     success: "Success! We built a brand new subject!"
     deleted: "Demolition Success! We destroyed the subject!"
     edited: "Success! We have edited the subject!"
+  leadership:
+    success: "Success! You have adjusted the employees leadership role."
+    deleted: "You have removed the department assignment and leadership role."
   names: 
     prefix: [Atty, Dr, Fr, Gov, Hon, Master, Miss, Mr, Mrs, Ms, Ofc, Pres, Prof, Rev, VP]
     suffix: [AB, BA, BE, BFA, BS, BSc, BTech, DBA, DC, DD, DDS, DO, DPhil, DVM, EdD, Hons, JD, Jr, LLB, LLM, MA, MBA, MD, ME, MFA, MLA, MS, MSW, PhD, Sr, I, II, III, IV, V]

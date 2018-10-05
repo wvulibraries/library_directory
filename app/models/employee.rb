@@ -36,6 +36,19 @@ class Employee < User
   # scopes
   scope :visible, -> { where(status: 'enabled') }
 
+  # Resume / CV Option
+  mount_uploader :resume, ResumeUploader
+
+  # resume?
+  # -----------------------------------------------------
+  # @author David J. Davis
+  # @description looks to see if the user has a resume or cv attached
+  # will return true if there is a file, false if no file
+  # @return boolean
+  def resume?
+    !resume.file.nil?
+  end
+
   # Elastic Search Settings
   # -----------------------------------------------------
   # @author David J. Davis
