@@ -95,6 +95,11 @@ In `controllers/application_controller.rb` there is a line to protect from CRSF 
 - Create a standalone html page (outside of your app) which contains a form posting to the action you want to test
 - The authenticity token is stored in the session, so after the form has been displayed hit a url in another browser tab / session that calls reset_session. Now submit the form - it should fail.
 
+
+## Missing Employees
+- Lynne Stahl
+
+
 # ADD TO README 
 
 Things you may want to cover:

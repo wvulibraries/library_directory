@@ -40,3 +40,7 @@ reset-docker.sh
 # ignore database migration
 /data_migration
 /data_migration/* 
+
+# ignore these 
+import/
+import/subjects.rb
