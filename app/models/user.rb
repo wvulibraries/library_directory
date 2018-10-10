@@ -27,6 +27,15 @@ class User < ApplicationRecord
     end
   end
 
+  # name 
+  def name 
+    if preferred_name.blank?
+      [first_name, last_name].join(' ')
+    else
+      [preferred_name, last_name].join(' ')
+    end
+  end 
+
   def admin?
     role == 'admin' && status? == true
   end

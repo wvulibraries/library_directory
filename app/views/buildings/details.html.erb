@@ -38,7 +38,7 @@
       
       <h3> Directions </h3>
       <div class="map-link">
-        <a href="<%= @building.map_link %>"> Google Map </a>
+        <a href="<%= @building.map_link %>" target="_blank"> Google Map </a>
       </div>
 
       <% unless @building.directions.blank? %>
@@ -46,18 +46,15 @@
           <%= raw @building.directions %>
         </div>
       <% end %>
-  </div>
 
-  <div class="row">
-    <h2> Floor Maps </h2>
-    <div class="floor-maps">
-      <% @building.floors.each do |floor| %>
-        <div>
-          <img src="<%= floor.image %>" alt="<%= floor.name%> Map Image"/>
-        </div>
-      <% end %>
-    </div>
-    </div>
+      <h3>Floor Maps</h3>
+      <div class="floor-maps">
+        <% @building.floors.each do |floor| %>
+          <div>
+            <img src="<%= floor.image %>" alt="<%= floor.name%> Map Image"/>
+          </div>
+        <% end %>
+      </div>
   </div>
 </div>
 

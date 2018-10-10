@@ -22,9 +22,11 @@
         <% end %>
       </div>
 
+      <% if @employee.description.present? %>
       <div class="description">
         <p> <%= @employee.description %> </p>
       </div>
+      <% end %>
 
       <h4> Department(s) </h4>
       <div class="departments">
@@ -33,17 +35,20 @@
         <% end %>
       </div>
 
-      <% if @employee.subjects.present? %>
-        <h4> Subject(s) </h4>
-        <ul>
-          <% @employee.subjects.each do |subject| %>
-            <li> <%= subject.name %> </li>
-          <% end %>
-          </ul>
-      <% end %>
-
       <h4> Contact </h4>
       <div class="contact">
+        <% if @employee.addresses.present? %>
+        <div class="addresses">  
+          <% @employee.addresses.each do |addrress| %>
+            <div class="address-item">
+              <span class="fas fa-address-card"></span>
+              <%= address.human_readable %>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+
+        <% if @employee.phones.present? %>
         <div class="phones">  
           <% @employee.phones.each do |phone| %>
             <div class="phone-item">
@@ -53,6 +58,7 @@
             </div>
           <% end %>
         </div>
+        <% end %>
 
         <div class="email">
           <span class="fas fa-envelope"></span>
@@ -61,6 +67,15 @@
           </a>
         </div>
       </div>
+
+      <% if @employee.subjects.present? %>
+      <h4> Subjects </h4>
+      <ul class="subject-tags"> 
+        <% @employee.subjects.sort.each do |subject| %>
+          <li> <%= subject.name %> </li>
+        <% end %>
+      </ul>
+      <% end %>
     </div>
 
   </div>

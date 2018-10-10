@@ -35,6 +35,7 @@ class Employee < User
 
   # scopes
   scope :visible, -> { where(status: 'enabled') }
+  scope :order_name, -> { order(:last_name, :firstname) }
 
   # Resume / CV Option
   mount_uploader :resume, ResumeUploader

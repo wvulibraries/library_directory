@@ -40,9 +40,11 @@
     }
   } 
 
+  $tag-bg: lighten($blue, 70%);
   .department-tags { 
+    @include span-columns(12);
     list-style:none; 
-    margin:0 0 .5em; 
+    margin:.5em 0; 
     padding:0; 
     li { 
       font-size:12px;
@@ -50,8 +52,8 @@
       border-radius: 4px;
       display:inline-block; 
       margin:.25em;
-      background:$pms-5625-c; 
-      @include determine-text-color($pms-5625-c); 
+      background:$tag-bg; 
+      @include determine-text-color($tag-bg); 
       font-weight:bold;
     }
   }

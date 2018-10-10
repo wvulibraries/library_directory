@@ -6,7 +6,7 @@ class BuildingsController < ApplicationController
   end
 
   def employees
-    @employees = Employee.includes(:departments, :phones)
+    @employees = Employee.includes(:departments, :departmentable, :addresses, :phones)
                          .where(status: 'enabled', departments: { building_id: params[:id] })
                          .order(:last_name, :first_name)
     @building = Building.find(params[:id])

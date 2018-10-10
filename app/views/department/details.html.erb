@@ -7,6 +7,23 @@
     </p>
   <% end %>
 
+  <h3> Deparment Points of Contact </h3>
+
+  <% if @department.phones.present? %>
+    <h4> Main Phones </h4>
+    <div class="phone-numbers">
+        <div class="phone">
+          <% @department.phones.each do |phone| %>
+            <div class="phone-item">
+              <span class="<%= phone_icon_class(phone) %>"></span>
+              <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+              <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+
   <% if @department.service_points.present? %>
     <% @department.service_points.each do |sp| %>
     <div class="service-points">

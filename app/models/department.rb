@@ -37,6 +37,7 @@ class Department < ApplicationRecord
 
   # scopes
   scope :visible, -> { where(status: 'enabled') }
+  scope :order_name, -> { order(:name) }
 
   # Elastic Search Settings
   #

@@ -6,6 +6,7 @@ class Departmentable < ApplicationRecord
   # enum
   enum leadership_role: %i[ member
                             director
+                            assistant_director
                             head
                             manager
                             interim_director

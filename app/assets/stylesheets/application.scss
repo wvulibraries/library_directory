@@ -19,11 +19,15 @@
  // Slick
  @import 'slick-carousel/slick/slick';
  @import 'slick-carousel/slick/slick-theme.scss';
+
+ // tablesorter
+ @import 'tablesorter/dist/css/scss/theme.scss';
  
  // import mixins so that all partials can use them.
  @import "mixins/*";
  @import "custom_objects/alerts_defined";
  @import "custom_objects/buttons";
+ @import "custom_objects/tables";
  
  // application wide
  @import "admin/*";

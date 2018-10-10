@@ -1,0 +1,33 @@
+<%# @subjects.employees.inspect %>
+<table>
+  <thead>
+    <tr>
+      <th> 
+        Subject 
+          <span class="fas fa-sort"></span>
+          <span class="fas fa-sort-alpha-up"></span>
+          <span class="fas fa-sort-alpha-down"></span>
+      </th>
+      <th> 
+        Librarian 
+          <span class="fas fa-sort"></span>
+          <span class="fas fa-sort-alpha-up"></span>
+          <span class="fas fa-sort-alpha-down"></span>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td data-label="Subject"> <%= subject.name %> </td>
+        <td data-label="Librarian"> 
+            <% subject.employees.each do |emp| %>
+              <p> <a href="mailto:<%= emp.email %>"> <%= emp.display_name %> </a> </p>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

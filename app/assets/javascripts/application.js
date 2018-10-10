@@ -21,6 +21,11 @@
 //= require multi-select
 //= require plugins/mult_select_attach.js
 
+// Tablesorter
+// ----------------------------------------------------------------
+//= require tablesorter/dist/js/jquery.tablesorter.min.js
+//= require plugins/tablesorter.js
+
 // Floor Maps / Rotating Images 
 // ----------------------------------------------------------------
 //= require slick-carousel/slick/slick.min.js

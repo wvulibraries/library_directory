@@ -1,11 +1,12 @@
 class DepartmentController < ApplicationController
   def list
-    @departments = Department.includes(:service_points)
+    @departments = Department.includes(:building, :phones)
                              .order(:name)
   end
 
   def employees
-    @employees = Employee.includes(:departments)
+    @department = Department.find(params[:id])
+    @employees = Employee.includes(:departments, :departmentable, :addresses, :phones)
                          .where(
                            status: 'enabled',
                            departments: { id: params[:id] }
@@ -14,6 +15,9 @@ class DepartmentController < ApplicationController
   end
 
   def details
-    @department = Department.includes(:service_points).find(params[:id])
+    @department = Department.includes(:service_points,
+                                      :phones,
+                                      :building,
+                                      service_points: [:phones]).find(params[:id] )
   end
 end
