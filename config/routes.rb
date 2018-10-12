@@ -50,6 +50,12 @@ Rails.application.routes.draw do
       to: 'department#employees',
       as: 'department_employees'
 
+  # liaisons
+  get '/liaisons',
+      to: 'liaison#list',
+      as: 'liaisons_list'
+  get '/subjects', to: redirect('/liaisons', status: 302)
+
   # search
   get '/search',
       to: 'search#index',
@@ -59,6 +65,27 @@ Rails.application.routes.draw do
   get '/admin',
       to: 'admin#home',
       as: 'admin_home'
+
+  # phone lists
+  get '/phonelist/morgantown', to: 'phone_list#morgantown'
+  get '/phonelist/all', to: 'phone_list#all'
+
+  # API
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+        # buildings
+        get '/buildings/:id/employees', to: 'buildings#employees'
+        get '/buildings/:id', to: 'buildings#details'
+        get '/buildings', to: 'buildings#list'
+        # # departments
+        get '/departments', to: 'departments#list'
+        get '/departments/:id', to: 'departments#details'
+        get '/departments/:id/employees', to: 'departments#employees'
+        # employees
+        get 'employees', to: 'employees#list'
+        get 'employees/:id', to: 'employees#profile'
+    end 
+  end 
 
   # admin namespaces for crud tasks
   namespace :admin do

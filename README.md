@@ -77,6 +77,7 @@ end
 - Autocompletion [corejs-typeahead](https://github.com/corejavascript/typeahead.js)
 - Background jobs with [ActiveJob](https://github.com/rails/rails/tree/master/activejob) and the [Sidekiq](http://sidekiq.org/) gem
 - Cron [Sidekiq-Cron](https://github.com/ondrejbartas/sidekiq-cron) || [Whenever](https://github.com/javan/whenever)
+- SEO Metatags - https://github.com/kpumuk/meta-tags
 
 
 ## PRY FOR DEBUGGING 
@@ -124,4 +125,26 @@ rake search_index:all                              # Re-index all environments
 rake search_index:building                         # Properly Index Buildings
 rake search_index:department                       # Properly Index Departments
 rake search_index:employee                         # Properly Index Employees
+```
+
+# CSS COLORS
+```
+// Colors
+$blue: #002855;
+$gold: #EAAA00;
+
+$default: #eee;
+$gray-text: #aaa;
+
+// Bitters Defaults
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: $default;
+
+// Web Application Colors
+$link-color: #009bff;
+$notice: #29abe0;
+$error: #d9534f;
+$success: #93c54b;
+$warning: #f47c3c;
 ```

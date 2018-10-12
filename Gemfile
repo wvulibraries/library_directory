@@ -44,6 +44,11 @@ gem 'font-awesome-sass'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+# PDF Stuff
+gem 'prawn-rails'
+
+# presenters
+gem 'presenters'
 
 # Test Suite
 # =====================================================================================
@@ -73,6 +78,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # performance helper
+  gem 'bullet' # helps to eliminate N+1 Queries 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

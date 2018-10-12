@@ -14,11 +14,11 @@ class Department < ApplicationRecord
 
   # associations
   belongs_to :building
-  has_many :service_points, dependent: :destroy
+  has_many :service_points, -> { order(:name) }, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
 
   has_many :departmentable, dependent: :nullify
-  has_many :employees, through: :departmentable
+  has_many :employees, -> { order(:last_name, :first_name) }, through: :departmentable
 
   # active status
   enum status: %i[enabled disabled]

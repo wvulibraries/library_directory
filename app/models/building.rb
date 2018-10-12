@@ -16,7 +16,7 @@ class Building < ApplicationRecord
   # associations
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
-  has_many :departments, dependent: :destroy
+  has_many :departments, -> { order(:name) }, dependent: :destroy
   has_many :floors, dependent: :destroy
 
   # form logic
@@ -34,6 +34,8 @@ class Building < ApplicationRecord
 
   # scopes
   scope :visible, -> { where(status: 'enabled') }
+  scope :morgantown, -> { where(id: [9, 10, 11, 13, 12]) }
+  scope :order_name, -> { order(:name) }
 
   # Elastic Search Settings
   #

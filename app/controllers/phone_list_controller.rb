@@ -1,8 +1,22 @@
 class PhoneListController < ApplicationController
   def morgantown
-    building_ids = [9,10,11,13,12]
-    @buildings = Building.enabled.order_name.includes(departments: { service_points: [:phones], employees: [:phones] }).order_name
-                         .where(id: building_ids)
-                         .order(:name)
-  end 
+    @filename = 'WVU_PhoneList_Morgantown.pdf'
+    @buildings = Building.enabled
+                         .morgantown
+                         .includes(
+                          departments: {
+                            service_points: [:phones],
+                            employees: [:phones, :departmentable]
+                          }).order_name
+  end
+
+  def all
+    @filename = 'WVU_PhoneList_All_Libraries.pdf'
+    @buildings = Building.enabled
+                         .includes(
+                          departments: {
+                            service_points: [:phones],
+                            employees: [:phones, :departmentable]
+                          }).order_name
+  end
 end

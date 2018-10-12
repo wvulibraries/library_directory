@@ -25,10 +25,13 @@ module LibraryDirectory
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.generators.system_tests = nil # don't use minitest 
+    config.generators.system_tests = nil # don't use minitest
 
     # CAS
     config.rack_cas.server_url = 'https://ssodev.wvu.edu/cas/'
+
+    # presenters
+    config.autoload_paths += %W(#{config.root}/presenters)
     
     # force ssl
     # config.force_ssl = true
