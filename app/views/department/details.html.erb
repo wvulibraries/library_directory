@@ -1,5 +1,11 @@
 <div class="department">
-  <h2> <%= @department.name %> <span class="micro-text"> <%= @department.building_name %> </span></h2>
+  <h2> 
+    <%= content_for :title, @department.name %> 
+    <%= @department.name %>
+    <span class="micro-text"> 
+      <%= @department.building_name %> 
+    </span>
+  </h2>
 
   <% if @department.description.present? %>
     <p class="description">

@@ -1,3 +1,4 @@
+<%= content_for :title, "#{@department.name.titlecase} Employees" %>
 <h2> <%= @department.name.titlecase %> Employees </h2>
 
 <%= render 'shared/employees', employees: @employees %>

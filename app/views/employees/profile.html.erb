@@ -1,4 +1,4 @@
-<h2 class="visually-hidden"> <%= @employee.display_name %> </h2>
+<h2 class="visually-hidden"> <%= content_for :title, "#{@employee.display_name.titlecase}" %> </h2>
 
 <div class="employee-card">
 
