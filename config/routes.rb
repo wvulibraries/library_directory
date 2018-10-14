@@ -77,15 +77,17 @@ Rails.application.routes.draw do
         get '/buildings/:id/employees', to: 'buildings#employees'
         get '/buildings/:id', to: 'buildings#details'
         get '/buildings', to: 'buildings#list'
-        # # departments
+
+        # departments
         get '/departments', to: 'departments#list'
         get '/departments/:id', to: 'departments#details'
         get '/departments/:id/employees', to: 'departments#employees'
+        
         # employees
         get 'employees', to: 'employees#list'
         get 'employees/:id', to: 'employees#profile'
-    end 
-  end 
+    end
+  end
 
   # admin namespaces for crud tasks
   namespace :admin do

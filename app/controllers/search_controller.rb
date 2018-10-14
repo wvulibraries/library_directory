@@ -7,7 +7,5 @@ class SearchController < ApplicationController
       [Employee, Building, Department],
       size: 1000
     ).results
-
-    # @results = Employee.search(params[:query])
   end
 end
