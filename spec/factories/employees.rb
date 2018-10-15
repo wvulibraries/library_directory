@@ -24,5 +24,9 @@ FactoryBot.define do
       wvu_username { 'johntest' }
       role { 1 }
     end
+
+    factory :employee_seed do
+      status 'enabled'
+    end
   end
 end

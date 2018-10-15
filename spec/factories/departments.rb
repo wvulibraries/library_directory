@@ -7,5 +7,9 @@ FactoryBot.define do
     factory :department_building do
       association :building, factory: :building_no_image
     end
+
+    factory :department_seed do
+      status 'enabled'
+    end
   end
 end

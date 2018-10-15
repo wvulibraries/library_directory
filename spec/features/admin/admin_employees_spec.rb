@@ -73,8 +73,9 @@ RSpec.feature "Admin::Employees", type: :feature do
   end
 
   scenario 'deletes an existing employee' do
+    # then visit destroy path
     visit '/admin/employees'
-    click_link 'Destroy'
+    click_link 'Delete'
     expect(page).to have_content('Manage Employees')
     expect(page).to have_content('Employee Removed! The employee profile was removed, for temporary removal you should change the employee status.')
     expect(page).to_not have_content(employee_existing.first_name)

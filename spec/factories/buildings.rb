@@ -7,8 +7,20 @@ FactoryBot.define do
     factory :building_seed do
       name { Faker::Simpsons.location }
       map_link { Faker::Internet.url }
-      status { rand 0..1 }
+      status { 'enabled' }
       image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/test_#{rand(1..8)}.jpg"), 'image/jpeg') }
+    end
+
+    factory :building_seed_complete do
+      name { Faker::Simpsons.location }
+      map_link { Faker::Internet.url }
+      status { 'enabled' }
+      image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/test_#{rand(1..8)}.jpg"), 'image/jpeg') }
+      after :create do |building|
+        create_list :phone, 1, phoneable: building
+        create_list :address, 1, addressable: building
+      end
+      # association :addresses, factory: :address, strategy: :build
     end
 
     factory :building_image do

@@ -60,6 +60,7 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'capybara', '>= 2.15', '< 4.0'
+  gem "capybara-webkit"
   gem 'selenium-webdriver', '~> 3.14'  
   gem 'elasticsearch-extensions'
 end

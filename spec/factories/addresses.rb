@@ -13,5 +13,9 @@ FactoryBot.define do
     factory :building_seed_association do
       association :addressable, factory: :building_seed
     end
+
+    factory :employee_seed_association do
+      association :addressable, factory: :employee_seed
+    end
   end
 end
