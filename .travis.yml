@@ -1,7 +1,16 @@
 dist: trusty
 language: ruby
 rvm:
-  - 2.4.1
+  - 2.5.1
+env:
+  global:
+    - RAILS_ENV=test
+    - DB=mysql
+notifications:
+  - false
+branches:
+  only:
+    - master
 addons:
   code_climate:
       repo_token: de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
