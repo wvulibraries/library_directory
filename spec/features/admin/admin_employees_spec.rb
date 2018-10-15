@@ -55,7 +55,7 @@ RSpec.feature "Admin::Employees", type: :feature do
     select('enabled', from: 'User Status')
     click_button 'Submit'
     expect(page).to have_content('Wvu username can\'t be blank')
-    expect(page).to have_content('Wvu username is too short (minimum is 7 characters)')
+    expect(page).to have_content('Wvu username is too short (minimum is 4 characters)')
   end
 
   scenario 'updates an existing employee' do

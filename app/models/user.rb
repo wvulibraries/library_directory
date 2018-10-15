@@ -27,8 +27,8 @@ class User < ApplicationRecord
     end
   end
 
-  # name 
-  def name 
+  # name
+  def name
     if preferred_name.blank?
       [first_name, last_name].join(' ')
     else

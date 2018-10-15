@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
 
     it { should validate_presence_of(:wvu_username) }
-    it { should validate_length_of(:wvu_username).is_at_least(7) }
+    it { should validate_length_of(:wvu_username).is_at_least(4) }
     it { should validate_length_of(:wvu_username).is_at_most(70) }
   end
   
@@ -46,6 +46,19 @@ RSpec.describe User, type: :model do
       user.preferred_name = 'Jo Jo'
       name = [user.prefix, user.preferred_name, user.middle_name, user.last_name, user.suffix].join(' ')
       expect(user.display_name).to eq(name)
+    end
+  end
+
+  context '.name' do
+    it 'expectsname to have all the proper items by joining what exists and what does not exist' do
+      name = [user.first_name, user.last_name].join(' ')
+      expect(user.name).to eq(name)
+    end
+
+    it 'expects display name to user preferred name instead of first name' do
+      user.preferred_name = 'Jo Jo'
+      name = [user.preferred_name, user.last_name].join(' ')
+      expect(user.name).to eq(name)
     end
   end
 

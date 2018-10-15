@@ -1,29 +1,22 @@
-sudo: required
-services:
-  - docker
+dist: trusty
 language: ruby
-rvm: 2.5.1
-env:
-  global:
-    - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
-    - RAILS_ENV=test
-    - DB=mysql
-notifications:
-  - false
-branches:
-  only:
-    - master
-before_install:
-  - docker-compose build
-  - docker-compose up -d && docker ps
-script:
-  - docker exec -it directory sh -c 'bundle exec rake db:create'
-  - docker exec -it directory sh -c 'bundle exec rake db:schema:load' 
-  - docker exec -it directory sh -c 'bundle exec rake db:migrate' 
-  - docker exec -it directory sh -c 'bundle exec rspec'
+rvm:
+  - 2.4.1
+addons:
+  code_climate:
+      repo_token: de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
+  chrome: stable
+  firefox: "49.0"
+services:
+  - mysql
+  - elasticsearch
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - sleep 20 # makes sure services are ready
+  - mysql -e 'create database library_directory_test'
+  - bundle install
+script:
+  - bundle exec bin/rails db:reset RAILS_ENV=test 
+  - bundle exec bin/rails db:migrate RAILS_ENV=test
+  - bundle exec rspec
+after_success:
+  - bundle exec codeclimate-test-reporter

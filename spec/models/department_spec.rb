@@ -17,12 +17,10 @@ RSpec.describe Department, type: :model do
   end
 
   describe 'elasticsearch' do
-    before do
-      dept # instantiate department
-      Department.import(force: true, refresh: true)
-    end
     context 'determining indexes' do
       it 'should be indexed' do
+        dept # instantiate department
+        Department.import(force: true, refresh: true)
         expect(Department.search(dept.name).records.length).to eq(1)
       end
     end
