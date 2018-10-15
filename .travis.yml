@@ -14,8 +14,17 @@ branches:
 addons:
   code_climate:
       repo_token: de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
-  chrome: stable
   firefox: "49.0"
+  apt:
+    sources:
+      - google-chrome
+      - ubuntu-sdk-team
+    packages:
+      - google-chrome-stable
+      - google-chrome-beta
+      - libqt5webkit5-dev
+      - qtdeclarative5-dev
+      - awesome
 services:
   - mysql
   - elasticsearch
