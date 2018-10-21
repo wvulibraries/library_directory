@@ -29,8 +29,12 @@ services:
   - mysql
   - elasticsearch
 before_script:
+  - cat "$TRAVIS_BUILD_DIR/.my.cnf" | sudo tee -a /etc/mysql/my.cnf
+  - sudo service mysql restart
   - sleep 20 # makes sure services are ready
-  - mysql -e 'create database library_directory_test'
+  - mysql -e 'create database library_directory_test;'
+  - mysql -e 'alter database library_directory_test default character set utf8mb4;'
+  - mysql -e 'alter database library_directory_test default collate utf8mb4_unicode_ci;'
   - bundle install
 script:
   - bundle exec bin/rails db:reset RAILS_ENV=test 
