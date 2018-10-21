@@ -32,5 +32,7 @@ SimpleCov.start do
   add_filter %r{^/bin/}
   add_filter %r{^/config/}
   add_filter %r{^/app/helpers/}
+  add_filter %r{^/app/serializers/version1} # ignore these for now
+  add_filter %r{^/app/controllers/api/v1} # ignore these for now
   add_filter 'app/controllers/concerns/authenticatable.rb'
 end
