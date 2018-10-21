@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Admin::Employees", type: :feature do
   # vars for existing 
   let(:building) { FactoryBot.create(:building) }
-  let(:department) { FactoryBot.create(:department_building) }
+  let(:department) { FactoryBot.create(:department_seed, building: building) }
   let(:employee_existing) { FactoryBot.create(:employee) }
   # vars for creating 
   let(:address) { FactoryBot.attributes_for(:address) }

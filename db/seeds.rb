@@ -6,20 +6,20 @@
 # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
 
-# # create some buildings
-# 3.times do
-#   FactoryBot.create :building_seed
-# end
+# create some buildings
+3.times do
+  FactoryBot.create :building_seed
+end
 
-# # create some departments
-# 3.times do
-#   FactoryBot.create :department_building
-# end
+# create some departments
+3.times do
+  FactoryBot.create :department_building
+end
 
-# # create some employees 
-# 3.times do
-#   FactoryBot.create :employee
-# end
+# create some employees 
+3.times do
+  FactoryBot.create :employee
+end
 
 # my_user = {
 #   prefix: nil,

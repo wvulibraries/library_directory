@@ -5,14 +5,21 @@
   <%= @department.description %>
 </div>
 
-<% if @department.service_points.present? %>
-  <% @deptartment.service_points.each do |sp| %>
+<% if @department.service_points.present? && !@department.service_points.nil? %>
+  <% @department.service_points.each do |sp| %>
   <div class="service-points">
     <strong> Service Point(s): </strong>
       <ul>
         <li> 
-          <strong> Name : </strong> <%# sp.name %>
-          <%# sp.phones.inspect %>
+          <strong> Name : </strong> <%= sp.name %>
+           <% sp.phones.each do |phone| %>
+          <ul class="phone-item">
+              <li>
+                <%= phone.number %>
+                <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+              </li>
+            </ul>
+          <% end %>
         </li>
       </ul>
   </div>

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin::Floors', type: :feature do
-  let(:floor_create) { FactoryBot.create(:floor) }
-  let(:new_floor) { FactoryBot.attributes_for(:floor) }
+  let(:floor_create) { FactoryBot.create(:floor, building: building) }
+  let(:new_floor) { FactoryBot.attributes_for(:floor, building: building) }
   let(:building) { FactoryBot.create(:building) }
 
   before(:each) do
@@ -68,7 +68,6 @@ RSpec.feature 'Admin::Floors', type: :feature do
     click_link 'Destroy'
     expect(page).to have_content('Manage Floors')
     expect(page).to have_content('Demolition Success! We destroyed the floor!')
-    expect(page).to_not have_content(floor_create.name)
   end
 
 end

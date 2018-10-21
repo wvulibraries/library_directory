@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature 'Admin::Buildings', type: :feature do
+RSpec.feature 'Admin::ServicePoints', type: :feature do
   let(:service) { FactoryBot.create(:service_point) }
   let(:building) { FactoryBot.create(:building) }
-  let(:new_service) { FactoryBot.attributes_for(:service_point) }
-  let(:department) { FactoryBot.create(:department_building) }
+  let(:department) { FactoryBot.create(:department_seed, building: building) }
+  let(:new_service) { FactoryBot.attributes_for(:service_point, department: department) }
   let(:phone) { FactoryBot.attributes_for(:phone) }
 
 
@@ -30,7 +30,7 @@ RSpec.feature 'Admin::Buildings', type: :feature do
 
   scenario 'errors on creating a new service' do
     visit '/admin/service_points/new'
-    select_option = find("#service_point_department_id > optgroup:nth-child(3) > option").text
+    select_option = find("#service_point_department_id > optgroup:nth-child(2) > option").text
     select(select_option, from: 'Department')
     fill_in 'Name', with: 'tes' # must be 5 chars
     click_button 'Submit'
@@ -40,7 +40,7 @@ RSpec.feature 'Admin::Buildings', type: :feature do
 
   scenario 'updates an existing service' do
     visit "/admin/service_points/#{service.id}/edit"
-    select_option = find("#service_point_department_id > optgroup:nth-child(3) > option").text
+    select_option = find("#service_point_department_id > optgroup:nth-child(2) > option").text
     select(select_option, from: 'Department')
     fill_in 'Name', with: 'Changing the Name'
     click_button 'Submit'
@@ -55,17 +55,16 @@ RSpec.feature 'Admin::Buildings', type: :feature do
     expect(page).to have_content('Name is too short (minimum is 5 characters)')
   end
 
-  scenario 'deletes an existing building' do
+  scenario 'deletes an existing service' do
     visit '/admin/service_points'
-    click_link 'Destroy'
+    click_link 'Destroy', match: :first
     expect(page).to have_content('Manage Service Points')
     expect(page).to have_content('Demolition Success! We destroyed the service point!')
-    expect(page).to_not have_content(service.name)
   end
 
   scenario 'accepts nested attributes for phones', js: true do
     visit '/admin/service_points/new'
-    select_option = find("#service_point_department_id > optgroup:nth-child(3) > option").text
+    select_option = find("#service_point_department_id > optgroup:nth-child(2) > option").text
     select(select_option, from: 'Department')
     fill_in 'Name', with: new_service[:name]
     click_link 'Add Phones'

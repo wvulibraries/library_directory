@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :building do
-    name { Faker::Lorem.characters(7..49) }
+    name { Faker::Simpsons.location }
     map_link { Faker::Internet.url }
     status { 'enabled' }
 
@@ -20,7 +20,6 @@ FactoryBot.define do
         create_list :phone, 1, phoneable: building
         create_list :address, 1, addressable: building
       end
-      # association :addresses, factory: :address, strategy: :build
     end
 
     factory :building_image do

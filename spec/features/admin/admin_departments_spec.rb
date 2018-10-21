@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin::Departments', type: :feature do
-  let(:department) { FactoryBot.create(:department_building) }
-  let(:new_department) { FactoryBot.attributes_for(:department_building) }
+  let(:department) { FactoryBot.create(:department_seed, building: building) }
+  let(:new_department) { FactoryBot.attributes_for(:department_seed, building: building) }
   let(:building) { FactoryBot.create(:building) }
 
   before(:each) do
