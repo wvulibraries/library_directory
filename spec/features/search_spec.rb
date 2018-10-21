@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Buildings", type: :feature do
+RSpec.feature "Search", type: :feature do
   # vars for existing
   let(:building) { FactoryBot.create(:building_seed) }
   let(:building_complete) { FactoryBot.create(:building_seed_complete, name: 'Jumping Joes Crab Shack') }
@@ -16,35 +16,23 @@ RSpec.feature "Buildings", type: :feature do
     employee
   end
 
-  scenario 'building index page' do
-    visit '/buildings'
-    expect(page).to have_content('Library Buildings')
+  scenario 'search with no results found' do
+    visit '/search?query=sillylongstring'
+    expect(page).to have_content('Search found 0 results for the keywords "sillylongstring"')
+  end
+
+  scenario 'search an employee name' do
+    visit "/search?query=#{employee.name}"
+    expect(page).to have_content(employee.name)
+  end
+
+  scenario 'search an department name' do
+    visit "/search?query=#{department.name}"
+    expect(page).to have_content(department.name)
+  end
+
+  scenario 'search an building name' do
+    visit "/search?query=#{building.name}"
     expect(page).to have_content(building.name)
-  end
-
-  scenario 'building on index page with an address and phone number' do
-    building_complete #instantiate 
-    visit '/buildings'
-    expect(page).to have_content('Library Buildings')
-    expect(page).to have_content(building_complete.name)
-    expect(page).to have_content(building_complete.addresses.first.human_readable)
-    expect(page).to have_content(building_complete.phones.first.number)
-  end
-
-  scenario 'building details' do
-    visit "/buildings/#{building.id}"
-    expect(page).to have_content(building.name)
-  end
-
-  scenario 'building employees' do
-    visit "/buildings/#{building.id}/employees"
-    expect(page).to have_content(employee.display_name)
-  end
-
-  scenario 'building employees shows the departments' do
-    visit "/buildings/#{building.id}/employees"
-    expect(page).to have_content(employee.departments.first.name)
-    expect(page).to have_content(employee.departments.last.name)
-    expect(page).to have_content(employee.email)
   end
 end

@@ -24,7 +24,7 @@
         <td data-label="Subject"> <%= subject.name %> </td>
         <td data-label="Librarian"> 
             <% subject.employees.each do |emp| %>
-              <p> <a href="mailto:<%= emp.email %>"> <%= emp.display_name %> </a> </p>
+              <p> <a href="mailto:<%= emp.email %>"> <%= emp.name %> </a> </p>
             <% end %>
         </td>
       </tr>
