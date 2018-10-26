@@ -1,18 +1,16 @@
 FactoryBot.define do
   factory :building do
-    name { Faker::Simpsons.location }
+    sequence(:name) { |n| "#{Faker::Simpsons.location} #{n}" }
     map_link { Faker::Internet.url }
     status { 'enabled' }
 
     factory :building_seed do
-      name { Faker::Simpsons.location }
       map_link { Faker::Internet.url }
       status { 'enabled' }
       image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/test_#{rand(1..8)}.jpg"), 'image/jpeg') }
     end
 
     factory :building_seed_complete do
-      name { Faker::Simpsons.location }
       map_link { Faker::Internet.url }
       status { 'enabled' }
       image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/test_#{rand(1..8)}.jpg"), 'image/jpeg') }
@@ -27,7 +25,6 @@ FactoryBot.define do
     end
 
     factory :building_no_image do
-      name { Faker::Simpsons.location }
       map_link { Faker::Internet.url }
       status { rand 0..1 }
       image { nil }
