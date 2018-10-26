@@ -63,6 +63,7 @@ group :test do
   gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
   gem 'selenium-webdriver', '~> 3.14'  
   gem 'elasticsearch-extensions'
+  gem 'executables'
 end
 
 # Developoment / Test Items (Primarily debugging)

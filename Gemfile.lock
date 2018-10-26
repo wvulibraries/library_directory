@@ -115,6 +115,7 @@ GEM
       multi_json
     erubi (1.7.1)
     execjs (2.7.0)
+    executables (0.1.0)
     factory_bot (4.11.0)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.11.0)
@@ -326,6 +327,7 @@ DEPENDENCIES
   elasticsearch-extensions
   elasticsearch-model
   elasticsearch-rails
+  executables
   factory_bot_rails
   faker!
   font-awesome-sass
