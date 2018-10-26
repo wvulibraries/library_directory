@@ -6,14 +6,13 @@ env:
   global:
     - RAILS_ENV=test
     - DB=mysql
+    - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
 notifications:
   - false
 branches:
   only:
     - master
 addons:
-  code_climate:
-      repo_token: de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
   firefox: "49.0"
   apt:
     sources:
@@ -32,6 +31,9 @@ before_script:
   - cat "$TRAVIS_BUILD_DIR/.my.cnf" | sudo tee -a /etc/mysql/my.cnf
   - sudo service mysql restart
   - sleep 20 # makes sure services are ready
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - mysql -e 'create database library_directory_test;'
   - mysql -e 'alter database library_directory_test default character set utf8mb4;'
   - mysql -e 'alter database library_directory_test default collate utf8mb4_unicode_ci;'
@@ -40,4 +42,4 @@ before_script:
 script:
   - xvfb-run bundle exec rspec
 after_success:
-  - bundle exec codeclimate-test-reporter
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
