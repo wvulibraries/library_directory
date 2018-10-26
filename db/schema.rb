@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_10_05_142317) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "line1"
     t.string "line2"
     t.string "city"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_142317) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses"
   end
 
-  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "map_link"
     t.integer "status", default: 0
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_142317) do
     t.index ["building_id"], name: "index_departments_on_building_id"
   end
 
-  create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.datetime "created_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_142317) do
     t.index ["name"], name: "index_floors_on_name", unique: true
   end
 
-  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "number_types"
     t.string "number"
     t.datetime "created_at", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_142317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "prefix"
     t.string "first_name"
     t.string "middle_name"

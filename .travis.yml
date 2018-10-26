@@ -36,9 +36,8 @@ before_script:
   - mysql -e 'alter database library_directory_test default character set utf8mb4;'
   - mysql -e 'alter database library_directory_test default collate utf8mb4_unicode_ci;'
   - bundle install
+  - bundle exec bin/rails db:schema:load 
 script:
-  - bundle exec bin/rails db:reset RAILS_ENV=test 
-  - bundle exec bin/rails db:migrate RAILS_ENV=test
   - xvfb-run bundle exec rspec
 after_success:
   - bundle exec codeclimate-test-reporter
