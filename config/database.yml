@@ -21,15 +21,15 @@ development:
   <<: *default
   database: library_directory_development
 
-test:
-  <<: *default
-  database: library_directory_test
+# test:
+#   <<: *default
+#   database: library_directory_test
 
 test:
   adapter: mysql2
-  database: myapp_test
   username: travis
-  encoding: utf8
+  database: library_directory_test
+  encoding: utf8mb4
 
 production:
   <<: *default
