@@ -34,6 +34,7 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - cp ./.travis.database.yml ./config/database.yml
   - mysql -e 'create database library_directory_test;'
   - mysql -e 'alter database library_directory_test default character set utf8mb4;'
   - mysql -e 'alter database library_directory_test default collate utf8mb4_unicode_ci;'
