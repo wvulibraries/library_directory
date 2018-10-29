@@ -1,0 +1,9 @@
+.error_page {
+  
+  .align-center{ 
+    @include span-columns(12); 
+    padding:0 10%; 
+    text-align: center;
+    max-width:unset;
+  }
+}
