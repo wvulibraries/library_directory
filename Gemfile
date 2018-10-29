@@ -47,9 +47,6 @@ gem 'elasticsearch-rails'
 # PDF Stuff
 gem 'prawn-rails'
 
-# presenters
-gem 'presenters'
-
 # Test Suite
 # =====================================================================================
 group :test do
