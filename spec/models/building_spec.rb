@@ -59,7 +59,7 @@ RSpec.describe Building, type: :model do
       it 'a new record should be indexed' do
         new_building = FactoryBot.create :building
         Building.__elasticsearch__.refresh_index!
-        expect(Building.search(new_building.name).records.length).to eq(1)
+        expect(Building.search(new_building.name).records.length).to eq(2)
       end
 
       it 'should remove building after the update because of the status' do
