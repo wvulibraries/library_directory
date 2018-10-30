@@ -167,6 +167,8 @@ GEM
       mini_portile2 (~> 2.3.0)
     nokogumbo (1.5.0)
       nokogiri
+    non-stupid-digest-assets (1.0.9)
+      sprockets (>= 2.0)
     normalize-scss (7.0.1)
       sass (~> 3.3)
     pdf-core (0.7.0)
@@ -335,6 +337,7 @@ DEPENDENCIES
   mini_magick
   multi-select-rails
   mysql2 (>= 0.4.4, < 0.6.0)
+  non-stupid-digest-assets
   normalize-scss
   prawn-rails
   pry

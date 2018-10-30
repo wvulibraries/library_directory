@@ -38,6 +38,7 @@ gem 'rack-cas', '~> 0.16.0'
 # frontend
 gem 'normalize-scss'
 gem 'font-awesome-sass'
+gem "non-stupid-digest-assets" # generates assets without fingerprint for 404 and 500 errors. 
 
 # searching / indexing for speeds / pagination for elegance
 # gem 'kaminari'
