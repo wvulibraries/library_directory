@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :building_id, "Building" %>
+    <%= f.label :building_id, "Building", class: 'required' %>
     <div class="select-style">
       <%= f.collection_select :building_id, Building.all, :id, :name, { prompt: 'Building for Floor' } %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name, class: 'required' %>
     <%= f.text_field :name %>
   </div>
 
