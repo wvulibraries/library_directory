@@ -113,3 +113,9 @@
     @include omega();
   }
 }
+
+.frontend.splash { 
+  .alert{ 
+    margin-bottom:0 !important; 
+  }
+}

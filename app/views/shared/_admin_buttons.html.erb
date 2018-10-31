@@ -1,0 +1,10 @@
+ <div class="button-container">
+  <% if logged_in? && !current_user.nil? %>
+    <%= link_to "Admin", "/admin", :class=>"button button--pms-629-c" if current_user.admin? %>
+    <%= link_to "Logout", "/logout", :class=>"button button--wvu-gold" %>
+  <% elsif logged_in? && current_user.nil? %>
+    <!-- do nothing here becuase user does not have priveledges or is not in the db -->
+  <% else %>
+    <%= link_to "Login", "/login", :class=>"button button--wvu-gold" %>
+  <% end %>
+</div> 

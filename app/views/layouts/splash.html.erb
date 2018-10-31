@@ -20,14 +20,7 @@
       <a class="wvu-masthead__logo header-logo" href="">
         <span class="wvu-masthead__title"> Libraries </span>
       </a>
-      <div class="button-container">
-        <% if logged_in? %>
-          <%= link_to "Admin", "/admin", :class=>"button button--pms-629-c" %>
-          <%= link_to "Logout", "/logout", :class=>"button button--wvu-gold" %>
-        <% else %>
-          <%= link_to "Login", "/login", :class=>"button button--wvu-gold" %>
-        <% end %>
-      </div> 
+      <%= render 'shared/admin_buttons' %>
     </div> 
   </header>
 
@@ -35,7 +28,9 @@
   <%= render 'utilities/navigation' %>
 
   <!-- Main -->
-  <main id="main" class="frontend">
+  <main id="main" class="frontend splash">
+    <!-- Flash -->
+    <%= render "utilities/alerts" %>
     <%= yield %>
   </main>
 
