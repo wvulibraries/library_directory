@@ -36,6 +36,8 @@ module Authenticatable
   # login methods
   def login
     if authenticated?
+      reset_session if session[:last_seen] < 1.day.ago
+      session[:last_seen] = Time.now
       redirect_to root_path, success: I18n.t('auth.success')
     else
       render(plain: 'Unauthorized!', status: :unauthorized)
@@ -44,7 +46,7 @@ module Authenticatable
 
   # logout
   def logout
-    session.delete('cas')
+    reset_session
     redirect_to root_path, success: I18n.t('auth.log_out')
   end
 end

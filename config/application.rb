@@ -21,7 +21,7 @@ module LibraryDirectory
   class Application < Rails::Application
     # Time Zone
     config.time_zone = 'Eastern Time (US & Canada)'
-    config.active_record.default_timezone = :local 
+    config.active_record.default_timezone = :local
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -31,9 +31,13 @@ module LibraryDirectory
     config.rack_cas.server_url = 'https://ssodev.wvu.edu/cas/'
 
     # presenters
-    config.autoload_paths += %W(#{config.root}/presenters)
+    # config.autoload_paths += %W(#{config.root}/presenters)
     
     # force ssl
-    # config.force_ssl = true
+    config.force_ssl = true
+    
+    # session store
+    config.session_store :cookie_store, expire_after: 1.day, secure: true
+
   end
 end
