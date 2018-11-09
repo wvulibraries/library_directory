@@ -23,6 +23,12 @@ describe ResumeUploader do
     end
   end
 
+  context 'filename' do
+    it 'expects the file to be named with the current timestamp' do
+      expect(uploader.filename).to eq("resume_1_#{Time.now.to_i}.pdf")
+    end
+  end
+
   context 'coverage report' do
     it 'checks cache folder' do
       tmp_path = "#{Rails.root}/public/uploads/test/resume/tmp/"

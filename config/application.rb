@@ -34,10 +34,10 @@ module LibraryDirectory
     # config.autoload_paths += %W(#{config.root}/presenters)
     
     # force ssl
-    config.force_ssl = true
+    config.force_ssl = true if Rails.env.production?
     
     # session store
-    config.session_store :cookie_store, expire_after: 1.day, secure: true
+    config.session_store :cookie_store, expire_after: 1.day, secure: true if Rails.env.production?
 
   end
 end

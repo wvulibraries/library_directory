@@ -7,6 +7,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
 
+  # rename so no conflicts happen
+  def filename
+    @name ||= "#{file.basename}_#{Time.now.to_i}.#{file.extension}" unless file.nil?
+  end
+
   # directories to use for cache and storage
   def cache_dir
     "#{Rails.root}/public/uploads/#{Rails.env}/tmp/"
