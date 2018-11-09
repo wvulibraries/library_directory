@@ -42,6 +42,12 @@ module Authenticatable
     end
   end
 
+  # signout
+  def signout
+    reset_session
+    redirect_to logout_path
+  end
+
   # logout
   def logout
     reset_session

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       to: 'application#login',
       as: 'login'
 
+  get '/signout', 
+      to: 'application#signout', 
+      as: 'signout'
+
   get '/logout',
       to: 'application#logout',
       as: 'logout'
