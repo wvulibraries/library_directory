@@ -28,7 +28,8 @@ module LibraryDirectory
     config.generators.system_tests = nil # don't use minitest
 
     # CAS
-    config.rack_cas.server_url = 'https://ssodev.wvu.edu/cas/'
+    config.rack_cas.server_url = 'https://ssodev.wvu.edu/cas/' unless Rails.env.production?
+    config.rack_cas.server_url = 'https://sso.wvu.edu/cas/' if Rails.env.production?
 
     # presenters
     # config.autoload_paths += %W(#{config.root}/presenters)
