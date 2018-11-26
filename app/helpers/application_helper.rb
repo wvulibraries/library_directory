@@ -49,6 +49,19 @@ module ApplicationHelper
       'fas fa-fax'
     else
       'fas fa-mobile-alt'
-    end 
-  end 
+    end
+  end
+
+  def title(text)
+    content_for(:title) { text }
+  end
+
+
+  def description(text)
+    content_for(:meta_description) { text }
+  end
+
+  def keywords(text)
+    content_for(:meta_keywords) { text }
+  end
 end

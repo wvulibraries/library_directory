@@ -1,4 +1,16 @@
-<h2 class="visually-hidden"> <%= content_for :title, "#{@employee.display_name.titlecase}" %> </h2>
+<h2 class="visually-hidden"> <%= title "#{@employee.display_name.titlecase}" %> </h2>
+
+<% employee_keywords = [
+  @employee.first_name, 
+  @employee.last_name, 
+  @employee.middle_name, 
+  @employee.name,
+  @employee.display_name, 
+  @employee.email, 
+  @employee.job_title, 
+  @employee.university_classification
+] %>
+
 
 <div class="employee-card">
 
@@ -32,6 +44,8 @@
       <div class="departments">
         <% @employee.departments.each do |dept| %>
           <%= dept.name %> - <%= dept.building.name %>
+          <% employee_keywords << dept.name %>
+          <% employee_keywords << dept.building.name %>
         <% end %>
       </div>
 
@@ -79,3 +93,7 @@
     </div>
 
   </div>
+
+
+<% keywords employee_keywords.join(',') %>
+<% description "#{@employee.display_name}, #{@employee.job_title}, #{@employee.university_classification}.  #{@employee.description} "%>

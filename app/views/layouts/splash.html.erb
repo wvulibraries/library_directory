@@ -2,11 +2,42 @@
 <html>
 
 <head>
-  <title> <%= yield(:title) %> :: Library Directory :: WVU </title>
+  <title> <%= yield :title %> :: Library Directory :: WVU </title>
+
+  <% if yield(:meta_description).present? %>
+    <meta name="description" content="<%= yield(:meta_description) %>" />
+  <% else %>
+    <meta name="description" content="Online Directory allows you to lookup WVU Library employees, faculty, staff, librarians,
+    and research assistants.  It allows you to search by building, department, and find specific people at WVU Libraries." />
+  <% end %>
+
+  <% if yield(:meta_keywords).present? %>
+    <meta name="keywords" content="<%= yield(:meta_keywords) %>" />
+  <% else %>
+    <meta name="keywords" content="university, library, WVU Libraries, directory, library staff,
+    library, employees, staff, faculty, directors, librarians, student, research, find, data, buildings, phone, numbers,
+    address, location, subject research, events, guests, shows, computers, WVU, West, Virginia, University" />
+  <% end %>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+  <!-- BoilderPlate HTML Stuff -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Favicon Stuff -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00457c">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
   <%= yield :head %>
 </head>
 
