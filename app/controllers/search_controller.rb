@@ -1,7 +1,8 @@
 class SearchController < ApplicationController
   layout 'splash'
   def index
-    @search_term = Sanitize.fragment params[:query]
+    clean_term = params[:query].gsub(%r{\{|\}|\[|\]|\\|\/|\^|\~|\:|\!|\"|\'}, '')
+    @search_term = Sanitize.fragment clean_term
     @results = Elasticsearch::Model.search(
       @search_term,
       [Employee, Building, Department],
