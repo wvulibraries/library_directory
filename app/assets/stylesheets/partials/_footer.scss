@@ -1,6 +1,6 @@
-footer{
+.library_credit_line {
   @include span-columns(12);
-  background: $wvu-blue;
+  background: darken($wvu-blue, 10%);
   padding: 10px;
   //border-top: $border;
   font-size:10px;
@@ -21,4 +21,47 @@ footer{
   .built, .by { font-weight: 300; }
   .wvu { color: $gold; }
   .libs { color: #fff; margin-left:-4px; }
+}
+
+.wvu-footer { 
+  background: $wvu-blue; 
+  // background: #002855;
+  color:#fff; 
+  .wvu-container { max-width:85em; @include box-sizing; }
+}
+
+.wvu-contact { 
+  @include span-columns(12);
+  @include media(720px) { 
+    @include span-columns(6); 
+  }
+
+  .footerTitle { 
+    color:$wvu-gold;
+    font-size:1.25em;
+    letter-spacing: 1px;
+  }
+}
+
+.lib-social-media { 
+  @include span-columns(12);
+  @include media(720px) { 
+    @include span-columns(6); 
+    @include omega(); 
+  }
+
+  .wvu-social-media-icons__container { 
+    max-width: unset;
+    margin:0; 
+    padding:0;
+    ul { float:right; }
+    li { width:40px; padding:3px; display:inline-block; }
+  }
+}
+
+.wvu-icons, .wvu-credits, .wvu-contact { 
+  font-size:.9em;
+  a { color: #EAAA00;
+    &:hover, &:active, &:focus { font-weight: bold; font-size:1.1em; }
+  }
 }

@@ -64,4 +64,11 @@ module ApplicationHelper
   def keywords(text)
     content_for(:meta_keywords) { text }
   end
+
+  def last_updated
+    if session[:last_updated].nil?
+      session[:last_updated] = Employee.maximum(:updated_at)
+    end
+    session[:last_updated].to_date.strftime('%B %d, %Y')
+  end
 end

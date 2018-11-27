@@ -1,10 +1,14 @@
 .search-box-wrapper {
   @include fill-parent;
   @include clearfix; 
-  height:600px;
+  height:400px;
   float:left;
   background: asset_url("search_bg.jpg") no-repeat center center;
   background-size:cover;
+
+  @include media(720px){ 
+    height: calc(100vh - (118px + 54px + 221px + 35px)); // 100% view port - header and footer added up
+  }
 }
 
 .search-results-container{ 
@@ -14,10 +18,11 @@
 .search-box { 
   @include clearfix; 
   text-align: center; 
-  transform: translateY(200px);
-  
-  @include span-columns(8); 
-  @include shift(2);
+  transform: translateY(50px);
+
+  @include media(720px){ 
+    transform: translateY(200px);
+  }
 
   form { 
     @include appearance(none);
@@ -43,12 +48,26 @@
 
 .search-box, .results-search-box{
   @include clearfix; 
-  @include span-columns(8); 
-  @include shift(2);
+  @include span-columns(12); 
+  
+  @include media(720px){ 
+    @include span-columns(8); 
+    @include shift(2);
+  }
+
+  @include media(1600px){
+    @include span-columns(6);
+    @include shift(3);
+  }
+
+  @include media(1800px){
+    @include span-columns(4);
+    @include shift(4);
+  }
 
   .search-field {
     @include appearance(none);
-    @include span-columns(10);
+    @include span-columns(12);
     @include box-sizing; 
     display:inline-block;
     height:unset;
@@ -59,6 +78,7 @@
     }
 
     @include media(720px){ 
+      @include span-columns(10);
       @include clearfix; 
       width:80%; 
       margin:0; 
@@ -67,7 +87,7 @@
   }
 
   .search-button { 
-    @include span-columns(2); 
+    @include span-columns(12); 
     @include box-sizing; 
     display:inline-block;
     height:unset;
@@ -76,7 +96,8 @@
     background-color: $link-color; 
     border-color: $link-color;
 
-    @include media(720px){ 
+    @include media(720px){
+      @include span-columns(2);  
       @include clearfix; 
       width:20%; 
       margin:0; 
