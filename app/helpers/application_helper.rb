@@ -66,9 +66,16 @@ module ApplicationHelper
   end
 
   def last_updated
-    if session[:last_updated].nil?
-      session[:last_updated] = Employee.maximum(:updated_at)
-    end
+    get_dates if session[:last_updated].nil?
     session[:last_updated].to_date.strftime('%B %d, %Y')
+  end
+
+  def get_dates
+    updated_date = [Employee.maximum(:created_at), Employee.maximum(:updated_at)].max
+    if updated_date.nil?
+      session[:last_updated] = DateTime.now
+    else
+      session[:last_updated] = updated_date
+    end
   end
 end

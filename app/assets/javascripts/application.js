@@ -30,3 +30,7 @@
 // ----------------------------------------------------------------
 //= require slick-carousel/slick/slick.min.js
 //= require plugins/maps.js 
+
+// Employee Filter
+// ----------------------------------------------------------------
+//= require plugins/employee_filter.js 

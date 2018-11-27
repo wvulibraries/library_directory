@@ -3,8 +3,26 @@
   <%= link_to 'New Employee', new_admin_employee_path, { class: 'new-button' } %>
 </div>
 
+<div class="search-filter">
+  <label for="employee_filter"> Filter Employees </label>
+  <input id="employee_filter" type="text" class="reset search-dom" placeholder="Employee Filters"/>
+
+  <div class="micro-text"> 
+    Note: Filter is meant to trim down the list of employees pretty quickly and only uses the first word as a match to a variety of keywords. <span class="warning"> It is not advised to use more than 1 word. </span>
+  </div>
+</div>
+
 <% @employees.each do |employee| %>
   <div class="crud-list employee-list">
+    
+    <div class="hidden keywords">
+      <%= employee.first_name %>
+      <%= employee.last_name %>
+      <%= employee.middle_name %>
+      <%= employee.status %>
+      <%= employee.role %>
+    </div>
+
     <div class="image">
       <img src="<%= employee.image %>" alt="employees profile image"/>
     </div>
