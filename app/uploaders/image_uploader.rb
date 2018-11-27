@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # rename so no conflicts happen
   def filename
-    @name ||= "#{file.basename}_#{Time.now.to_i}.#{file.extension}" unless file.nil?
+    @name ||= "#{file.basename}_#{Time.now.to_i}.#{file.extension}" if original_filename.present?
   end
 
   # directories to use for cache and storage
