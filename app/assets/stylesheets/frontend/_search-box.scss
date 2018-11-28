@@ -1,12 +1,20 @@
 .search-box-wrapper {
   @include fill-parent;
   @include clearfix; 
-  height:400px;
+  min-height:500px;
   float:left;
   background: asset_url("search_bg.jpg") no-repeat center center;
   background-size:cover;
 
   @include media(720px){ 
+    height: calc(100vh - (118px + 54px + 221px + 35px)); // 100% view port - header and footer added up
+  }
+
+  @include media(1080px){ 
+    height: calc(100vh - (221px)); // 100% view port - header and footer added up
+  }
+
+  @include media(1600){
     height: calc(100vh - (118px + 54px + 221px + 35px)); // 100% view port - header and footer added up
   }
 }
