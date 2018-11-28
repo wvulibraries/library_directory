@@ -38,7 +38,7 @@ module LibraryDirectory
     config.force_ssl = true if Rails.env.production?
     
     # session store
-    config.session_store :cookie_store, expire_after: 10.minutes, secure: true if Rails.env.production?
-
+    config.session_store :cookie_store, expire_after: nil, secure: true if Rails.env.production?
+    config.session_store :cookie_store, key: 'cas', expire_after: 12.hours, secure: true if Rails.env.production?
   end
 end
