@@ -8,7 +8,6 @@
 class Employee < User
   # validations
   validates :job_title,
-            presence: true,
             length: { within: 2..70 }
 
   validates :university_classification,
