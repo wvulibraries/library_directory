@@ -1,119 +1,152 @@
-<h2> Showing <%= @employee.display_name %> </h2>
+<h2 class="hidden"> Showing <%= @employee.display_name %> </h2>
 
-<div class="show-action">
-    <div class="image">
-      <img src="<%= @employee.image %>" alt="employees profile image"/>
+<div class="employee-card">
+
+  <div class="profile-banner">
+    <img src="<%= @employee.image %>" alt="Picture of <%= @employee.display_name %>"/>
+  </div>
+
+  <div class="profile-text">
+    <div class="name-title wvu-h4" id="profile_name"> 
+      <a href="employee/<%= @employee.id %>">
+        <%= @employee.display_name %> 
+      </a>
     </div>
-      <div class="text-attributes">
-      <ul>
 
-        <% if @employee.prefix.present? %>
-        <li>
-          <strong> Prefix: </strong>
-          <%= @employee.prefix %>
-        </li>
-        <% end %>
+    <div class="job-title">
+      <% unless @employee.job_title.nil? || @employee.job_title.empty? %>
+        <div class="micro"> <%= @employee.job_title %> </div>
+      <% end %>
+      <% unless @employee.university_classification.nil? || @employee.university_classification.empty? %>
+          <div class="micro">  <%= @employee.university_classification %>  </div> 
+      <% end %>
+    </div>
 
-        <li>
-          <strong> First Name: </strong>
-          <%= @employee.first_name %>
-        </li>
+    <% if @employee.description.present? %>
+    <div class="description">
+      <p> <%= @employee.description %> </p>
+    </div>
+    <% end %>
 
-        <li>
-          <strong> Middle Name: </strong>
-          <%= @employee.middle_name %>
-        </li>
-
-        <li>
-          <strong> Last Name: </strong>
-          <%= @employee.last_name %>
-        </li>
-
-        <% if @employee.suffix.present? %>
-        <li>
-          <strong> Suffix: </strong>
-          <%= @employee.suffix %>
-        </li>
-        <% end %>
-
-        <li>
-          <strong> Email: </strong>
-          <%= @employee.email %>
-        </li>
-
-        <li>
-          <strong> WVU Username: </strong>
-          <%= @employee.wvu_username %>
-        </li>
-
-        <li>
-          <strong> Unviersity Classification: </strong>
-          <%= @employee.university_classification %>
-        </li>
-
-        <li>
-          <strong> Job Title: </strong>
-          <%= @employee.job_title %>
-        </li>
-
-        <li>
-          <strong> Job Description: </strong>
-          <%= @employee.description %>
-        </li>
-        
-        <li>
-          <strong> Role: </strong>
-          <%= @employee.role.capitalize %>
-        </li>
-        
-        <li>
-          <strong> Status: </strong>
-          <%= @employee.status.capitalize %>
-        </li>
-
-        <li> 
-          <strong> Phone(s): </strong>
-          <ul>
-          <% @employee.phones.each do |phone| %>
-            <li> 
-              <a href="tel:<%= phone.number %>">
-                <%= phone.number %> 
-              </a> 
-            </li>
-          <% end %>
-          </ul>
-        </li>
-
-        <li> 
-          <strong> Address(es): </strong>
-          <ul>
-          <% @employee.addresses.each do |address| %>
-            <li> <%= address.human_readable %> </li>
-          <% end %>
-          </ul>
-        </li>
-
-        <li> 
-          <strong> Subject(s): </strong>
-          <ul>
-          <% @employee.subjects.each do |subject| %>
-            <li> <%= subject.name %> </li>
-          <% end %>
-          </ul>
-        </li>
-
-        <li> 
-          <strong> Department(s): </strong>
-          <ul>
-          <% @employee.departmentable.each do |dept| %>
-            <li> <%= dept.department.name %> <span class="micro"> (<%= dept.leadership_role %>) </span> </li>
-          <% end %>
-          </ul>
-        </li>
-      </ul>
-      <div class="micro-text">
-        Created at <%= @employee.created_at.strftime("%B %d, %Y at %I:%M%p") %> <br/> Updated at <%= @employee.updated_at.strftime("%B %d, %Y at %I:%M%p")%>
+    <h4> Employee Details </h4>
+    <div class="details">
+      <% if @employee.prefix.present? %>
+      <div>
+        <strong> Prefix: </strong>
+        <%= @employee.prefix %>
       </div>
+      <% end %>
+
+      <div>
+        <strong> First Name: </strong>
+        <%= @employee.first_name %>
+      </div>
+
+      <div>
+        <strong> Middle Name: </strong>
+        <%= @employee.middle_name %>
+      </div>
+
+      <div>
+        <strong> Last Name: </strong>
+        <%= @employee.last_name %>
+      </div>
+
+      <% if @employee.suffix.present? %>
+      <div>
+        <strong> Suffix: </strong>
+        <%= @employee.suffix %>
+      </div>
+      <% end %>
+
+      <div>
+        <strong> Email: </strong>
+        <%= @employee.email %>
+      </div>
+
+      <div>
+        <strong> WVU Username: </strong>
+        <%= @employee.wvu_username %>
+      </div>
+
+      <div>
+        <strong> Unviersity Classification: </strong>
+        <%= @employee.university_classification %>
+      </div>
+
+      <div>
+        <strong> Job Title: </strong>
+        <%= @employee.job_title %>
+      </div>
+
+      <div>
+        <strong> Job Description: </strong>
+        <%= @employee.description %>
+      </div>
+      
+      <div>
+        <strong> Role: </strong>
+        <%= @employee.role.capitalize %>
+      </div>
+      
+      <div>
+        <strong> Status: </strong>
+        <%= @employee.status.capitalize %>
+      </div>
+    </div>
+
+    <h4> Department(s) </h4>
+    <div class="departments">
+      <% @employee.departments.each do |dept| %>
+        <%= dept.name %> - <%= dept.building.name %>
+      <% end %>
+    </div>
+
+    <h4> Contact </h4>
+    <div class="contact">
+      <% if @employee.addresses.present? %>
+      <div class="addresses">  
+        <% @employee.addresses.each do |addrress| %>
+          <div class="address-item">
+            <span class="fas fa-address-card"></span>
+            <%= address.human_readable %>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+
+      <% if @employee.phones.present? %>
+      <div class="phones">  
+        <% @employee.phones.each do |phone| %>
+          <div class="phone-item">
+            <span class="<%= phone_icon_class(phone) %>"></span>
+            <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
+            <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+
+      <div class="email">
+        <span class="fas fa-envelope"></span>
+        <a href="mailto:<%= @employee.email %>">
+          <%= @employee.email %>
+        </a>
+      </div>
+    </div>
+
+    <% if @employee.subjects.present? %>
+    <h4> Subjects </h4>
+    <ul class="subject-tags"> 
+      <% @employee.subjects.sort.each do |subject| %>
+        <li> <%= subject.name %> </li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <div class="micro-text">
+      Created at <%= @employee.created_at.strftime("%B %d, %Y at %I:%M%p") %> <br/> 
+      Updated at <%= @employee.updated_at.strftime("%B %d, %Y at %I:%M%p")%>
     </div>
 
     <div class="actions"> 
@@ -122,3 +155,4 @@
       <%= link_to '<span class="fas fa-trash"></span> Destroy'.html_safe, admin_employee_path(@employee), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' }, title:'delete' %>
     </div>
   </div>
+</div>
