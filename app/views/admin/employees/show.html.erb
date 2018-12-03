@@ -22,12 +22,6 @@
       <% end %>
     </div>
 
-    <% if @employee.description.present? %>
-    <div class="description">
-      <p> <%= @employee.description %> </p>
-    </div>
-    <% end %>
-
     <h4> Employee Details </h4>
     <div class="details">
       <% if @employee.prefix.present? %>
@@ -50,6 +44,11 @@
       <div>
         <strong> Last Name: </strong>
         <%= @employee.last_name %>
+      </div>
+
+      <div>
+        <strong> Preferred Name: </strong>
+        <%= @employee.preferred_name %>
       </div>
 
       <% if @employee.suffix.present? %>
