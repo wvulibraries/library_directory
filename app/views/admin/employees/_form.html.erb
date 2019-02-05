@@ -109,7 +109,7 @@
         <%= f.text_field :university_classification, placeholder: "Business Professional" %>
       </div>
 
-      <div class="field">
+      <div class="field full">
         <%= f.label :department_ids, 'Departments' %>
         <%# f.collection_select :department_ids, Department.all.order(:name), :id, :name, { include_hidden: false }, { multiple: true }%>
     
@@ -171,7 +171,7 @@
   <!-- Subjects -->
    <fieldset>
     <legend> Subject Liasons </legend>
-    <div class="field">
+    <div class="field full">
       <%= f.label :subject_ids, 'Subjects' %>
       <%= f.collection_select :subject_ids, Subject.all.order(:name), :id, :name, { include_hidden: false }, { multiple: true }%>
 
