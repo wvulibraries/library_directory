@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   elasticsearch:
-    image: elasticsearch:5.6.10
+    image: elasticsearch:6.6.1
     container_name: elasticsearch
     restart: always
     volumes: 
@@ -25,7 +25,7 @@ services:
       - ./mysql-files:/var/lib/mysql-files
   
   rails: 
-    build: 
+    build:
       context: ./
       dockerfile: Dockerfile
     tty: true
@@ -38,7 +38,7 @@ services:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
       - TERM=xterm 
       - SELENIUM_REMOTE_HOST=selenium
-      - RAILS_ENV=production
+      - RAILS_ENV=production # comment out for development and testing.
     volumes:
       - ./:/home/directory
     ports:
@@ -47,18 +47,3 @@ services:
     links:
       - elasticsearch
       - db
-      - selenium
-  
-  selenium:
-    image: selenium/standalone-chrome-debug
-    container_name: selenium
-    privileged: true
-    ports:
-      - '4444:4444'
-      - '5900:5900'
-    environment:
-      - SCREEN_WIDTH=1440
-      - SCREEN_HEIGHT=900
-      - VNC_NO_PASSWORD=true
-    logging:
-      driver: none

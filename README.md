@@ -8,7 +8,11 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 - Ruby  2.5.1 
 
 ## Testing and Quality Control 
-The test suite includes rspec, capybara, selnium, simplecov, travisCI, and code climate. To run the tests type the following `xvfb-run bundle exec rspec`.  
+The test suite includes rspec, capybara, selnium, simplecov, travisCI, and code climate. 
+To run the tests type the following `xvfb-run bundle exec rspec`.  
+
+### Troubleshooting
+Weirdness with the test dependencies has been known to occur inside of the docker containers.  Each time a test is run it says that a dependency you know is installed is not available.  What worked for me was removing the environment variable from the docker-compose file. 
 
 ## PRY FOR DEBUGGING 
 [Pry for Rails Gist](https://gist.github.com/ddavisgraphics/d1a7a1c52aeadbc2b8305ac0298ae9ab) 

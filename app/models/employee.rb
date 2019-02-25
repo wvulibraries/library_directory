@@ -8,7 +8,8 @@
 class Employee < User
   # validations
   validates :job_title,
-            length: { within: 2..70 }
+            length: { maximum: 70 }, 
+            allow_blank: true
 
   validates :university_classification,
             presence: true,
