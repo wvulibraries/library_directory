@@ -38,16 +38,23 @@ class Building < ApplicationRecord
   scope :order_name, -> { order(:name) }
 
   # Elastic Search Settings
-  #
+  # -----------------------------------------------------
+
+  # Elastic Search Index settings.
+  # These are set in the model to index only specific information.   
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :name
+      indexes :description
+      indexes :status
+    end
+  end
+
+  # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
-  #
-  # @description
-  # indexed json, this will help with search rankings.
-  #
-  # rake environment elasticsearch:import:model CLASS='Building' SCOPE="visible" FORCE=y
   def as_indexed_json(_options)
     as_json(
-      only: [:id, :name, :image],
+      only: [:id, :status, :name, :image],
       include: {
         departments: { only: :name },
         floors: { only: :number }

@@ -11,23 +11,23 @@ namespace :search_index do
   task employee: :environment do
     puts "Indexing Employees"
     Employee.import force: true
-    disabled = Employee.where(status: 'disabled')
-    disabled.each { |e| e.__elasticsearch__.delete_document }
+    # disabled = Employee.where(status: 'disabled')
+    # disabled.each { |e| e.__elasticsearch__.delete_document }
   end
 
   desc 'Properly Index Buildings'
   task building: :environment do
     puts "Indexing Buildings"
     Building.import force: true
-    disabled = Building.where(status: 'disabled')
-    disabled.each { |e| e.__elasticsearch__.delete_document }
+    # disabled = Building.where(status: 'disabled')
+    # disabled.each { |e| e.__elasticsearch__.delete_document }
   end
 
   desc 'Properly Index Departments'
   task department: :environment do
     puts "Indexing Departments"
     Department.import force: true
-    disabled = Department.where(status: 'disabled')
-    disabled.each { |e| e.__elasticsearch__.delete_document }
+    # disabled = Department.where(status: 'disabled')
+    # disabled.each { |e| e.__elasticsearch__.delete_document }
   end
 end

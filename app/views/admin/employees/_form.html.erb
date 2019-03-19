@@ -138,14 +138,14 @@
       <div class="field half">
         <%= f.label :role, 'User Role', class:'required' %>
         <div class="select-style">
-            <%= f.select :role, options_for_select(User.roles.keys.to_a, selected: f.object.role), include_blank: "Select a Role" %>
+            <%= f.select :role, options_for_select(User.roles.keys.to_a, selected: f.object.role) %>
         </div>
       </div>
 
       <div class="field half last">
        <%= f.label :status, 'User Status', class:'required' %>
         <div class="select-style">
-            <%= f.select :status, options_for_select(User.statuses.keys.to_a, selected: f.object.status), include_blank: "Select a Status" %>
+            <%= f.select :status, options_for_select(User.statuses.keys.to_a, selected: f.object.status) %>
         </div>
       </div>
 

@@ -53,13 +53,29 @@ class Employee < User
 
   # Elastic Search Settings
   # -----------------------------------------------------
+
+  # Elastic Search Index settings.
+  # These are set in the model to index only specific information.   
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :display_name
+      indexes :first_name
+      indexes :last_name
+      indexes :preferred_name
+      indexes :job_title
+      indexes :university_classification
+      indexes :description
+      indexes :status
+    end
+  end
+
   # @author David J. Davis
   # @description indexed json, this will help with search rankings.
   # rake environment elasticsearch:import:model CLASS='Employee' SCOPE="visible" FORCE=y
   def as_indexed_json(_options)
     as_json(
       methods: [:display_name],
-      only: [:id, :first_name, :last_name, :preferred_name, :display_name, :description, :job_title, :university_classification, :image],
+      only: [:id, :status, :first_name, :last_name, :preferred_name, :display_name, :description, :job_title, :university_classification, :image],
       include: {
         departments: { methods: [:building_name],
                        only: %i[name building_name] },

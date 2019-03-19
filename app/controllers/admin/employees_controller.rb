@@ -8,7 +8,7 @@ class Admin::EmployeesController < AdminController
   # GET admin/Employees
   # GET admin/Employees.json
   def index
-    @employees = Employee.all.order(:last_name)
+    @employees = Employee.all.order(:last_name, :first_name)
   end
 
   # GET /Employees/1
