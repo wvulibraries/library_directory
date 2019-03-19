@@ -1,3 +1,4 @@
+# Search Controller 
 class SearchController < ApplicationController
   layout 'splash'
   def index
@@ -9,6 +10,9 @@ class SearchController < ApplicationController
     ).results
   end
 
+  # Search Query is used to create a better score for searches across multiple models. For use in this controller only. 
+  # @author David J. Davis
+  # @since 0.0.1
   def search_query
     {
       "size": 1000,
@@ -25,7 +29,10 @@ class SearchController < ApplicationController
       }
     }
   end
-
+  
+  # Abstracting the multi-match search query out from the other function for maintability, this belongs with search query and for use in this controller only. Is dependent of the @search_term being present.
+  # @author David J. Davis
+  # @since 0.0.1
   def multi_match
     {
       "multi_match": {
@@ -36,12 +43,18 @@ class SearchController < ApplicationController
     }
   end
 
+  # Abstracting the disabled filter.  This basically says if the status is disabled, then it is not allowed to be returned in the search results. 
+  # @author David J. Davis
+  # @since 0.0.1
   def disabled_filter
     {
       "term": { "status": "disabled" }
     }
   end
 
+  # Furthering that we are boosting things with a status of enabled, that way if a null item is in the mix it is not ignored, but is sent to the back of the results.  
+  # @author David J. Davis
+  # @since 0.0.1
   def priorities
     [
       {
