@@ -39,11 +39,11 @@ RSpec.describe Department, type: :model do
         expect(Department.search(new_dept.name).records.length).to eq(1)
       end
 
-      it 'should remove department after the update because of the status' do
+      it 'should not remove department after the update because of the status' do
         Department.__elasticsearch__.refresh_index!
         dept.update(status: 'disabled')
         sleep 2 # let the callbacks work
-        expect(Department.search(dept.name).records.length).to eq 0
+        expect(Department.search(dept.name).records.length).to eq 1
       end
 
       it 'should keep department in index after the update because of status' do

@@ -84,12 +84,12 @@ RSpec.describe Employee, type: :model do
         expect(Employee.search(new_employee.first_name).records.length).to eq(1)
       end
 
-      it 'should remove employee after the update because of the status' do
+      it 'should exist in the search still even though disabled' do
         new_employee = FactoryBot.create :employee
         Employee.__elasticsearch__.refresh_index!
         new_employee.update(status: 0)
         sleep 2
-        expect(Employee.search(new_employee.first_name).records.length).to eq(0)
+        expect(Employee.search(new_employee.first_name).records.length).to eq(1)
       end
 
       it 'should keep employee in index after the update because of status' do

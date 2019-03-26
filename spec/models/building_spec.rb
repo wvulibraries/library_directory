@@ -62,14 +62,14 @@ RSpec.describe Building, type: :model do
         expect(Building.search(new_building.name).records.length).to be >= 1
       end
 
-      it 'should remove building after the update because of the status' do
+      it 'should exist in the search still even though disabled' do
         Building.__elasticsearch__.refresh_index!
         building.update(status: 'disabled')
         sleep 2 # let the callbacks work
-        expect(Building.search(building.name).records.length).to eq 0
+        expect(Building.search(building.name).records.length).to eq 1 
       end
 
-      it 'should keep building in index after the update because of status' do
+      it 'should exist in the search still even though disabled' do
         Building.__elasticsearch__.refresh_index!
         building.update(status: 'enabled')
         sleep 2 # let the callbacks work

@@ -33,15 +33,30 @@
 # ============================================================
 require "capybara/webkit"
 
-Capybara.javascript_driver = if ENV['JAVASCRIPT_DRIVER'] # can be "selenium" or "webkit"
-  ENV['JAVASCRIPT_DRIVER'].to_sym
-else
-  :webkit # as defult javascript_driver
-end
+# Capybara.javascript_driver = if ENV['JAVASCRIPT_DRIVER'] # can be "selenium" or "webkit"
+#   ENV['JAVASCRIPT_DRIVER'].to_sym
+# else
+#   :webkit # as defult javascript_driver
+# end
+
+Capybara.javascript_driver = :webkit
 
 # fail fast
 def expect_no_js_errors
   if Capybara.current_driver == :webkit || Capybara.current_driver == :webkit_debug
     expect(page.driver.error_messages).to be_empty
   end
+end
+
+Capybara::Webkit.configure do |config|
+  # Enable debug mode. Prints a log of everything the driver is doing.
+  # config.debug = true
+  # Allow pages to make requests to any URL without issuing a warning.
+  config.allow_unknown_urls
+  # Don't raise errors when SSL certificates can't be validated
+  config.ignore_ssl_errors
+  # Don't load images
+  config.skip_image_loading
+  # Raise JavaScript errors as exceptions
+  config.raise_javascript_errors = true
 end

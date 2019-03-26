@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :building do
-    sequence(:name) { |n| "#{Faker::Simpsons.location} #{n}" }
+    sequence(:name) { |n| "#{Faker::TvShows::Simpsons.location} #{n}" }
     map_link { Faker::Internet.url }
     status { 'enabled' }
 

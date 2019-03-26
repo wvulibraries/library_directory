@@ -52,6 +52,7 @@ gem 'prawn-rails'
 # =====================================================================================
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'simplecov'
