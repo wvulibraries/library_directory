@@ -26,7 +26,7 @@ FactoryBot.define do
     end
 
     factory :employee_seed do
-      status 'enabled'
+      status { 'enabled' }
     end
   end
 end

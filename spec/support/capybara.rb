@@ -1,5 +1,6 @@
-# LOCAL CAPYBARA
-# ============================================================
+# # LOCAL CAPYBARA
+# # ============================================================
+# require 'capybara'
 
 # Capybara.run_server = true
 # Capybara.server_host = '0.0.0.0'
@@ -32,18 +33,18 @@
 #   end
 # end
 
-# # TRAVIS CAPYBARA
-# # ============================================================
-# require 'capybara/webkit'
+# TRAVIS CAPYBARA
+# ============================================================
+require 'capybara/webkit'
 
-# Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :webkit
 
-# Capybara::Webkit.configure do |config|
-#   # Enable debug mode. Prints a log of everything the driver is doing.
-#   # config.debug = true
-#   # Allow pages to make requests to any URL without issuing a warning.
-#   config.allow_unknown_urls
-#   config.ignore_ssl_errors
-#   config.skip_image_loading
-#   config.raise_javascript_errors = false
-# end
+Capybara::Webkit.configure do |config|
+  # Enable debug mode. Prints a log of everything the driver is doing.
+  # config.debug = true
+  # Allow pages to make requests to any URL without issuing a warning.
+  config.allow_unknown_urls
+  config.ignore_ssl_errors
+  config.skip_image_loading
+  config.raise_javascript_errors = false
+end

@@ -5,31 +5,20 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 
 ## Versions
 - Rails 5.2 
-- Ruby  2.5.1 
+- Ruby  2.5.1
+- ElasticSearch 6.6.0 
+- MySQL 5.7.25 
 
 ## Testing and Quality Control 
 The test suite includes rspec, capybara, selnium, simplecov, travisCI, and code climate. 
-To run the tests type the following `xvfb-run bundle exec rspec`.  
+Javascript is difficult to test by iteself.  To run tests locally uncomment the selenium docker container and adjust capybara setups. 
+`RAILS_ENV=test bundle exec rspec` this helps to ensure that all gems are loaded appropriately and you do not get the `shoulda error`.  
 
 ### Troubleshooting
 Weirdness with the test dependencies has been known to occur inside of the docker containers.  Each time a test is run it says that a dependency you know is installed is not available.  What worked for me was removing the environment variable from the docker-compose file. 
 
-## PRY FOR DEBUGGING 
-[Pry for Rails Gist](https://gist.github.com/ddavisgraphics/d1a7a1c52aeadbc2b8305ac0298ae9ab) 
-Pay attention to the attaching part you should also be able to attach by name. 
-
-## Missing Employees
-- Lynne Stahl
-
 # Elastics Search 
-Elastic search is responsible for the searching and indexing of the Rails data. Using callbacks the data will be adjusted and indexed everytime an action is made on the dataset.  In the event that you have to reindex again, you may want to use the rake tasks written in the lib folder, not the ones from the default library.  If a model is not enabled it will show up in the search using the default rake tasks associated with the Rails Elastic Search Gems.  
+Elastic search is responsible for the searching and indexing of the Rails data. Using callbacks the data will be adjusted and indexed everytime an action is made on the dataset.  In the event that you have to reindex again, you may want to use the rake tasks written in the lib folder, not the ones from the default library.  If a model is not enabled it will show up in the search using the default rake tasks associated with the Rails Elastic Search Gems.
 
-## Rake Tasks
-
-```
-rake search_index:all                              # Re-index all environments
-rake search_index:building                         # Properly Index Buildings
-rake search_index:department                       # Properly Index Departments
-rake search_index:employee                         # Properly Index Employees
-```
-
+  git config --global user.email "dave@ddavisgraphics.com"
+  git config --global user.name "David Davis"
