@@ -19,6 +19,3 @@ Weirdness with the test dependencies has been known to occur inside of the docke
 
 # Elastics Search 
 Elastic search is responsible for the searching and indexing of the Rails data. Using callbacks the data will be adjusted and indexed everytime an action is made on the dataset.  In the event that you have to reindex again, you may want to use the rake tasks written in the lib folder, not the ones from the default library.  If a model is not enabled it will show up in the search using the default rake tasks associated with the Rails Elastic Search Gems.
-
-  git config --global user.email "dave@ddavisgraphics.com"
-  git config --global user.name "David Davis"
