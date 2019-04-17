@@ -34,7 +34,7 @@ class User < ApplicationRecord
     else
       [preferred_name, last_name].join(' ')
     end
-  end 
+  end
 
   def admin?
     role == 'admin' && status? == true
