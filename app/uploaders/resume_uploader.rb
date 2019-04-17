@@ -9,7 +9,7 @@ class ResumeUploader < CarrierWave::Uploader::Base
 
   # rename so no conflicts happen
   def filename
-    @name ||= "#{file.basename}_#{Time.now.to_i}.#{file.extension}" unless file.nil? 
+    @name ||= "#{file.basename}_#{Time.now.to_i}.#{file.extension}" unless file.nil?
   end
 
   # directories to use for cache and storage
@@ -20,6 +20,11 @@ class ResumeUploader < CarrierWave::Uploader::Base
   # store directory
   def store_dir
     "#{Rails.root}/public/uploads/#{Rails.env}/resume/#{model.class.to_s.underscore}/"
+  end
+
+  # file size limitation
+  def size_range
+    1..80.megabytes
   end
 
   # extension whitelist

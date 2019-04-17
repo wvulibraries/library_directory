@@ -8,7 +8,7 @@
 class Employee < User
   # validations
   validates :job_title,
-            length: { maximum: 70 }, 
+            length: { maximum: 70 },
             allow_blank: true
 
   validates :university_classification,
@@ -37,7 +37,6 @@ class Employee < User
   scope :visible, -> { where(status: 'enabled') }
   scope :order_name, -> { order(:last_name, :first_name) }
 
-
   # Resume / CV Option
   mount_uploader :resume, ResumeUploader
 
@@ -55,7 +54,7 @@ class Employee < User
   # -----------------------------------------------------
 
   # Elastic Search Index settings.
-  # These are set in the model to index only specific information.   
+  # These are set in the model to index only specific information.
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :display_name
@@ -75,7 +74,7 @@ class Employee < User
   def as_indexed_json(_options)
     as_json(
       methods: [:display_name],
-      only: [:id, :status, :first_name, :last_name, :preferred_name, :display_name, :description, :job_title, :university_classification, :image],
+      only: %i[id status first_name last_name preferred_name display_name description job_title university_classification image],
       include: {
         departments: { methods: [:building_name],
                        only: %i[name building_name] },

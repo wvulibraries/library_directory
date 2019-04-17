@@ -24,7 +24,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Application Specific 
 # =====================================================================================
 
+# validators
 gem 'validate_url'
+
+# security
 gem 'sanitize'
 
 # interface items

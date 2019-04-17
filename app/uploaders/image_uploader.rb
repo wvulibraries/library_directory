@@ -27,6 +27,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     '/default/default_building.jpg'
   end
 
+  # file size limitation
+  def size_range
+    1..50.megabytes
+  end
+
   # Process files as they are uploaded:
   process resize_to_fit: [800, 800]
 
