@@ -18,11 +18,11 @@ RSpec.describe User, type: :model do
     it { should validate_length_of(:wvu_username).is_at_least(4) }
     it { should validate_length_of(:wvu_username).is_at_most(70) }
   end
-  
+
   context 'custom validation .valid_email' do
     it 'expects a valid email response' do
       expect(user).to be_valid
-    end 
+    end
 
     it 'expects email to be invalid as anything, but .edu at the end' do
       user.email = Faker::Internet.email
@@ -42,15 +42,15 @@ RSpec.describe User, type: :model do
       expect(user.display_name).to eq(name)
     end
 
-    it 'expects display name to user preferred name instead of first name' do
+    it 'expects display name to use the user preferred name instead of first name' do
       user.preferred_name = 'Jo Jo'
-      name = [user.prefix, user.preferred_name, user.middle_name, user.last_name, user.suffix].join(' ')
+      name = [user.prefix, user.preferred_name, user.last_name, user.suffix].join(' ')
       expect(user.display_name).to eq(name)
     end
   end
 
   context '.name' do
-    it 'expectsname to have all the proper items by joining what exists and what does not exist' do
+    it 'expects name to have all the proper items by joining what exists and what does not exist' do
       name = [user.first_name, user.last_name].join(' ')
       expect(user.name).to eq(name)
     end
@@ -94,7 +94,6 @@ RSpec.describe User, type: :model do
       expect(user.admin?).to eq false
     end
   end
-
 
   context '.status?' do
     it 'should return true user is enabled' do

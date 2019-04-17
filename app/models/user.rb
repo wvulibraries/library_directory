@@ -23,7 +23,7 @@ class User < ApplicationRecord
     if preferred_name.blank?
       [prefix, first_name, middle_name, last_name, suffix].join(' ')
     else
-      [prefix, preferred_name, middle_name, last_name, suffix].join(' ')
+      [prefix, preferred_name, last_name, suffix].join(' ')
     end
   end
 
