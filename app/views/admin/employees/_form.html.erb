@@ -145,7 +145,7 @@
       <div class="field half last">
        <%= f.label :status, 'User Status', class:'required' %>
         <div class="select-style">
-            <%= f.select :status, options_for_select(User.statuses.keys.to_a, selected: f.object.status) %>
+            <%= f.select :status, options_for_select(User.statuses.keys.to_a, selected: f.object.status || 'enabled') %>
         </div>
       </div>
 
