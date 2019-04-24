@@ -65,6 +65,7 @@ group :test do
   gem 'selenium-webdriver', '~> 3.14'  
   gem 'elasticsearch-extensions'
   gem 'executables'
+  gem 'rspec_junit_formatter'    
 end
 
 # Developoment / Test Items (Primarily debugging)

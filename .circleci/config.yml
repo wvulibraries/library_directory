@@ -7,10 +7,10 @@ jobs:
     # Container Setup
     #############################################
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.5.3-node-browsers
         environment:
           - RAILS_ENV=test
-          - CC_TEST_REPORTER_ID=168bb7cbd2eea60f133f998d851a10822f44eeb06a04bc2b71cec411ba2bb3ba
+          - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
           - COVERAGE=true          
       - image: circleci/mysql:5.7
         environment:
@@ -18,7 +18,8 @@ jobs:
           - MYSQL_ROOT_PASSWORD=circleci
       - image: elasticsearch:6.6.2
         environment:
-          - discovery.type=single-node      
+          - discovery.type=single-node 
+      - image: circleci/node:jessie-browsers               
     
     #############################################
     # Build Steps
@@ -64,6 +65,18 @@ jobs:
       - run:
           name: Load DB schema
           command: bin/rails db:schema:load --trace
+
+      ###########################################
+      # Selenium
+      ###########################################     
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true           
 
       ###########################################
       # Run rspec in parallel
