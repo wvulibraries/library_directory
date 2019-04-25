@@ -1,5 +1,5 @@
 # Library Directory
-[![library_directory](https://travis-ci.org/wvulibraries/library_directory.svg?branch=master)](https://travis-ci.org/wvulibraries/library_directory) [![Maintainability](https://api.codeclimate.com/v1/badges/1eebb5f2bac6fdeae296/maintainability)](https://codeclimate.com/github/wvulibraries/library_directory/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1eebb5f2bac6fdeae296/test_coverage)](https://codeclimate.com/github/wvulibraries/library_directory/test_coverage)
+[![CircleCI](https://circleci.com/gh/wvulibraries/library_directory.svg?style=svg)](https://circleci.com/gh/wvulibraries/library_directory) [![Maintainability](https://api.codeclimate.com/v1/badges/1eebb5f2bac6fdeae296/maintainability)](https://codeclimate.com/github/wvulibraries/library_directory/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/1eebb5f2bac6fdeae296/test_coverage)](https://codeclimate.com/github/wvulibraries/library_directory/test_coverage)
 
 The library directory rebuild.  Needs to replicate and exceed existing behavior while updating the look and feel of the application.  
 
@@ -10,7 +10,7 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 - MySQL 5.7.25 
 
 ## Testing and Quality Control 
-The test suite includes rspec, capybara, selnium, simplecov, travisCI, and code climate. 
+The test suite includes rspec, capybara, selnium, simplecov, CircleCI, and code climate. 
 Javascript is difficult to test by iteself.  To run tests locally uncomment the selenium docker container and adjust capybara setups. 
 `RAILS_ENV=test bundle exec rspec` this helps to ensure that all gems are loaded appropriately and you do not get the `shoulda error`.  
 
