@@ -19,18 +19,18 @@ Capybara.register_driver :remote_browser do |app|
   )
 end
 
-Capybara.javascript_driver = :remote_browser
-
 # uncomment this for local tests
-# RSpec.configure do |config|
-#   config.before(:each) do
-#     Capybara.app_host = 'http://rails:3001'
-#   end
+#Capybara.javascript_driver = :remote_browser
 
-#   config.after(:each) do
-#     Capybara.reset_sessions!
-#     Capybara.use_default_driver
-#     Capybara.app_host = nil
-#   end
-# end
+RSpec.configure do |config|
+  config.before(:each) do
+    Capybara.app_host = 'http://rails:3001'
+  end
+
+  config.after(:each) do
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+    Capybara.app_host = nil
+  end
+end
 
