@@ -1,37 +1,37 @@
 # LOCAL CAPYBARA
 # ============================================================
-require 'capybara'
+# require 'capybara'
 
-Capybara.run_server = true
-Capybara.server_host = '0.0.0.0'
-Capybara.server_port = 3001
+# Capybara.run_server = true
+# Capybara.server_host = '0.0.0.0'
+# Capybara.server_port = 3001
 
-Capybara.register_driver :remote_browser do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu no-sandbox] }
-  )
+# Capybara.register_driver :remote_browser do |app|
+#   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+#     chromeOptions: { args: %w[headless disable-gpu no-sandbox] }
+#   )
 
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    url: 'http://localhost:4444/wd/hub',
-    desired_capabilities: capabilities
-  )
-end
+#   Capybara::Selenium::Driver.new(
+#     app,
+#     browser: :remote,
+#     url: 'http://selenium:4444/wd/hub',
+#     desired_capabilities: capabilities
+#   )
+# end
 
-Capybara.javascript_driver = :remote_browser
+# Capybara.javascript_driver = :remote_browser
 
-RSpec.configure do |config|
-  config.before(:each) do
-    Capybara.app_host = 'http://rails:3001'
-  end
+# RSpec.configure do |config|
+#   config.before(:each) do
+#     Capybara.app_host = 'http://rails:3001'
+#   end
 
-  config.after(:each) do
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
-    Capybara.app_host = nil
-  end
-end
+#   config.after(:each) do
+#     Capybara.reset_sessions!
+#     Capybara.use_default_driver
+#     Capybara.app_host = nil
+#   end
+# end
 
 # TRAVIS CAPYBARA
 # ============================================================
@@ -48,3 +48,37 @@ end
 #   config.skip_image_loading
 #   config.raise_javascript_errors = false
 # end
+
+# CIRCLECI CAPYBARA
+# ============================================================
+require 'capybara'
+
+Capybara.run_server = true
+Capybara.server_host = '0.0.0.0'
+Capybara.server_port = 3001
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+  )
+end
+
+Capybara.javascript_driver = :headless_chrome
+
+RSpec.configure do |config|
+  config.before(:each) do
+    Capybara.app_host = 'http://rails:3001'
+  end
+
+  config.after(:each) do
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+    Capybara.app_host = nil
+  end
+end
