@@ -20,7 +20,7 @@ jobs:
         environment:
           - transport.host: localhost
           - network.host: 0.0.0.0
-          - http.port: 9200        
+          - http.port: 9200             
           - discovery.type=single-node   
     
     #############################################
