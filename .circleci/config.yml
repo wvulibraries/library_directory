@@ -22,7 +22,11 @@ jobs:
           - network.host: 0.0.0.0
           - http.port: 9200        
           - discovery.type=single-node
-      - image: circleci/node:jessie-browsers          
+      - image: circleci/node:jessie-browsers   
+        environment:
+          - transport.host: localhost
+          - network.host: 0.0.0.0
+          - http.port: 4444            
     
     #############################################
     # Build Steps
