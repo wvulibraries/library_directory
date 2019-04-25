@@ -24,7 +24,7 @@ jobs:
           - discovery.type=single-node
       - image: circleci/node:jessie-browsers   
         environment:
-          - transport.host: localhost
+          - transport.host: selenium
           - network.host: 0.0.0.0
           - http.port: 4444            
     
