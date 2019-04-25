@@ -1,23 +1,23 @@
 # LOCAL CAPYBARA
 # ============================================================
-require 'capybara'
+# require 'capybara'
 
-Capybara.run_server = true
-Capybara.server_host = '0.0.0.0'
-Capybara.server_port = 3001
+# Capybara.run_server = true
+# Capybara.server_host = '0.0.0.0'
+# Capybara.server_port = 3001
 
-Capybara.register_driver :remote_browser do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu no-sandbox] }
-  )
+# Capybara.register_driver :remote_browser do |app|
+#   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+#     chromeOptions: { args: %w[headless disable-gpu no-sandbox] }
+#   )
 
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    url: 'http://selenium:4444/wd/hub',
-    desired_capabilities: capabilities
-  )
-end
+#   Capybara::Selenium::Driver.new(
+#     app,
+#     browser: :remote,
+#     url: 'http://selenium:4444/wd/hub',
+#     desired_capabilities: capabilities
+#   )
+# end
 
 # uncomment this for local tests
 # Capybara.javascript_driver = :remote_browser
