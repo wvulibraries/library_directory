@@ -7,7 +7,7 @@ jobs:
     # Container Setup
     #############################################
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.5.3
         environment:
           - RAILS_ENV=test
           - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
@@ -18,7 +18,8 @@ jobs:
           - MYSQL_ROOT_PASSWORD=circleci
       - image: elasticsearch:6.6.2
         environment:
-          - discovery.type=single-node          
+          - discovery.type=single-node
+      - image: circleci/node:jessie-browsers          
     
     #############################################
     # Build Steps
