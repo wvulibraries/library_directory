@@ -2,7 +2,6 @@
 # @author David J. Davis
 # Sets data for views, sets redirects, sets errors
 class Admin::DepartmentsController < AdminController
-
   # before_actions
   before_action :set_department, only: %i[show edit update destroy]
 
@@ -70,10 +69,10 @@ class Admin::DepartmentsController < AdminController
   # Never trust parameters from the scary internet, only allow the white list through.
   def department_params
     params.require(:department)
-    .permit(  :building,
-              :building_id,
-              :name,
-              :description
-            )
+          .permit(:building,
+                  :building_id,
+                  :name,
+                  :description,
+                  phones_attributes: %i[id number_types number _destroy])
   end
 end

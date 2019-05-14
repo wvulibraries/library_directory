@@ -28,6 +28,12 @@
     <%= f.text_area :description %>
   </div>
 
+  <!-- Phones -->
+  <%= f.fields_for :phones do |form| %>
+    <%= render "phone", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Phones", f, :phones %>
+
   <div class="actions">
     <%= link_to 'Cancel', admin_departments_path, class: 'cancel-button' %>
     <%= f.submit 'Submit', class: 'submit-button' %>
