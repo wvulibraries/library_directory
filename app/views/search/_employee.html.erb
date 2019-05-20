@@ -37,7 +37,7 @@
   <% if employee.phones.count > 0 %>
   <div>
     <strong> Phones: </strong> <br/>
-    <%= employee.phones.map(&:values).flatten.join('<br/>') %>
+    <%= raw employee.phones.map(&:values).flatten.join('<br/>') %>
   </div>
   <% end %>
 </div>
