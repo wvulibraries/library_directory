@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature "Admin::Employees", type: :feature do
-  # vars for existing 
+RSpec.feature 'Admin::Employees', type: :feature do
+  # vars for existing
   let(:building) { FactoryBot.create(:building) }
   let(:department) { FactoryBot.create(:department_seed, building: building) }
   let(:employee_existing) { FactoryBot.create(:employee) }
-  # vars for creating 
+  # vars for creating
   let(:address) { FactoryBot.attributes_for(:address) }
   let(:phone) { FactoryBot.attributes_for(:phone) }
   let(:employee) { FactoryBot.attributes_for(:employee) }
@@ -19,7 +19,7 @@ RSpec.feature "Admin::Employees", type: :feature do
   scenario 'testing the index page for employees and returning proper information' do
     visit '/admin/employees'
     expect(page).to have_content('Manage Employees')
-  end 
+  end
 
   scenario 'creates a new employee' do
     visit '/admin/employees/new'
