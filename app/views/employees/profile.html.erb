@@ -43,7 +43,8 @@
       <h4> Department(s) </h4>
       <div class="departments">
         <% @employee.departments.each do |dept| %>
-          <%= dept.name %> - <%= dept.building.name %>
+           <%= dept.name %>
+          <span class="micro"> (<%= dept.building_name %>) </span> <br/>
           <% employee_keywords << dept.name %>
           <% employee_keywords << dept.building.name %>
         <% end %>
