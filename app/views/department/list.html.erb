@@ -26,7 +26,10 @@
 
     <div class="buttons"> 
       <a href="/departments/<%= dept.id %>/employees" class="button" aria-labelledby="department-name"> Department Employees </a>
-      <a href="/departments/<%= dept.id %>/" class="button" aria-labelledby="department-name"> Department Details </a>
+
+      <% if dept.service_points.present? && dept.service_points.length > 0 %>
+        <a href="/departments/<%= dept.id %>/" class="button" aria-labelledby="department-name"> Department Details </a>
+      <% end %> 
     </div>
   </div>
 <% end %>
