@@ -68,14 +68,15 @@ class Admin::BuildingsController < AdminController
   # Never trust parameters from the scary internet, only allow the white list through.
   def building_params
     params.require(:building)
-    .permit(  :name,
-              :map_link,
-              :image,
-              :image_cache,
-              :remove_image,
-              departments_attributes: %i[id name description _destroy],
-              addresses_attributes: %i[id line1 line2 city state zip _destroy],
-              floors_attributes: %i[id name image image_cache _destroy],
-              phones_attributes: %i[id number_types number _destroy])
+          .permit(:name,
+                  :map_link,
+                  :image,
+                  :image_cache,
+                  :remove_image,
+                  :directions,
+                  departments_attributes: %i[id name description _destroy],
+                  addresses_attributes: %i[id line1 line2 city state zip _destroy],
+                  floors_attributes: %i[id name image image_cache _destroy],
+                  phones_attributes: %i[id number_types number _destroy])
   end
 end
