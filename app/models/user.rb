@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # validation
   validates :first_name, presence: true, length: { within: 2..70 }
   validates :last_name, presence: true, length: { within: 2..70 }
-  validates :wvu_username, presence: true, length: { within: 4..70 }
+  validates :wvu_username, presence: true, length: { within: 2..70 }
 
   validates :email, presence: true
   validate  :valid_email
