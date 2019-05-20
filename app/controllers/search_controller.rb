@@ -1,4 +1,4 @@
-# Search Controller 
+# Search Controller
 class SearchController < ApplicationController
   layout 'splash'
   def index
@@ -10,7 +10,7 @@ class SearchController < ApplicationController
     ).results
   end
 
-  # Search Query is used to create a better score for searches across multiple models. For use in this controller only. 
+  # Search Query is used to create a better score for searches across multiple models. For use in this controller only.
   # @author David J. Davis
   # @since 0.0.1
   def search_query
@@ -24,12 +24,12 @@ class SearchController < ApplicationController
               "must_not": [disabled_filter]
             }
           },
-        "functions": priorities
+          "functions": priorities
         }
       }
     }
   end
-  
+
   # Abstracting the multi-match search query out from the other function for maintability, this belongs with search query and for use in this controller only. Is dependent of the @search_term being present.
   # @author David J. Davis
   # @since 0.0.1
@@ -37,22 +37,22 @@ class SearchController < ApplicationController
     {
       "multi_match": {
         "query": @search_term,
-        "fields": %w[*_name name job_title university_classification],
+        "fields": %w[*_name^10 name^10 job_title university_classification],
         "fuzziness": 'auto'
       }
     }
   end
 
-  # Abstracting the disabled filter.  This basically says if the status is disabled, then it is not allowed to be returned in the search results. 
+  # Abstracting the disabled filter.  This basically says if the status is disabled, then it is not allowed to be returned in the search results.
   # @author David J. Davis
   # @since 0.0.1
   def disabled_filter
     {
-      "term": { "status": "disabled" }
+      "term": { "status": 'disabled' }
     }
   end
 
-  # Furthering that we are boosting things with a status of enabled, that way if a null item is in the mix it is not ignored, but is sent to the back of the results.  
+  # Furthering that we are boosting things with a status of enabled, that way if a null item is in the mix it is not ignored, but is sent to the back of the results.
   # @author David J. Davis
   # @since 0.0.1
   def priorities
@@ -65,5 +65,4 @@ class SearchController < ApplicationController
       }
     ]
   end
-
 end
