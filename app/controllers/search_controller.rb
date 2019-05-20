@@ -37,7 +37,7 @@ class SearchController < ApplicationController
     {
       "multi_match": {
         "query": @search_term,
-        "fields": %w[*_name^10 name^10 job_title university_classification],
+        "fields": %w[*_name^10 job_title university_classification],
         "fuzziness": 'auto'
       }
     }
