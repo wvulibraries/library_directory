@@ -1,7 +1,12 @@
 class Api::V1::BuildingsController < ApplicationController
+  # concerns
+  include PublishApi
+  before_action :public_headers
+
+  # serializers
   include Version1::BuildingsSerializer
   include Version1::EmployeesSerializer
-  
+
   def list
     buildings = Building.visible
                         .includes(:phones, :addresses)
@@ -18,7 +23,7 @@ class Api::V1::BuildingsController < ApplicationController
 
   def details
     building = Building.includes(:phones, :addresses, :floors, :departments)
-                        .find(params[:id])
+                       .find(params[:id])
     render json: serialize_building(building)
   end
 end
