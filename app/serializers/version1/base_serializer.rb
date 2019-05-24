@@ -12,14 +12,12 @@ module Version1
     # @author David J. Davis
     # @since 0.0.1
     def serialize_phones(phones)
-      {
-        phones: phones.map do |phone|
-          {
-            type: phone.number_types,
-            number: phone.number
-          }
-        end
-      }
+      phones.map do |phone|
+        {
+          type: phone.number_types,
+          number: phone.number
+        }
+      end
     end
 
     # Creates an array of hashes for addresses used in API Generation
@@ -29,15 +27,15 @@ module Version1
     def serialize_addresses(addresses)
       {
         address: addresses.map do |address|
-        {
-          human_readable: address.human_readable, 
-          state: address.state, 
-          city: address.city, 
-          zip: address.zip, 
-          line1: address.line1, 
-          line2: address.line2
-        }
-       end
+                   {
+                     human_readable: address.human_readable,
+                     state: address.state,
+                     city: address.city,
+                     zip: address.zip,
+                     line1: address.line1,
+                     line2: address.line2
+                   }
+                 end
       }
     end
 
@@ -48,13 +46,13 @@ module Version1
     def serialize_base_departments(depts)
       {
         departments: depts.map do |dept|
-        {
-          name: dept.name, 
-          description: dept.description
-        }
-       end
+                       {
+                         name: dept.name,
+                         description: dept.description,
+                         building: dept.building_name
+                       }
+                     end
       }
     end
-
   end
 end

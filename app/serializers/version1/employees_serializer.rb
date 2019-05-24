@@ -32,13 +32,14 @@ module Version1
         first_name: employee.first_name,
         last_name: employee.last_name,
         middle_name: employee.middle_name,
-        job_title: employee.job_title, 
+        job_title: employee.job_title,
         university_classification: employee.university_classification,
+        email: employee.email,
         image: "#{request.base_url}#{employee.image.url}",
         phones: serialize_phones(employee.phones),
         addresses: serialize_addresses(employee.addresses),
         departments: serialize_departmentable(employee.departmentable),
-        subjects: employee.subjects.pluck(:name), 
+        subjects: employee.subjects.pluck(:name),
         cv: ("#{request.base_url}#{employee.resume.url}" if employee.resume?)
       }
     end
@@ -52,6 +53,7 @@ module Version1
         department: departmentable.map do |d|
           {
             name: d.department.name,
+            building: d.department.building_name,
             role: d.leadership_role
           }
         end
