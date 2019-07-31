@@ -46,7 +46,7 @@ jobs:
           name: install bundler and capybara-webkit
           command: |
             gem install bundler 
-            gem install capybara-webkit -v '1.15.1' --source
+            gem install capybara-webkit -v '1.15.1'
             bundle install
 
       - restore_cache:
