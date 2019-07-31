@@ -44,7 +44,10 @@ jobs:
       ###########################################
       - run:
           name: update bundler
-          command: bundle install 
+          command: |
+            bundle install 
+            gem install bundler
+            gem install capybara-webkit -v '1.15.1' --source 'https://rubygems.org/'
       - restore_cache:
           keys:
             - rails-bundle-{{ checksum "Gemfile.lock" }}
