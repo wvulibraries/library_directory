@@ -7,7 +7,7 @@ jobs:
     # Container Setup
     #############################################
     docker:
-      - image: circleci/ruby:2.6.2-node-browsers
+      - image: ruby:2.6.2
         environment:
           - RAILS_ENV=test
           - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
