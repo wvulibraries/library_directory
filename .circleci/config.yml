@@ -7,7 +7,7 @@ jobs:
     # Container Setup
     #############################################
     docker:
-      - image: circleci/ruby:2.6.2-node-browsers
+      - image: circleci/ruby:2.6.2-stretch-node-browsers
         environment:
           - RAILS_ENV=test
           - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
@@ -16,7 +16,7 @@ jobs:
         environment:
           - MYSQL_ROOT_HOST=%
           - MYSQL_ROOT_PASSWORD=circleci
-      - image: elasticsearch:6.8.1
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.1
         environment:
           - transport.host: localhost
           - network.host: 0.0.0.0
@@ -40,14 +40,24 @@ jobs:
           command: mv config/database.ci.yml config/database.yml
 
       ###########################################
+      # Yarn w/ caching
+      ###########################################        
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn          
+
+      ###########################################
       # Bundler w/ caching
       ###########################################
-      - run:
-          name: update bundler
-          command: |
-            bundle install 
-            gem install bundler
-            gem install capybara-webkit -v '1.8' --source 'https://rubygems.org/'
       - restore_cache:
           keys:
             - rails-bundle-{{ checksum "Gemfile.lock" }}
