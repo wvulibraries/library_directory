@@ -26,3 +26,7 @@ RUN gem install bundler \
 WORKDIR /home/directory
 ADD ./ /home/directory
 RUN bundle install --jobs=4 --retry=3 
+
+ADD ./startup.sh /usr/bin/
+RUN chmod -v +x /usr/bin/startup.sh
+ENTRYPOINT ["/usr/bin/startup.sh"]
