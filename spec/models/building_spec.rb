@@ -22,13 +22,13 @@ RSpec.describe Building, type: :model do
 
   context 'invalid options' do
     it 'expects name to be too long' do
-      building.name = Faker::String.random(51)
+      building.name = Faker::Lorem.characters(number: 51)
       expect(building).to_not be_valid
       expect(building.errors.messages[:name]).to eq ['is too long (maximum is 50 characters)']
     end
 
     it 'expects name to be too short' do
-      building.name = Faker::String.random(3)
+      building.name = Faker::Lorem.characters(number: 3)
       expect(building).to_not be_valid
       expect(building.errors.messages[:name]).to eq ['is too short (minimum is 4 characters)']
     end

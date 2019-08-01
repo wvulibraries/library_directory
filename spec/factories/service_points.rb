@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :service_point do
-    sequence(:name) { |n| "#{Faker::Lorem.characters(10..30)} #{n}" }
+    sequence(:name) { |n| "#{Faker::Lorem.characters(number: rand(10..30))} #{n}" }
     association :department, factory: :department_building
 
     after :create do |point|

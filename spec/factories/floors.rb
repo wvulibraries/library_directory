@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :floor do
-    sequence(:name) { |n| "#{Faker::Lorem.characters(3..30)} #{n}" }
+    sequence(:name) { |n| "#{Faker::Lorem.characters(number: rand(3..30))} #{n}" }
     association :building, factory: :building
  
     factory :floor_image do 

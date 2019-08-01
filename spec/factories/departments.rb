@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :department do
-    sequence(:name) { |n| "#{Faker::Lorem.characters(10..30)} #{n}" }
+    sequence(:name) { |n| "#{Faker::Lorem.characters(number: rand(10..30))} #{n}" }
     description { Faker::Lorem.paragraph }
     status { 'enabled' }
 
