@@ -9,7 +9,7 @@ module Searchable
   included do
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
-    index_name [base_class.to_s.pluralize.underscore, Rails.env].join('_')
+    #index_name [base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
     # set number of shards
     settings number_of_shards: 1
