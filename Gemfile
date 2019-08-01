@@ -71,7 +71,7 @@ end
 # Developoment / Test Items (Primarily debugging)
 # =====================================================================================
 group :development, :test do
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'faker', '< 2.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # from rails new
   gem 'pry'
   gem 'pry-rails'
