@@ -1,13 +1,13 @@
 
-<% type = result[:_type] %>
+<% result.inspect %>
 
-<% type.inspect %>
 <div class="result">
-  <% if type == 'employee' %>
+
+  <% if result[:_index].include? 'employees' %>
     <%= render partial: "employee", locals: {employee: result[:_source]} %>
-  <% elsif type == 'building'%>
+  <% elsif result[:_index].include? 'buildings'%>
     <%= render partial: "building", locals: {building: result[:_source]} %>
-  <% else %>
+  <<% elsif result[:_index].include? 'departments'%>
     <%= render partial: "department", locals: {department: result[:_source]} %>
   <% end %>
 

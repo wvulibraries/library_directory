@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     clean_term = params[:query].gsub(%r{\{|\}|\[|\]|\\|\/|\^|\~|\:|\!|\"|\'}, '')
     @search_term = Sanitize.fragment clean_term
     @results = Elasticsearch::Model.search(
-      search_query,
+      @search_term,
       [Employee, Building, Department]
     ).results
   end
