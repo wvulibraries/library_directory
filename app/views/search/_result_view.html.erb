@@ -3,7 +3,7 @@
 
 <div class="result">
 
-  <% if result[:_index].include? 'employees' %>
+  <% if result[:_index].include?('users') || result[:_index].include?('employees') %>
     <%= render partial: "employee", locals: {employee: result[:_source]} %>
   <% elsif result[:_index].include? 'buildings'%>
     <%= render partial: "building", locals: {building: result[:_source]} %>

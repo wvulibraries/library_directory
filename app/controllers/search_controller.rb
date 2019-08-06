@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     clean_term = params[:query].gsub(%r{\{|\}|\[|\]|\\|\/|\^|\~|\:|\!|\"|\'}, '')
     @search_term = Sanitize.fragment clean_term
     @results = Elasticsearch::Model.search(
-      @search_term,
+      search_query,
       [Employee, Building, Department]
     ).results
   end
@@ -38,7 +38,7 @@ class SearchController < ApplicationController
       "multi_match": {
         "query": @search_term,
         "type": 'cross_fields',
-        "fields": %w[*_name^10 job_title university_classification],
+        "fields": %w[*_name^10 name job_title university_classification *],
         "operator": 'and'
         # "fuzziness": 'auto'
       }
