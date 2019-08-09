@@ -7,12 +7,12 @@
     <%= render partial: "employee", locals: {employee: result[:_source]} %>
   <% elsif result[:_index].include? 'buildings'%>
     <%= render partial: "building", locals: {building: result[:_source]} %>
-  <<% elsif result[:_index].include? 'departments'%>
+  <% elsif result[:_index].include? 'departments'%>
     <%= render partial: "department", locals: {department: result[:_source]} %>
   <% end %>
 
   <div class="text-muted micro-text visually-hidden">
-    <small> Type: <%= result[:_type] %> </small>
+    <small> Type: <%= result[:_index] %> </small>
     <small> Score: <%= result[:_score] %> </small>
     <small> Index: <%= result[:_index] %> </small>
   </div>
