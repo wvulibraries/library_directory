@@ -91,6 +91,13 @@
         <% end %>
       </ul>
       <% end %>
+
+      <% if @employee.resume.present? %>
+          <div>
+            <h4>Resume/CV:</h4>
+            <%= link_to(File.basename(@employee.resume.path), @employee.resume.url) %>
+          </div>
+      <% end %>  
     </div>
 
   </div>
