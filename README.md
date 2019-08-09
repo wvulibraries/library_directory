@@ -5,9 +5,9 @@ The library directory rebuild.  Needs to replicate and exceed existing behavior 
 
 ## Versions
 - Rails 5.2 
-- Ruby  2.5.1
-- ElasticSearch 6.6.0 
-- MySQL 5.7.25 
+- Ruby  2.6.3
+- ElasticSearch 6.8.1 
+- MySQL 5.7.27
 
 ## Testing and Quality Control 
 The test suite includes rspec, capybara, selnium, simplecov, CircleCI, and code climate. 
