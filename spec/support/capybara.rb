@@ -23,6 +23,10 @@ end
 Capybara.javascript_driver = :remote_browser
 
 RSpec.configure do |config|
+#   config.before(:each) do
+#     Capybara.app_host = 'http://directory:3001'
+#   end
+
   config.after(:each) do
     Capybara.reset_sessions!
     Capybara.use_default_driver
