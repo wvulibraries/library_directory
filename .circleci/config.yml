@@ -8,15 +8,18 @@ jobs:
     #############################################
     docker:
       - image: circleci/ruby:2.6.3-stretch-node-browsers
+        container_name: directory
         environment:
           - RAILS_ENV=test
           - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
           - COVERAGE=true          
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7.25
+        container_name: database
         environment:
           - MYSQL_ROOT_HOST=%
           - MYSQL_ROOT_PASSWORD=circleci
       - image: docker.elastic.co/elasticsearch/elasticsearch:6.8.1
+        container_name: elasticsearch      
         environment:
           - transport.host: localhost
           - network.host: 0.0.0.0
@@ -42,26 +45,26 @@ jobs:
       ###########################################
       # Yarn w/ caching
       ###########################################        
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+      # - restore_cache:
+      #     name: Restore Yarn Package Cache
+      #     keys:
+      #       - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn          
+      # - save_cache:
+      #     name: Save Yarn Package Cache
+      #     key: yarn-packages-{{ checksum "yarn.lock" }}
+      #     paths:
+      #       - ~/.cache/yarn          
 
       ###########################################
       # Bundler w/ caching
       ###########################################
-      - restore_cache:
-          keys:
-            - rails-bundle-{{ checksum "Gemfile.lock" }}
-            - rails-bundle-
+      # - restore_cache:
+      #     keys:
+      #       - rails-bundle-{{ checksum "Gemfile.lock" }}
+      #       - rails-bundle-
       - run:
           name: Install System Dependencies
           command: sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
@@ -69,10 +72,10 @@ jobs:
       - run:
           name: Bundle Gems
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
-      - save_cache:
-          key: rails-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      # - save_cache:
+      #     key: rails-bundle-{{ checksum "Gemfile.lock" }}
+      #     paths:
+      #       - vendor/bundle
       ###########################################
       # Code Climate
       ###########################################
