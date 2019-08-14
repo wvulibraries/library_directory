@@ -4,7 +4,7 @@ module Authenticatable
 
   # detrmine if the user can access the admin panel
   def access_permissions
-    return true if authenticated? && admin?
+    return true if (authenticated? && admin?)
     error_string = ''
     error_string += I18n.t('auth.invalid_access') unless authenticated?
     error_string += I18n.t('auth.invalid_permissions') unless admin?
@@ -19,7 +19,7 @@ module Authenticatable
 
   # look to see if authenticated
   def authenticated?
-    session['cas'] && session['cas']['user']
+    !!(session['cas'] && session['cas']['user'])
   end
 
   # return the current signed in user
