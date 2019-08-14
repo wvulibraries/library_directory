@@ -7,13 +7,13 @@ jobs:
     # Container Setup
     #############################################
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node-browsers
+      - image: circleci/ruby:2.6.2-stretch-node-browsers
         container_name: directory
         environment:
           - RAILS_ENV=test
           - CC_TEST_REPORTER_ID=de4e83be2764daa72e88022fb8e2ff596aa8fc1074c93e533fedafb00bb62805
           - COVERAGE=true          
-      - image: circleci/mysql:5.7.25
+      - image: circleci/mysql:5.7.27
         container_name: database
         environment:
           - MYSQL_ROOT_HOST=%
