@@ -44,3 +44,4 @@ reset-docker.sh
 # ignore these 
 import/
 import/subjects.rb
+/node_modules/*
