@@ -38,7 +38,7 @@ class SearchController < ApplicationController
       "multi_match": {
         "query": @search_term,
         "type": 'cross_fields',
-        "fields": %w[display_name^10 preferred_name^10 subjects.name^5 departments.name departments.building_name job_title university_classification phones.number],
+        "fields": %w[display_name^10 subjects.name^5 departments.name departments.building_name job_title university_classification phones.number],
         "operator": 'and'
         # "fuzziness": 'auto'
       }
