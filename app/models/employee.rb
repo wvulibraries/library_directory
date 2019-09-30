@@ -65,6 +65,15 @@ class Employee < User
       indexes :university_classification
       indexes :description
       indexes :status
+      indexes :subjects, type: :object do
+        indexes :name 
+      end      
+      indexes :departments, type: :object do
+        indexes :name
+      end      
+      indexes :phones, type: :object do
+        indexes :number 
+      end
     end
   end
 
@@ -76,9 +85,9 @@ class Employee < User
       methods: [:display_name],
       only: %i[id status first_name last_name preferred_name display_name description job_title university_classification image],
       include: {
-        departments: { methods: [:building_name],
+        departments: { methods: [:name, :building_name],
                        only: %i[name building_name] },
-        subjects: { only: :name },
+        subjects: { methods: [:name], only: [:name] },
         phones: { only: :number }
       }
     )
