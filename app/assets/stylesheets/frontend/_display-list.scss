@@ -8,7 +8,7 @@
   h3 { 
     margin-top:0; padding:0;
     .micro-text {
-      font-size:14px; 
+      font-size:24px; 
       font-style: italic;
       padding:0; margin:0;
       margin-bottom:1em;
@@ -34,6 +34,9 @@
 
   .phone-item { 
     padding-left:1em; 
+    .micro {
+      font-size:14px;
+    }
   }
   .phone { 
     margin-bottom:1em;
