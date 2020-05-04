@@ -2,7 +2,7 @@
   "name": "library_directory",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "slick-carousel": "^1.8.1",
     "tablesorter": "^2.31.0"
   }
