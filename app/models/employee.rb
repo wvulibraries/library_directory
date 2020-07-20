@@ -65,13 +65,13 @@ class Employee < User
       indexes :university_classification
       indexes :description
       indexes :status
-      indexes :subjects, type: :object do
+      indexes :subjects do
         indexes :name 
       end      
-      indexes :departments, type: :object do
+      indexes :departments do
         indexes :name
       end      
-      indexes :phones, type: :object do
+      indexes :phones do
         indexes :number 
       end
     end
