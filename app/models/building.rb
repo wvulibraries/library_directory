@@ -50,10 +50,6 @@ class Building < ApplicationRecord
     end
   end
 
-  def type
-    self.class
-  end
-
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
   def as_indexed_json(_options)   
