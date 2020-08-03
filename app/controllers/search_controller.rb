@@ -8,6 +8,8 @@ class SearchController < ApplicationController
       search_query,
       [Employee, Building, Department]
     ).results
+
+    # @results = Employee.search(search_query).results
   end
 
   # Search Query is used to create a better score for searches across multiple models. For use in this controller only.
@@ -38,7 +40,7 @@ class SearchController < ApplicationController
       "multi_match": {
         "query": @search_term,
         "type": 'cross_fields',
-        "fields": %w[*_name^10 subjects.name^5 job_title university_classification phones.number],
+        "fields": %w[*_name^10 subjects.name^5 type job_title university_classification phones.number],
         "operator": 'and'
         # "fuzziness": 'auto'
       }
@@ -66,5 +68,5 @@ class SearchController < ApplicationController
         "weight": 5000
       }
     ]
-  end
+  end  
 end

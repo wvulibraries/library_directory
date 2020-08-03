@@ -44,17 +44,24 @@ class Building < ApplicationRecord
   # These are set in the model to index only specific information.   
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
+      indexes :type
       indexes :name
       indexes :description
       indexes :status
     end
   end
 
+  def type
+    self.class
+  end
+
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
   def as_indexed_json(_options)
+    puts type    
     as_json(
-      only: [:id, :status, :name, :image],
+      methods: [:type],
+      only: [:id, :type, :status, :name, :image],
       include: {
         departments: { only: :name },
         floors: { only: :number }

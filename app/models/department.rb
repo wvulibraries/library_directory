@@ -35,6 +35,10 @@ class Department < ApplicationRecord
     building.name.to_s
   end
 
+  def type
+    self.class
+  end
+
   # scopes
   scope :visible, -> { where(status: 'enabled') }
   scope :order_name, -> { order(:name) }
@@ -46,18 +50,24 @@ class Department < ApplicationRecord
   # These are set in the model to index only specific information.   
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
+      indexes :type
       indexes :name
       indexes :description
       indexes :status
     end
   end
 
+  def type
+    self.class
+  end  
+
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
-  def as_indexed_json(_options)
+  def as_indexed_json(_options)   
+    puts type    
     as_json(
-      methods: [:building_name],
-      only: [:id, :status, :name, :building_name],
+      methods: [:building_name, :type],
+      only: [:id, :type, :status, :name, :building_name],
       include: {
         service_points: { only: :name },
         phones: { only: :number }
