@@ -35,10 +35,6 @@ class Department < ApplicationRecord
     building.name.to_s
   end
 
-  def type
-    self.class
-  end
-
   # scopes
   scope :visible, -> { where(status: 'enabled') }
   scope :order_name, -> { order(:name) }
