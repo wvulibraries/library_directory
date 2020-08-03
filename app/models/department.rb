@@ -53,17 +53,12 @@ class Department < ApplicationRecord
     end
   end
 
-  def type
-    self.class
-  end  
-
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
-  def as_indexed_json(_options)   
-    puts type    
+  def as_indexed_json(_options)  
     as_json(
-      methods: [:building_name, :type],
-      only: [:id, :type, :status, :name, :building_name],
+      methods: [:building_name],
+      only: [:id, :status, :name, :building_name],
       include: {
         service_points: { only: :name },
         phones: { only: :number }
