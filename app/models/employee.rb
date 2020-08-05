@@ -65,13 +65,13 @@ class Employee < User
       indexes :university_classification
       indexes :description
       indexes :status
-      indexes :subjects, type: :object do
+      indexes :subjects do
         indexes :name 
       end      
-      indexes :departments, type: :object do
+      indexes :departments do
         indexes :name
       end      
-      indexes :phones, type: :object do
+      indexes :phones do
         indexes :number 
       end
     end
@@ -81,6 +81,7 @@ class Employee < User
   # @description indexed json, this will help with search rankings.
   # rake environment elasticsearch:import:model CLASS='Employee' SCOPE="visible" FORCE=y
   def as_indexed_json(_options)
+    # puts type    
     as_json(
       methods: [:display_name],
       only: %i[id status first_name last_name preferred_name display_name description job_title university_classification image],

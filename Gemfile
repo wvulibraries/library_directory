@@ -7,7 +7,7 @@ ruby '2.6.2'
 # =====================================================================================
 
 # Rails, MySQL, Puma
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.4.3'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.12'
 
@@ -58,7 +58,7 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.10', '< 0.18'
   gem 'simplecov-console'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver', '~> 3.14'  

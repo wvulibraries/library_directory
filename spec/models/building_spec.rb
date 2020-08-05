@@ -10,7 +10,7 @@ RSpec.describe Building, type: :model do
     it { should validate_length_of(:name).is_at_least(4) }
     it { should validate_length_of(:name).is_at_most(50) }
     it { should validate_presence_of(:map_link) }
-    it { should define_enum_for(:status).with(%i[enabled disabled]) }
+    it { should define_enum_for(:status).with_values(%i[enabled disabled]) }
   end
 
   context 'associations' do

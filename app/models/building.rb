@@ -52,7 +52,7 @@ class Building < ApplicationRecord
 
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
-  def as_indexed_json(_options)
+  def as_indexed_json(_options)   
     as_json(
       only: [:id, :status, :name, :image],
       include: {

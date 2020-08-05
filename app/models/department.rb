@@ -46,6 +46,7 @@ class Department < ApplicationRecord
   # These are set in the model to index only specific information.   
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
+      indexes :type
       indexes :name
       indexes :description
       indexes :status
@@ -54,7 +55,7 @@ class Department < ApplicationRecord
 
   # Elasticsearch indexed json searches for boosting search relevancy. 
   # @author David J. Davis
-  def as_indexed_json(_options)
+  def as_indexed_json(_options)  
     as_json(
       methods: [:building_name],
       only: [:id, :status, :name, :building_name],

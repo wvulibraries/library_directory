@@ -32,8 +32,8 @@ RSpec.describe User, type: :model do
   end
 
   context 'testing enums' do
-    it { should define_enum_for(:status).with(%i[disabled enabled]) }
-    it { should define_enum_for(:role).with(%i[basic admin]) }
+    it { should define_enum_for(:status).with_values(%i[disabled enabled]) }
+    it { should define_enum_for(:role).with_values(%i[basic admin]) }
   end
 
   context '.display_name' do
