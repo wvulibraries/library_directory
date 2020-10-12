@@ -15,7 +15,7 @@ class Employee < User
             presence: true,
             length: { within: 2..70 }
 
-  validates :description, length: { maximum: 500 }
+  validates :description, length: { maximum: 1500 }
 
   # associations
   has_many :departmentable, dependent: :nullify
