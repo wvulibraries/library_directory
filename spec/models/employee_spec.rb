@@ -13,7 +13,7 @@ RSpec.describe Employee, type: :model do
     it { should validate_length_of(:university_classification).is_at_least(2) }
     it { should validate_length_of(:university_classification).is_at_most(70) }
 
-    it { should validate_length_of(:description).is_at_most(500) }
+    it { should validate_length_of(:description).is_at_most(1500) }
   end
 
   context 'associations' do
