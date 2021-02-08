@@ -1,12 +1,12 @@
-# Building Active Record Object for storing the directories buildings
+# Building Active Record Object for storing the employee websites
 #
 # @author Tracy A. McCormick
 # @data_model
 # @since 0.0.1
 class Website < ApplicationRecord
+  # validation
+  validates :url, presence: true, url: true
+
   # associations
   belongs_to :webable, polymorphic: true
-
-  # validations
-  validates :url, presence: true, url: true
 end

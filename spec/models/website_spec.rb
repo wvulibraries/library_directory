@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Website, type: :model do
-  let(:website) { FactoryBot.create :website }
+  let(:website) { FactoryBot.create :website_employee_association }
 
   it { should belong_to(:webable) }
 
