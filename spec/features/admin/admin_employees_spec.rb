@@ -8,6 +8,7 @@ RSpec.feature 'Admin::Employees', type: :feature do
   # vars for creating
   let(:address) { FactoryBot.attributes_for(:address) }
   let(:phone) { FactoryBot.attributes_for(:phone) }
+  let(:website) { FactoryBot.attributes_for(:website)}
   let(:employee) { FactoryBot.attributes_for(:employee) }
 
   before(:each) do
@@ -124,4 +125,25 @@ RSpec.feature 'Admin::Employees', type: :feature do
     click_button 'Submit'
     expect(page).to have_content('Success! Employee profile was created!')
   end
+
+  scenario 'accepts nested attributes for websites', js: true do
+    visit '/admin/employees/new'
+    # puts page.html.inspect
+    select('Mr', from: 'Prefix')
+    fill_in 'First name', with: employee[:first_name]
+    fill_in 'Middle name', with: employee[:middle_name]
+    fill_in 'Last name', with: employee[:last_name]
+    select('I', from: 'Suffix')
+    fill_in 'Wvu username', with: employee[:wvu_username]
+    fill_in 'Email', with: employee[:email]
+    fill_in 'Job title', with: employee[:job_title]
+    fill_in 'University classification', with: employee[:university_classification]
+    fill_in 'Description', with: employee[:description]
+    select('basic', from: 'User Role')
+    select('enabled', from: 'User Status')
+    click_link 'Add Websites'
+    fill_in 'Url', with: website[:url]
+    click_button 'Submit'
+    expect(page).to have_content('Success! Employee profile was created!')
+  end  
 end

@@ -5,6 +5,7 @@ RSpec.describe Employee, type: :model do
   let(:new_employee) { FactoryBot.build :employee }
   let(:employee_phone) { FactoryBot.create :employee_with_phone }
   let(:employee_address) { FactoryBot.create :employee_with_address }
+  let(:employee_website) { FactoryBot.create :employee_with_website }  
 
   context 'validations' do
     it { should validate_length_of(:job_title).is_at_most(70) }
@@ -19,6 +20,7 @@ RSpec.describe Employee, type: :model do
   context 'associations' do
     it { should have_many(:addresses) }
     it { should have_many(:phones) }
+    it { should have_many(:websites) }    
     it { should have_many(:departments) }
     it { should have_many(:subjects) }
   end
