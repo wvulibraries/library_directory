@@ -89,12 +89,12 @@
       padding:.5em 0;
     }
 
-    .phones, .email { 
+    .phones, .email, .websites { 
       @include span-columns(12);
       border-top: unset;
     }
 
-    .phone-item, .email { 
+    .phone-item, .email, .website-item { 
       padding-left:1em;
       .fa, .fas { width:1em; }
     }
