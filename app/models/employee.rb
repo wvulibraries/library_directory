@@ -77,6 +77,7 @@ class Employee < User
         indexes :number 
       end
       indexes :websites do
+        indexes :name_of_url
         indexes :url 
       end      
     end

@@ -142,6 +142,7 @@ RSpec.feature 'Admin::Employees', type: :feature do
     select('basic', from: 'User Role')
     select('enabled', from: 'User Status')
     click_link 'Add Websites'
+    fill_in 'Name of url', with: website[:name_of_url]    
     fill_in 'Url', with: website[:url]
     click_button 'Submit'
     expect(page).to have_content('Success! Employee profile was created!')

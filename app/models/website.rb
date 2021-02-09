@@ -5,6 +5,7 @@
 # @since 0.0.1
 class Website < ApplicationRecord
   # validation
+  validates :name_of_url, presence: true 
   validates :url, presence: true, url: true
 
   # associations

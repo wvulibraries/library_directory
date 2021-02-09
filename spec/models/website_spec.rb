@@ -6,6 +6,7 @@ RSpec.describe Website, type: :model do
   it { should belong_to(:webable) }
 
   context 'validations' do
+    it { should validate_presence_of(:name_of_url) }
     it { should validate_presence_of(:url) }
   end
 
