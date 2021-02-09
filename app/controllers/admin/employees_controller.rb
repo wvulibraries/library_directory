@@ -89,7 +89,7 @@ class Admin::EmployeesController < AdminController
       :role,
       addresses_attributes: %i[id line1 line2 city state zip _destroy],
       phones_attributes: %i[id number_types number _destroy],
-      websites_attributes: %i[id url _destroy],
+      websites_attributes: %i[id name_of_url url _destroy],
       subject_ids: [], 
       department_ids: []
     )
