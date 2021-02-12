@@ -1,5 +1,5 @@
 # Departments Controller
-# @author David J. Davis
+# @author David J. Davis, Tracy A. McCormick
 # Sets data for views, sets redirects, sets errors
 class Admin::DepartmentsController < AdminController
   # before_actions
@@ -73,6 +73,7 @@ class Admin::DepartmentsController < AdminController
                   :building_id,
                   :name,
                   :description,
-                  phones_attributes: %i[id number_types number _destroy])
+                  phones_attributes: %i[id number_types number _destroy],
+                  emails_attributes: %i[id address _destroy])
   end
 end

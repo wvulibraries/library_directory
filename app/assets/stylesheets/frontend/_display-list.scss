@@ -32,13 +32,13 @@
     }
   } 
 
-  .phone-item { 
+  .phone-item, .email-item { 
     padding-left:1em; 
     .micro {
       font-size:14px;
     }
   }
-  .phone { 
+  .phone, .email { 
     margin-bottom:1em;
   }
 }

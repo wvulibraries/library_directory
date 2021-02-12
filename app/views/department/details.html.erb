@@ -27,6 +27,17 @@
             </div>
           <% end %>
         </div>
+
+        <div class="email">
+          <% @department.emails.each do |email| %>
+            <div class="email-item">
+              <span class="fas fa-envelope"></span>
+              <a href="mailto:<%= email.address %>">
+                <%= email.address %>
+              </a>
+            </div>          
+          <% end %>
+        </div>          
     </div>
   <% end %>
 
@@ -36,13 +47,14 @@
       <h4> <%= sp.name %> </h4>
       <div class="phone">
         <% sp.phones.each do |phone| %>
-        <div class="phone-item">
+          <div class="phone-item">
             <span class="<%= phone_icon_class(phone) %>"></span>
             <a class="wvu-profiles-index__phone" href="tel:<%= phone.number %>"><%= phone.number %></a>
             <span class="micro"> (<%= phone.number_types.capitalize %>) </span>
           </div>
         <% end %>
       </div>
+ 
     </div>
     <% end %>
   <% end %>

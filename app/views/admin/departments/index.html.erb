@@ -38,6 +38,21 @@
         </li>
         <% end %>
 
+        <% if dept.emails.length %>
+        <li>
+          <strong> Department Email Addresses: </strong>
+          <ul class="email">
+            <% dept.emails.each do |email| %>
+            <li>
+              <a href="mailto:<%= email.address %>">
+                <%= email.address %>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>        
+
         <% if dept.service_points.present? %>
         <li> 
           <% dept.service_points.each do |sp| %>
