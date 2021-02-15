@@ -29,7 +29,7 @@
       <div class="email-addresses">
           <div class="email">
             <% dept.emails.each do |email| %>
-              <div class="email-item">
+              <div class="email-item" title="Email address for <%= dept.name %>, <%= email.address %>.">
                 <span class="fas fa-envelope"></span>
                 <a href="mailto:<%= email.address %>">
                   <%= email.address %>

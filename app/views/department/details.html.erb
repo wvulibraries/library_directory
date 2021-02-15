@@ -31,7 +31,7 @@
         <div class="email">
           <% @department.emails.each do |email| %>
             <div class="email-item">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-envelope" title="Email address for <%= @department.name %>, <%= email.address %>."></span>
               <a href="mailto:<%= email.address %>">
                 <%= email.address %>
               </a>
