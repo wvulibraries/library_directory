@@ -7,7 +7,7 @@ RSpec.describe Email, type: :model do
     it { should belong_to(:emailable) }
   end 
 
-  context 'custom validation .valid_email' do
+  context 'custom validation .valid_address' do
     it 'expects a valid email response' do
       expect(email).to be_valid
     end
