@@ -37,7 +37,7 @@ module Version1
         email: employee.email,
         image: "#{request.base_url}#{employee.image.url}",
         phones: serialize_phones(employee.phones),
-        websites: seralize_websites(employee.websites),
+        websites: serialize_websites(employee.websites),
         addresses: serialize_addresses(employee.addresses),
         departments: serialize_departmentable(employee.departmentable),
         subjects: employee.subjects.pluck(:name),
