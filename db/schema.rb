@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_225024) do
+ActiveRecord::Schema.define(version: 2021_02_12_165404) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "line1"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2021_02_08_225024) do
     t.bigint "building_id"
     t.integer "status"
     t.index ["building_id"], name: "index_departments_on_building_id"
+  end
+
+  create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "address"
+    t.string "emailable_type"
+    t.bigint "emailable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id"
   end
 
   create_table "floors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

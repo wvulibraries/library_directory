@@ -34,6 +34,12 @@
   <% end %>
   <%= link_to_add_fields "Add Phones", f, :phones %>
 
+  <!-- Emails -->
+  <%= f.fields_for :emails do |form| %>
+    <%= render "email", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Emails", f, :emails %>  
+
   <div class="actions">
     <%= link_to 'Cancel', admin_departments_path, class: 'cancel-button' %>
     <%= f.submit 'Submit', class: 'submit-button' %>

@@ -16,6 +16,7 @@ class Department < ApplicationRecord
   belongs_to :building
   has_many :service_points, -> { order(:name) }, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
+  has_many :emails, as: :emailable, dependent: :destroy
 
   has_many :departmentable, dependent: :nullify
   has_many :employees, -> { order(:last_name, :first_name) }, through: :departmentable
@@ -26,6 +27,7 @@ class Department < ApplicationRecord
   # form logic
   accepts_nested_attributes_for :service_points, allow_destroy: true
   accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :emails, allow_destroy: true
 
   # search
   include Searchable
@@ -61,7 +63,8 @@ class Department < ApplicationRecord
       only: [:id, :status, :name, :building_name],
       include: {
         service_points: { only: :name },
-        phones: { only: :number }
+        phones: { only: :number },
+        emails: { only: :address }
       }
     )
   end
