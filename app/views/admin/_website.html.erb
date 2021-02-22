@@ -1,0 +1,18 @@
+<fieldset class="websites-form">
+  <legend> Websites </legend>
+
+  <div class="field full">
+    <%= form.label :name_of_url, 'Link Text', class: 'required' %>
+    <%= form.text_field :name_of_url, placeholder: 'WVU Site' %>
+  </div>
+
+  <div class="field full">
+    <%= form.label :url, class: 'required' %>
+    <%= form.text_field :url, placeholder: 'https://www.wvu.edu' %>
+  </div>
+
+  <div class="action">
+    <%= form.hidden_field :_destroy %>
+    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe, '#', class: "remove-fields delete-website", title: "Delete Website" %>
+  </div>
+</fieldset>

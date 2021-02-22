@@ -167,6 +167,11 @@
   <% end %>
   <%= link_to_add_fields "Add Phones", f, :phones %>
 
+  <!-- Websites -->
+  <%= f.fields_for :websites do |form| %>
+    <%= render "website", form: form %>
+  <% end %>
+  <%= link_to_add_fields "Add Websites", f, :websites %>  
 
   <!-- Subjects -->
    <fieldset>

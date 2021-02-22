@@ -132,4 +132,14 @@ ActiveRecord::Schema.define(version: 2021_02_12_165404) do
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 
+  create_table "websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "webable_type"
+    t.bigint "webable_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name_of_url"
+    t.index ["webable_type", "webable_id"], name: "index_websites_on_webable_type_and_webable_id"
+  end
+
 end

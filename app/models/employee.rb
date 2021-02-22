@@ -2,7 +2,7 @@
 #
 # @description: A sub class of the user model uses single table inheritance to
 # determine type of profile and add extra details to user model
-# @author David J. Davis
+# @author David J. Davis, Tracy A. McCormick
 # @data_model
 # @since 0.0.1
 class Employee < User
@@ -22,12 +22,14 @@ class Employee < User
   has_many :departments, through: :departmentable
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
+  has_many :websites, as: :webable, dependent: :destroy  
   has_many :subjectables, dependent: :nullify
   has_many :subjects, through: :subjectables
 
   # form logic
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :websites, allow_destroy: true
 
   # concerns
   include Imageable
@@ -74,6 +76,10 @@ class Employee < User
       indexes :phones do
         indexes :number 
       end
+      indexes :websites do
+        indexes :name_of_url
+        indexes :url 
+      end      
     end
   end
 
@@ -89,7 +95,8 @@ class Employee < User
         departments: { methods: [:name, :building_name],
                        only: %i[name building_name] },
         subjects: { methods: [:name], only: [:name] },
-        phones: { only: :number }
+        phones: { only: :number },
+        websites: { only: :url }
       }
     )
   end

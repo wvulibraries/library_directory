@@ -73,6 +73,18 @@
         </div>
         <% end %>
 
+        <% if @employee.websites.present? %>
+          <div class="websites">  
+          <% @employee.websites.each do |website| %>
+            <div class="website-item">
+              <span class="fas fa-link"></span>
+              <a href="<%= website.url %>">
+                <%= website.name_of_url %></a>
+            </div>
+          <% end %>
+          </div>
+        <% end %>        
+
         <div class="email">
           <span class="fas fa-envelope"></span>
           <a href="mailto:<%= @employee.email %>">

@@ -22,7 +22,7 @@ module Version1
 
     # Creates an array of Buildings used in API Generation
     #
-    # @author David J. Davis
+    # @author David J. Davis, Tracy A. McCormick
     # @since 0.0.1
     def serialize_employee(employee)
       {
@@ -37,6 +37,7 @@ module Version1
         email: employee.email,
         image: "#{request.base_url}#{employee.image.url}",
         phones: serialize_phones(employee.phones),
+        websites: serialize_websites(employee.websites),
         addresses: serialize_addresses(employee.addresses),
         departments: serialize_departmentable(employee.departmentable),
         subjects: employee.subjects.pluck(:name),

@@ -8,14 +8,14 @@ class Api::V1::EmployeesController < ApplicationController
   include Version1::EmployeesSerializer
 
   def list
-    employees = Employee.includes(:phones, :departments, :departmentable, :addresses)
+    employees = Employee.includes(:phones, :websites, :departments, :departmentable, :addresses)
                         .where(status: 'enabled')
                         .order(:last_name, :first_name)
     render json: serialize_employees(employees)
   end
 
   def profile
-    employee = Employee.includes(:phones, :departments, :departmentable, :addresses, :subjects)
+    employee = Employee.includes(:phones, :websites, :departments, :departmentable, :addresses, :subjects)
                        .where(id: params[:id], status: 'enabled')
                        .order(:last_name, :first_name)
                        .first
