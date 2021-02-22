@@ -24,6 +24,22 @@
       </div>
     <% end %>
 
+    <% if dept.emails.present? %>
+      <h4 class="visually-hidden"> Emails </h4>
+      <div class="email-addresses">
+          <div class="email">
+            <% dept.emails.each do |email| %>
+              <div class="email-item" title="Email address for <%= dept.name %>, <%= email.address %>.">
+                <span class="fas fa-envelope"></span>
+                <a href="mailto:<%= email.address %>">
+                  <%= email.address %>
+                </a>
+              </div>  
+            <% end %>
+          </div>
+      </div>
+    <% end %>    
+
     <div class="buttons"> 
       <a href="/departments/<%= dept.id %>/employees" class="button" aria-labelledby="department-name"> Department Employees </a>
 

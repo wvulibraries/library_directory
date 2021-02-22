@@ -12,6 +12,7 @@ FactoryBot.define do
       status { 'enabled' }
       after :create do |department|
         create_list :phone, 1, phoneable: department
+        create_list :email, 1, emailable: department
         create_list :service_point, 1, department: department
       end
     end

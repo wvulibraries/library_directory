@@ -6,7 +6,7 @@
     <%= form.text_field :name %>
   </div>
 
-   <!-- Phones -->
+  <!-- Phones -->
   <%= form.fields_for :phones do |form| %>
     <%= render "phone", form: form %>
   <% end %>

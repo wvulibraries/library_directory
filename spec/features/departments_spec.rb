@@ -25,12 +25,14 @@ RSpec.feature "Departments", type: :feature do
 
   scenario 'department details' do
     phones = FactoryBot.create(:phone, phoneable: department)
+    emails = FactoryBot.create(:email, emailable: department)
     service_point = FactoryBot.create(:service_point, department: department)
     # There is some really stupid stuff going on
     # phon numbers and service points aren't adding after create
     visit "/departments/#{department.id}"
     expect(page).to have_content(department.name)
     expect(page).to have_content(phones.number)
+    expect(page).to have_content(emails.address)
     expect(page).to have_content(service_point.name)
   end
 

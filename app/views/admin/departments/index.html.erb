@@ -22,7 +22,7 @@
           <%= dept.building.name %>
         </li>
 
-        <% if dept.phones.length %>
+        <% if dept.phones.present? %>
         <li>
           <strong> Department Phone Numbers: </strong>
           <ul class="phone">
@@ -37,6 +37,21 @@
           </ul>
         </li>
         <% end %>
+
+        <% if dept.emails.present? %>
+        <li>
+          <strong> Department Email Addresses: </strong>
+          <ul class="email">
+            <% dept.emails.each do |email| %>
+            <li>
+              <a href="mailto:<%= email.address %>">
+                <%= email.address %>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>        
 
         <% if dept.service_points.present? %>
         <li> 

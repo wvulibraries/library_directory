@@ -1,0 +1,13 @@
+<fieldset class="emails-form">
+  <legend> Emails </legend>
+
+  <div class="field full">
+    <%= form.label :address, class: 'required' %>
+    <%= form.text_field :address, placeholder: 'person@mail.wvu.edu' %>
+  </div>
+
+  <div class="action">
+    <%= form.hidden_field :_destroy %>
+    <%= link_to '<span class="fas fa-trash-alt"></span>'.html_safe, '#', class: "remove-fields delete-email", title: "Delete Email Address" %>
+  </div>
+</fieldset>
